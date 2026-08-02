@@ -14,12 +14,12 @@
 
 | 接口/交付 | 说明 | FR | 状态 |
 |---|---|---|---|
-| 算法接口规范+模板（文档） | 已建骨架，定稿确认 | FR-10 | □ |
+| 算法接口规范+模板（文档） | 已建骨架，定稿确认 | FR-10 | ☑ |
 | TrafficNetwork 数据结构+拓扑配置 | 节点/边/权值定义与加载 | FR-06 | □ |
 | ShortestPathFinder.fit/predict | Dijkstra 最短路径 | FR-07 | □ |
 | TrafficNetworkAnalyzer（`pagerank_`/`betweenness_`） | 热度分析 | FR-08 | □ |
 | AttractRankAnalyzer.fit/transform | 热点区域分析 | FR-09 | □ |
-| 设计文档 | 架构/模块/选型 | — | □ |
+| 设计文档 | 架构/模块/选型 | — | ☑ |
 | 答辩 PPT | 全员素材汇总定稿 | — | □ |
 
 ## 三、每日安排表

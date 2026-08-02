@@ -5,7 +5,7 @@
 本项目为 25 级人工智能组中期考核项目：构建一个基于 MindSpore 的园区安全智能调控平台，实现园区人流实时监测、门闸动态调节、外来车辆准入智能判断、拥堵风险预警与应急响应等功能，兼顾宏观交通拓扑网络分析与微观车联网汇合（MAS+CAV）两个层面，支撑 8000 人规模压力测试。
 
 - **题目原文**：`中期考核.pdf`（每位成员必读）
-- **技术栈**：MindSpore + 昇腾/ModelArts + Python（后端）+ Vue/React（前端）+ MySQL/PostgreSQL + GitHub + 飞书
+- **技术栈**：MindSpore + 昇腾/ModelArts + Django + DRF（后端）+ Vue/React（前端）+ MySQL/PostgreSQL + GitHub + 飞书
 - **截止时间**：2026-08-08 12:00，提交至邮箱 2793485371@qq.com
 
 ## 二、团队与角色

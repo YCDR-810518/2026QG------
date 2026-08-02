@@ -16,7 +16,7 @@
 |---|---|---|---|
 | DensityPredictor.fit/predict | 密度预测（内部 `DensityNet`+MindSpore） | FR-21 | □ |
 | CongestionDetector.fit/fit_predict | 异常检测（`anomaly_scores_`） | FR-22 | □ |
-| 预警分级+处置逻辑 | 调 B 预警入库 API | FR-23 | □ |
+| 预警分级+处置逻辑 | 通过 B 的 Django Model 写入预警数据 | FR-23 | □ |
 | ModelArts 部署 | GPU→昇腾切换（`device_target`） | FR-24 | □ |
 | 昇腾硬件=小车 + CV 建模 | 本地道路情况建模 | FR-25 | □ |
 | AI 模型设计文档+昇腾集成说明 | 模型选型/训练方案/评估指标 | — | □ |
