@@ -1,0 +1,15 @@
+{
+  "signalId": "S01",
+  "nodeId": "cross_1",
+  "mode": "adaptive",
+  "phase": "green",
+  "cycleTime": 60,
+  "greenTime": 30,
+  "yellowTime": 3,
+  "redTime": 27,
+  "offset": 0,
+  "throughputCap": 90,
+  "nPhases": 2,
+  "signalStatus": 1,
+  "signalFlowRate": 45.0
+}

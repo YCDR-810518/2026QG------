@@ -1,0 +1,20 @@
+# 仿真引擎配置文件（成员 F）
+# 路径均相对本文件所在目录解析；A 模块目录用于 sys.path 注入 DjShortCut
+
+simulation:
+  seed: 42
+  dt: 1.0                  # 每 tick 模拟秒数
+  max_capacity: 10000      # 实体池预分配上限（>8000）
+  tick_hz: 1               # 实时目标：1 tick/s
+  check_interval: 10       # 调控器调用间隔（tick）
+  enable_signals: true     # 是否启用红绿灯完整信号周期
+  vehicle_compliance: 1.0  # 车辆遵守信号比例
+  ped_compliance: 0.3      # 行人遵守信号比例
+
+topology:
+  file: ../../项目目录/graph_data.yaml
+  a_module_dir: ../../项目目录
+
+paths:
+  data_dir: ./data
+  log_dir: ./logs

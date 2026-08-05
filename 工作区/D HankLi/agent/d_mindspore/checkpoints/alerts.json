@@ -1,0 +1,93 @@
+[
+  {
+    "event_id": "EVT-20260804-3064",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "east_dorm_1_3",
+    "node_name": "east_dorm_1_3",
+    "current_density": 0.262,
+    "threshold_density": 0.2519,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-F068",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "east_dorm_4_7",
+    "node_name": "east_dorm_4_7",
+    "current_density": 0.2846,
+    "threshold_density": 0.2569,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-23C8",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "east_dorm_8_11",
+    "node_name": "east_dorm_8_11",
+    "current_density": 0.267,
+    "threshold_density": 0.2594,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-1A42",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "rd_guanggong_1",
+    "node_name": "rd_guanggong_1",
+    "current_density": 0.0057,
+    "threshold_density": 0.0,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-F623",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "sports_cricket",
+    "node_name": "sports_cricket",
+    "current_density": 0.0181,
+    "threshold_density": 0.0091,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-0147",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "teacher_apt",
+    "node_name": "teacher_apt",
+    "current_density": 0.2902,
+    "threshold_density": 0.2569,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  },
+  {
+    "event_id": "EVT-20260804-E53B",
+    "timestamp": "2026-08-04T23:13:31",
+    "level": "L1",
+    "type": "congestion",
+    "node_id": "west_dorm_17_18",
+    "node_name": "west_dorm_17_18",
+    "current_density": 0.267,
+    "threshold_density": 0.2645,
+    "predicted_duration_min": 5,
+    "suggested_action": "关注该节点人流趋势",
+    "status": "active"
+  }
+]

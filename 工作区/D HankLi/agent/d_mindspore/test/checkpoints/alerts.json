@@ -1,0 +1,15 @@
+[
+  {
+    "event_id": "EVT-20260804-DEMO",
+    "timestamp": "2026-08-04T20:53:17",
+    "level": "L2",
+    "type": "congestion",
+    "node_id": "admin_building",
+    "node_name": "admin_building",
+    "current_density": 0.9,
+    "threshold_density": 0.8,
+    "predicted_duration_min": 8,
+    "suggested_action": "门闸限流50%",
+    "status": "active"
+  }
+]

@@ -1,2 +1,4 @@
 .stfolder/syncthing-folder-6273a0.txt
 .stfolder/*
+*.csv
+*__pycache__*

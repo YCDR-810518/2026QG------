@@ -1,0 +1,9 @@
+# MindSpore 版本依赖
+# 安装 MindSpore CPU 版（Windows）：
+#   pip install mindspore==2.2.14
+# 或参考官方安装指南：https://www.mindspore.cn/install
+
+mindspore>=2.2.0
+numpy
+pandas
+requests

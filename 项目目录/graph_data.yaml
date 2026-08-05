@@ -1,0 +1,1236 @@
+attractrank:
+  distance_threshold: 15.0
+  min_nodes: 2
+node_types:
+  entrance: '#FF4757'
+  road: '#2ED573'
+  admin: '#747D8C'
+  academic: '#1E90FF'
+  lab: '#70A1FF'
+  sports: '#FFA502'
+  living: '#FF6B81'
+nodes:
+  gate_south:
+    name: 南大门
+    type: entrance
+    x: 65
+    y: 5
+    has_traffic_light: false
+    has_gate: true
+    doorId: D01
+  gate_west:
+    name: 西门出口
+    type: entrance
+    x: 8
+    y: 55
+    has_traffic_light: false
+    has_gate: true
+    doorId: D02
+  gate_east:
+    name: 东门出口
+    type: entrance
+    x: 92
+    y: 55
+    has_traffic_light: false
+    has_gate: true
+    doorId: D03
+  cross_zh_south:
+    name: 中环西南路口
+    type: road
+    x: 45
+    y: 12
+    has_traffic_light: true
+    has_gate: false
+    doorId: D04
+  cross_zh_mid:
+    name: 中环天桥/通道口
+    type: road
+    x: 40
+    y: 58
+    has_traffic_light: true
+    has_gate: false
+    doorId: D05
+  cross_zh_north:
+    name: 中环西北路口
+    type: road
+    x: 45
+    y: 80
+    has_traffic_light: true
+    has_gate: false
+    doorId: D06
+  rd_guanggong_1:
+    name: 广工一路节点
+    type: road
+    x: 85
+    y: 68
+    has_traffic_light: true
+    has_gate: false
+    doorId: D07
+  pedestrian_bridge:
+    name: 天桥/下沉球场
+    type: road
+    x: 35
+    y: 58
+    has_traffic_light: true
+    has_gate: false
+    doorId: D08
+  underpass:
+    name: 广工通道
+    type: road
+    x: 48
+    y: 58
+    has_traffic_light: true
+    has_gate: false
+    doorId: D09
+  admin_building:
+    name: 行政楼/综合楼
+    type: admin
+    x: 62
+    y: 12
+    has_traffic_light: false
+    has_gate: false
+    doorId: D10
+  auditorium:
+    name: 大讲堂(圆弧报告厅)
+    type: admin
+    x: 68
+    y: 8
+    has_traffic_light: false
+    has_gate: false
+    doorId: D11
+  library:
+    name: 图书馆
+    type: academic
+    x: 58
+    y: 38
+    has_traffic_light: true
+    has_gate: false
+    doorId: D12
+  gongchuanggu:
+    name: 工创谷
+    type: academic
+    x: 62
+    y: 48
+    has_traffic_light: false
+    has_gate: false
+    doorId: D13
+  teach_1:
+    name: 教一
+    type: academic
+    x: 78
+    y: 48
+    has_traffic_light: false
+    has_gate: false
+    doorId: D14
+  teach_2:
+    name: 教二
+    type: academic
+    x: 78
+    y: 56
+    has_traffic_light: false
+    has_gate: false
+    doorId: D15
+  teach_3:
+    name: 教三
+    type: academic
+    x: 68
+    y: 48
+    has_traffic_light: false
+    has_gate: false
+    doorId: D16
+  teach_4:
+    name: 教四
+    type: academic
+    x: 70
+    y: 56
+    has_traffic_light: false
+    has_gate: false
+    doorId: D17
+  teach_5:
+    name: 教五
+    type: academic
+    x: 62
+    y: 44
+    has_traffic_light: false
+    has_gate: false
+    doorId: D18
+  teach_6:
+    name: 教六
+    type: academic
+    x: 64
+    y: 56
+    has_traffic_light: false
+    has_gate: false
+    doorId: D19
+  large_classroom:
+    name: 大教室(54/32)
+    type: academic
+    x: 72
+    y: 52
+    has_traffic_light: false
+    has_gate: false
+    doorId: D20
+  eng_1:
+    name: 工一
+    type: lab
+    x: 72
+    y: 32
+    has_traffic_light: false
+    has_gate: false
+    doorId: D21
+  eng_2:
+    name: 工二
+    type: lab
+    x: 72
+    y: 28
+    has_traffic_light: false
+    has_gate: false
+    doorId: D22
+  eng_3:
+    name: 工三
+    type: lab
+    x: 72
+    y: 24
+    has_traffic_light: false
+    has_gate: false
+    doorId: D23
+  eng_4:
+    name: 工四
+    type: lab
+    x: 72
+    y: 20
+    has_traffic_light: false
+    has_gate: false
+    doorId: D24
+  exp_1:
+    name: 实一
+    type: lab
+    x: 82
+    y: 32
+    has_traffic_light: false
+    has_gate: false
+    doorId: D25
+  exp_2:
+    name: 实二
+    type: lab
+    x: 82
+    y: 28
+    has_traffic_light: false
+    has_gate: false
+    doorId: D26
+  exp_3:
+    name: 实三
+    type: lab
+    x: 82
+    y: 24
+    has_traffic_light: false
+    has_gate: false
+    doorId: D27
+  exp_4:
+    name: 实四
+    type: lab
+    x: 82
+    y: 20
+    has_traffic_light: false
+    has_gate: false
+    doorId: D28
+  science_hall:
+    name: 理学馆
+    type: lab
+    x: 82
+    y: 14
+    has_traffic_light: false
+    has_gate: false
+    doorId: D29
+  struct_center:
+    name: 结构实验中心
+    type: lab
+    x: 90
+    y: 32
+    has_traffic_light: false
+    has_gate: false
+    doorId: D30
+  env_inst:
+    name: 环境生态研究院
+    type: lab
+    x: 90
+    y: 26
+    has_traffic_light: false
+    has_gate: false
+    doorId: D31
+  biomed_inst:
+    name: 生物医药学院
+    type: lab
+    x: 90
+    y: 20
+    has_traffic_light: false
+    has_gate: false
+    doorId: D32
+  sports_gym:
+    name: 体育馆
+    type: sports
+    x: 32
+    y: 52
+    has_traffic_light: false
+    has_gate: false
+    doorId: D33
+  sports_swimming:
+    name: 游泳馆
+    type: sports
+    x: 32
+    y: 45
+    has_traffic_light: false
+    has_gate: false
+    doorId: D34
+  sports_fitness:
+    name: 健身房/田径场
+    type: sports
+    x: 42
+    y: 48
+    has_traffic_light: true
+    has_gate: false
+    doorId: D35
+  sports_cricket:
+    name: 板球场
+    type: sports
+    x: 12
+    y: 40
+    has_traffic_light: false
+    has_gate: false
+    doorId: D36
+  sports_tennis:
+    name: 网球场
+    type: sports
+    x: 22
+    y: 45
+    has_traffic_light: false
+    has_gate: false
+    doorId: D37
+  sports_volleyball:
+    name: 排球场
+    type: sports
+    x: 26
+    y: 38
+    has_traffic_light: false
+    has_gate: false
+    doorId: D38
+  sports_basketball_c:
+    name: 篮球场C区
+    type: sports
+    x: 28
+    y: 30
+    has_traffic_light: false
+    has_gate: false
+    doorId: D39
+  sports_basketball_b:
+    name: 篮球场B区
+    type: sports
+    x: 36
+    y: 30
+    has_traffic_light: false
+    has_gate: false
+    doorId: D40
+  sports_basketball_a:
+    name: 篮球场A区
+    type: sports
+    x: 42
+    y: 30
+    has_traffic_light: false
+    has_gate: false
+    doorId: D41
+  sports_football:
+    name: 足球场
+    type: sports
+    x: 48
+    y: 35
+    has_traffic_light: false
+    has_gate: false
+    doorId: D42
+  sports_training:
+    name: 综合训练场
+    type: sports
+    x: 48
+    y: 22
+    has_traffic_light: false
+    has_gate: false
+    doorId: D43
+  youth_center:
+    name: 青年活动中心
+    type: sports
+    x: 45
+    y: 52
+    has_traffic_light: false
+    has_gate: false
+    doorId: D44
+  west_dorm_13_16:
+    name: 西十三~十六宿
+    type: living
+    x: 10
+    y: 78
+    has_traffic_light: false
+    has_gate: false
+    doorId: D45
+  west_dorm_9_12:
+    name: 西九~十二宿舍
+    type: living
+    x: 20
+    y: 78
+    has_traffic_light: false
+    has_gate: false
+    doorId: D46
+  west_dorm_1_4:
+    name: 西一~四宿舍
+    type: living
+    x: 28
+    y: 78
+    has_traffic_light: false
+    has_gate: false
+    doorId: D47
+  west_dorm_5_8:
+    name: 西五~八宿舍
+    type: living
+    x: 22
+    y: 68
+    has_traffic_light: false
+    has_gate: false
+    doorId: D48
+  west_dorm_17_18:
+    name: 西十七~十八宿
+    type: living
+    x: 12
+    y: 65
+    has_traffic_light: false
+    has_gate: false
+    doorId: D49
+  canteen_3:
+    name: 三饭堂
+    type: living
+    x: 28
+    y: 62
+    has_traffic_light: false
+    has_gate: false
+    doorId: D50
+  canteen_4:
+    name: 四饭堂
+    type: living
+    x: 8
+    y: 60
+    has_traffic_light: false
+    has_gate: false
+    doorId: D51
+  west_express:
+    name: 西区快递点
+    type: living
+    x: 28
+    y: 72
+    has_traffic_light: false
+    has_gate: false
+    doorId: D52
+  east_dorm_12_14:
+    name: 东十二~十四宿
+    type: living
+    x: 48
+    y: 75
+    has_traffic_light: false
+    has_gate: false
+    doorId: D53
+  east_dorm_8_11:
+    name: 东八~十一宿
+    type: living
+    x: 58
+    y: 70
+    has_traffic_light: false
+    has_gate: false
+    doorId: D54
+  east_dorm_4_7:
+    name: 东四~七宿舍
+    type: living
+    x: 58
+    y: 62
+    has_traffic_light: false
+    has_gate: false
+    doorId: D55
+  east_dorm_1_3:
+    name: 东一~三宿舍
+    type: living
+    x: 68
+    y: 65
+    has_traffic_light: false
+    has_gate: false
+    doorId: D56
+  teacher_apt:
+    name: 教师公寓
+    type: living
+    x: 48
+    y: 85
+    has_traffic_light: false
+    has_gate: false
+    doorId: D57
+  hospital:
+    name: 广工校医院
+    type: living
+    x: 58
+    y: 92
+    has_traffic_light: false
+    has_gate: false
+    doorId: D58
+  supermarket:
+    name: 校内超市
+    type: living
+    x: 55
+    y: 86
+    has_traffic_light: false
+    has_gate: false
+    doorId: D59
+  canteen_1:
+    name: 东区一饭
+    type: living
+    x: 62
+    y: 86
+    has_traffic_light: false
+    has_gate: false
+    doorId: D60
+  canteen_2:
+    name: 东区二饭
+    type: living
+    x: 48
+    y: 68
+    has_traffic_light: false
+    has_gate: false
+    doorId: D61
+edges:
+- edgeId: E1
+  nodes:
+  - gate_south
+  - auditorium
+  length: 42.4
+  weight: 0.42
+  capacity: 80
+- edgeId: E2
+  nodes:
+  - gate_south
+  - admin_building
+  length: 76.2
+  weight: 0.76
+  capacity: 80
+- edgeId: E3
+  nodes:
+  - gate_south
+  - cross_zh_south
+  length: 211.9
+  weight: 2.12
+  capacity: 80
+- edgeId: E4
+  nodes:
+  - admin_building
+  - auditorium
+  length: 72.1
+  weight: 0.72
+  capacity: 80
+- edgeId: E5
+  nodes:
+  - admin_building
+  - sports_training
+  length: 172.0
+  weight: 1.72
+  capacity: 80
+- edgeId: E6
+  nodes:
+  - admin_building
+  - eng_4
+  length: 128.1
+  weight: 1.28
+  capacity: 80
+- edgeId: E7
+  nodes:
+  - admin_building
+  - library
+  length: 263.1
+  weight: 2.63
+  capacity: 80
+- edgeId: E8
+  nodes:
+  - cross_zh_south
+  - sports_training
+  length: 104.4
+  weight: 1.04
+  capacity: 80
+- edgeId: E9
+  nodes:
+  - cross_zh_south
+  - sports_football
+  length: 231.9
+  weight: 2.32
+  capacity: 80
+- edgeId: E10
+  nodes:
+  - cross_zh_south
+  - cross_zh_mid
+  length: 462.7
+  weight: 4.63
+  capacity: 80
+- edgeId: E11
+  nodes:
+  - cross_zh_mid
+  - cross_zh_north
+  length: 225.6
+  weight: 2.26
+  capacity: 80
+- edgeId: E12
+  nodes:
+  - cross_zh_mid
+  - underpass
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E13
+  nodes:
+  - cross_zh_mid
+  - pedestrian_bridge
+  length: 50.0
+  weight: 0.5
+  capacity: 80
+- edgeId: E14
+  nodes:
+  - underpass
+  - youth_center
+  length: 67.1
+  weight: 0.67
+  capacity: 80
+- edgeId: E15
+  nodes:
+  - underpass
+  - gongchuanggu
+  length: 172.0
+  weight: 1.72
+  capacity: 80
+- edgeId: E16
+  nodes:
+  - underpass
+  - east_dorm_12_14
+  length: 170.0
+  weight: 1.7
+  capacity: 80
+- edgeId: E17
+  nodes:
+  - pedestrian_bridge
+  - sports_gym
+  length: 67.1
+  weight: 0.67
+  capacity: 80
+- edgeId: E18
+  nodes:
+  - pedestrian_bridge
+  - sports_fitness
+  length: 122.1
+  weight: 1.22
+  capacity: 80
+- edgeId: E19
+  nodes:
+  - library
+  - gongchuanggu
+  length: 107.7
+  weight: 1.08
+  capacity: 80
+- edgeId: E20
+  nodes:
+  - library
+  - teach_5
+  length: 72.1
+  weight: 0.72
+  capacity: 80
+- edgeId: E21
+  nodes:
+  - library
+  - teach_3
+  length: 141.4
+  weight: 1.41
+  capacity: 80
+- edgeId: E22
+  nodes:
+  - library
+  - eng_1
+  length: 152.3
+  weight: 1.52
+  capacity: 80
+- edgeId: E23
+  nodes:
+  - gongchuanggu
+  - teach_5
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E24
+  nodes:
+  - gongchuanggu
+  - teach_6
+  length: 82.5
+  weight: 0.82
+  capacity: 80
+- edgeId: E25
+  nodes:
+  - gongchuanggu
+  - teach_3
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E26
+  nodes:
+  - teach_5
+  - teach_3
+  length: 72.1
+  weight: 0.72
+  capacity: 80
+- edgeId: E27
+  nodes:
+  - teach_5
+  - teach_6
+  length: 121.7
+  weight: 1.22
+  capacity: 80
+- edgeId: E28
+  nodes:
+  - teach_6
+  - teach_4
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E29
+  nodes:
+  - teach_6
+  - rd_guanggong_1
+  length: 241.9
+  weight: 2.42
+  capacity: 80
+- edgeId: E30
+  nodes:
+  - teach_3
+  - teach_4
+  length: 82.5
+  weight: 0.82
+  capacity: 80
+- edgeId: E31
+  nodes:
+  - teach_3
+  - large_classroom
+  length: 56.6
+  weight: 0.57
+  capacity: 80
+- edgeId: E32
+  nodes:
+  - teach_3
+  - teach_1
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E33
+  nodes:
+  - teach_4
+  - large_classroom
+  length: 44.7
+  weight: 0.45
+  capacity: 80
+- edgeId: E34
+  nodes:
+  - teach_4
+  - teach_2
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E35
+  nodes:
+  - teach_1
+  - large_classroom
+  length: 72.1
+  weight: 0.72
+  capacity: 80
+- edgeId: E36
+  nodes:
+  - teach_1
+  - teach_2
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E37
+  nodes:
+  - teach_1
+  - eng_1
+  length: 170.9
+  weight: 1.71
+  capacity: 80
+- edgeId: E38
+  nodes:
+  - teach_2
+  - rd_guanggong_1
+  length: 138.9
+  weight: 1.39
+  capacity: 80
+- edgeId: E39
+  nodes:
+  - large_classroom
+  - rd_guanggong_1
+  length: 206.2
+  weight: 2.06
+  capacity: 80
+- edgeId: E40
+  nodes:
+  - eng_1
+  - eng_2
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E41
+  nodes:
+  - eng_2
+  - eng_3
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E42
+  nodes:
+  - eng_3
+  - eng_4
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E43
+  nodes:
+  - exp_1
+  - exp_2
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E44
+  nodes:
+  - exp_2
+  - exp_3
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E45
+  nodes:
+  - exp_3
+  - exp_4
+  length: 40.0
+  weight: 0.4
+  capacity: 80
+- edgeId: E46
+  nodes:
+  - eng_1
+  - exp_1
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E47
+  nodes:
+  - eng_2
+  - exp_2
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E48
+  nodes:
+  - eng_3
+  - exp_3
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E49
+  nodes:
+  - eng_4
+  - exp_4
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E50
+  nodes:
+  - eng_4
+  - science_hall
+  length: 116.6
+  weight: 1.17
+  capacity: 80
+- edgeId: E51
+  nodes:
+  - exp_4
+  - science_hall
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E52
+  nodes:
+  - exp_1
+  - struct_center
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E53
+  nodes:
+  - exp_2
+  - env_inst
+  length: 82.5
+  weight: 0.82
+  capacity: 80
+- edgeId: E54
+  nodes:
+  - exp_3
+  - biomed_inst
+  length: 89.4
+  weight: 0.89
+  capacity: 80
+- edgeId: E55
+  nodes:
+  - struct_center
+  - env_inst
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E56
+  nodes:
+  - env_inst
+  - biomed_inst
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E57
+  nodes:
+  - science_hall
+  - biomed_inst
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E58
+  nodes:
+  - sports_cricket
+  - gate_west
+  length: 155.2
+  weight: 1.55
+  capacity: 80
+- edgeId: E59
+  nodes:
+  - sports_cricket
+  - sports_tennis
+  length: 111.8
+  weight: 1.12
+  capacity: 80
+- edgeId: E60
+  nodes:
+  - sports_tennis
+  - canteen_4
+  length: 205.2
+  weight: 2.05
+  capacity: 80
+- edgeId: E61
+  nodes:
+  - sports_tennis
+  - sports_swimming
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E62
+  nodes:
+  - sports_tennis
+  - sports_volleyball
+  length: 80.6
+  weight: 0.81
+  capacity: 80
+- edgeId: E63
+  nodes:
+  - sports_swimming
+  - sports_gym
+  length: 70.0
+  weight: 0.7
+  capacity: 80
+- edgeId: E64
+  nodes:
+  - sports_swimming
+  - sports_fitness
+  length: 104.4
+  weight: 1.04
+  capacity: 80
+- edgeId: E65
+  nodes:
+  - sports_swimming
+  - sports_volleyball
+  length: 92.2
+  weight: 0.92
+  capacity: 80
+- edgeId: E66
+  nodes:
+  - sports_gym
+  - pedestrian_bridge
+  length: 67.1
+  weight: 0.67
+  capacity: 80
+- edgeId: E67
+  nodes:
+  - sports_gym
+  - canteen_3
+  length: 107.7
+  weight: 1.08
+  capacity: 80
+- edgeId: E68
+  nodes:
+  - sports_volleyball
+  - sports_basketball_c
+  length: 82.5
+  weight: 0.82
+  capacity: 80
+- edgeId: E69
+  nodes:
+  - sports_basketball_c
+  - sports_basketball_b
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E70
+  nodes:
+  - sports_basketball_b
+  - sports_basketball_a
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E71
+  nodes:
+  - sports_basketball_a
+  - sports_fitness
+  length: 180.0
+  weight: 1.8
+  capacity: 80
+- edgeId: E72
+  nodes:
+  - sports_fitness
+  - sports_football
+  length: 143.2
+  weight: 1.43
+  capacity: 80
+- edgeId: E73
+  nodes:
+  - sports_fitness
+  - youth_center
+  length: 50.0
+  weight: 0.5
+  capacity: 80
+- edgeId: E74
+  nodes:
+  - sports_football
+  - sports_training
+  length: 130.0
+  weight: 1.3
+  capacity: 80
+- edgeId: E75
+  nodes:
+  - sports_basketball_a
+  - sports_training
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E76
+  nodes:
+  - gate_west
+  - canteen_4
+  length: 50.0
+  weight: 0.5
+  capacity: 80
+- edgeId: E77
+  nodes:
+  - canteen_4
+  - west_dorm_17_18
+  length: 64.0
+  weight: 0.64
+  capacity: 80
+- edgeId: E78
+  nodes:
+  - west_dorm_17_18
+  - west_dorm_13_16
+  length: 131.5
+  weight: 1.31
+  capacity: 80
+- edgeId: E79
+  nodes:
+  - west_dorm_13_16
+  - west_dorm_9_12
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E80
+  nodes:
+  - west_dorm_9_12
+  - west_dorm_1_4
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E81
+  nodes:
+  - west_dorm_13_16
+  - west_dorm_17_18
+  length: 131.5
+  weight: 1.31
+  capacity: 80
+- edgeId: E82
+  nodes:
+  - west_dorm_9_12
+  - west_dorm_5_8
+  length: 102.0
+  weight: 1.02
+  capacity: 80
+- edgeId: E83
+  nodes:
+  - west_dorm_1_4
+  - west_dorm_5_8
+  length: 116.6
+  weight: 1.17
+  capacity: 80
+- edgeId: E84
+  nodes:
+  - west_dorm_5_8
+  - west_dorm_17_18
+  length: 104.4
+  weight: 1.04
+  capacity: 80
+- edgeId: E85
+  nodes:
+  - west_dorm_5_8
+  - canteen_3
+  length: 84.9
+  weight: 0.85
+  capacity: 80
+- edgeId: E86
+  nodes:
+  - west_dorm_1_4
+  - west_express
+  length: 60.0
+  weight: 0.6
+  capacity: 80
+- edgeId: E87
+  nodes:
+  - west_express
+  - canteen_3
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E88
+  nodes:
+  - canteen_3
+  - sports_gym
+  length: 107.7
+  weight: 1.08
+  capacity: 80
+- edgeId: E89
+  nodes:
+  - canteen_3
+  - cross_zh_mid
+  length: 126.5
+  weight: 1.26
+  capacity: 80
+- edgeId: E90
+  nodes:
+  - west_dorm_1_4
+  - cross_zh_north
+  length: 171.2
+  weight: 1.71
+  capacity: 80
+- edgeId: E91
+  nodes:
+  - cross_zh_north
+  - teacher_apt
+  length: 58.3
+  weight: 0.58
+  capacity: 80
+- edgeId: E92
+  nodes:
+  - cross_zh_north
+  - east_dorm_12_14
+  length: 58.3
+  weight: 0.58
+  capacity: 80
+- edgeId: E93
+  nodes:
+  - teacher_apt
+  - hospital
+  length: 122.1
+  weight: 1.22
+  capacity: 80
+- edgeId: E94
+  nodes:
+  - hospital
+  - supermarket
+  length: 67.1
+  weight: 0.67
+  capacity: 80
+- edgeId: E95
+  nodes:
+  - supermarket
+  - canteen_1
+  length: 70.0
+  weight: 0.7
+  capacity: 80
+- edgeId: E96
+  nodes:
+  - canteen_1
+  - gate_east
+  length: 431.4
+  weight: 4.31
+  capacity: 80
+- edgeId: E97
+  nodes:
+  - gate_east
+  - rd_guanggong_1
+  length: 147.6
+  weight: 1.48
+  capacity: 80
+- edgeId: E98
+  nodes:
+  - east_dorm_12_14
+  - east_dorm_8_11
+  length: 111.8
+  weight: 1.12
+  capacity: 80
+- edgeId: E99
+  nodes:
+  - east_dorm_8_11
+  - east_dorm_4_7
+  length: 80.0
+  weight: 0.8
+  capacity: 80
+- edgeId: E100
+  nodes:
+  - east_dorm_4_7
+  - east_dorm_1_3
+  length: 104.4
+  weight: 1.04
+  capacity: 80
+- edgeId: E101
+  nodes:
+  - east_dorm_1_3
+  - canteen_2
+  length: 202.2
+  weight: 2.02
+  capacity: 80
+- edgeId: E102
+  nodes:
+  - east_dorm_12_14
+  - canteen_2
+  length: 70.0
+  weight: 0.7
+  capacity: 80
+- edgeId: E103
+  nodes:
+  - canteen_2
+  - underpass
+  length: 100.0
+  weight: 1.0
+  capacity: 80
+- edgeId: E104
+  nodes:
+  - east_dorm_8_11
+  - supermarket
+  length: 162.8
+  weight: 1.63
+  capacity: 80
+- edgeId: E105
+  nodes:
+  - east_dorm_1_3
+  - rd_guanggong_1
+  length: 172.6
+  weight: 1.73
+  capacity: 80

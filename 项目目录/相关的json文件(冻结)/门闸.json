@@ -1,0 +1,9 @@
+{
+ "gateId": "G01",
+ "nodeId": "gate_north",
+ "mode": "restrict",
+ "throughputCap": 90,
+ "nLanes": 2,
+ "gateStatus": 2,
+ "gateFlowRate": 45.0
+}

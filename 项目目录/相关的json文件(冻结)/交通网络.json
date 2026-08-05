@@ -1,0 +1,45 @@
+{
+  "nodeId": "zone_canteen",
+  "nodeName": "食堂",
+  "x": 460.0,
+  "y": 180.0,
+  "type": "hotspot", # 热点区域
+  "people": 1200, # 这个节点当前查询时的人数
+  "density": 0.8, # 实时的人群密度
+  "level": "high", # 拥挤程度
+  "gateId": "G01",
+  "signalId": "S01",
+  "edgeIds": ["E05", "E14"]
+}
+{
+  "nodeId": "zone_canteen",
+  "pagerank": 0.21,
+  "betweenness": 156.4,
+  "heatScore": 92.5,
+  "rank": 1
+}
+{
+  "src": "gate_north",
+  "dst": "zone_canteen",
+  "path": ["gate_north", "cross_1", "diverg_1", "cross_4", "zone_canteen"],
+  "travelTime": 6.2
+}
+{
+  "region": "canteen_area",
+  "nodeIds": ["zone_canteen", "cross_4"],
+  "attractScore": 88.0
+}
+{
+  "edgeId": "E05",
+  "nodes": ["cross_2", "zone_canteen"],
+  "length": 120.0,
+  "weight": 1.2,
+  "capacity": 80
+}
+{
+  "edgeId": "E14",
+  "nodes": ["cross_4", "zone_canteen"],
+  "length": 180.0,
+  "weight": 1.8,
+  "capacity": 80
+}

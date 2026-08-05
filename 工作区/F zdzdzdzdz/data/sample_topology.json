@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {"id": "G01", "name": "北门入口", "type": "entrance", "capacity": 150, "area": 400.0, "x": 0.0, "y": 500.0},
+    {"id": "G02", "name": "南门入口", "type": "entrance", "capacity": 150, "area": 400.0, "x": 0.0, "y": -500.0},
+    {"id": "G03", "name": "东门入口", "type": "entrance", "capacity": 120, "area": 300.0, "x": 500.0, "y": 0.0},
+    {"id": "G04", "name": "西门入口", "type": "entrance", "capacity": 120, "area": 300.0, "x": -500.0, "y": 0.0},
+    {"id": "N01", "name": "主干道十字路口", "type": "cross", "capacity": 180, "area": 600.0, "x": 0.0, "y": 0.0},
+    {"id": "N02", "name": "食堂东侧路口", "type": "cross", "capacity": 120, "area": 400.0, "x": 150.0, "y": 150.0},
+    {"id": "N03", "name": "教学区分歧点", "type": "cross", "capacity": 120, "area": 400.0, "x": -150.0, "y": 150.0},
+    {"id": "P01", "name": "食堂热点区", "type": "hotspot", "capacity": 150, "area": 1000.0, "x": 200.0, "y": 200.0},
+    {"id": "P02", "name": "图书馆热点区", "type": "hotspot", "capacity": 130, "area": 750.0, "x": -200.0, "y": -150.0},
+    {"id": "P03", "name": "宿舍热点区", "type": "hotspot", "capacity": 140, "area": 900.0, "x": -250.0, "y": -250.0},
+    {"id": "P04", "name": "体育馆热点区", "type": "hotspot", "capacity": 120, "area": 900.0, "x": 300.0, "y": -250.0},
+    {"id": "P05", "name": "实验楼热点区", "type": "hotspot", "capacity": 130, "area": 700.0, "x": -50.0, "y": -350.0},
+    {"id": "P06", "name": "行政楼热点区", "type": "hotspot", "capacity": 110, "area": 500.0, "x": 50.0, "y": 350.0}
+  ],
+  "edges": [
+    {"from": "G01", "to": "N01", "length": 200.0, "weight": 1.0},
+    {"from": "G02", "to": "N01", "length": 200.0, "weight": 1.0},
+    {"from": "G03", "to": "N01", "length": 180.0, "weight": 1.0},
+    {"from": "G04", "to": "N01", "length": 180.0, "weight": 1.0},
+    {"from": "N01", "to": "N02", "length": 100.0, "weight": 1.0},
+    {"from": "N01", "to": "N03", "length": 100.0, "weight": 1.0},
+    {"from": "N02", "to": "P01", "length": 60.0, "weight": 1.0},
+    {"from": "N03", "to": "P02", "length": 60.0, "weight": 1.0},
+    {"from": "N01", "to": "P03", "length": 120.0, "weight": 1.0},
+    {"from": "N01", "to": "P04", "length": 120.0, "weight": 1.0},
+    {"from": "N01", "to": "P05", "length": 120.0, "weight": 1.0},
+    {"from": "N01", "to": "P06", "length": 120.0, "weight": 1.0}
+  ]
+}
