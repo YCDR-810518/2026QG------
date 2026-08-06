@@ -7,9 +7,15 @@ simulation:
   dt: 1.0                  # 每 tick 模拟秒数
   max_capacity: 10000      # 实体池预分配上限（>8000）
   tick_hz: 1               # 实时目标：1 tick/s（>0 实时节拍；0=全速）
-  clock: now               # 输出时间戳来源: now(当下) / base(start_datetime+tick 秒)
-  start_datetime: "2026-08-04 17:30:00"   # clock=base 时数据起始时间（可任意过去/未来）
+  clock: base               # 输出时间戳来源: now(当下) / base(start_datetime+tick 秒)
+  start_datetime: "2026-08-04 8:00:00"   # clock=base 时数据起始时间（可任意过去/未来）
+  end_time: "22:00:00"                    # 每天仿真结束时刻（窗口 = start_datetime → end_time，多天每天同窗）
   alert_backend: ""        # 预测+预警 POST 后端地址（空=仅本地检测，不发后端）
+  realtime_backend: "http://192.168.1.114:8100"   # 实时数据 union_pack 上传后端地址（空=不上传）
+  realtime_endpoint: /api/v1/sim/batch            # B 提供的实时数据接收路径
+  realtime_username: "111"                        # 后端登录账号
+  realtime_password: "123123"                     # 后端登录密码
+  realtime_token_ttl: 3456000                     # token 缓存秒数（40 天，B: 有效期约 41 天，登录一次即可）
   demo_mode: true          # 无真实预警时也构造演示预警
   check_interval: 10       # 调控器调用间隔（tick）
   enable_signals: true     # 是否启用红绿灯完整信号周期
@@ -17,10 +23,28 @@ simulation:
   ped_compliance: 0     # 行人遵守信号比例
   movement_class: ConstantSpeedMovement   # 移动模型类名: ConstantSpeedMovement / CavIdmMovement
   movement_mode: idm                      # CavIdmMovement 模式: idm / cav
+  density_level: off_peak                 # 到达曲线幂次: off_peak 0.8 / peak 2.0 / ultra_peak 3.0
+  people_hourly_counts:                   # 行人逐小时投放表 {小时: 人数}（6~21 点，共 64500/天）
+    6: 3000
+    7: 4500
+    8: 5000
+    9: 4000
+    10: 3500
+    11: 4500
+    12: 5000
+    13: 3500
+    14: 4000
+    15: 3500
+    16: 4000
+    17: 4500
+    18: 5000
+    19: 4000
+    20: 3500
+    21: 2500
 
 main:
-  n_people: 10000          # main.py run 默认人数
-  n_vehicles: 3000          # main.py run 默认车数
+  n_people: 20000          # main.py run 默认人数
+  n_vehicles: 5000          # main.py run 默认车数
   n_ticks: 57600            # main.py run 默认每天 tick 数（窗口 = start_datetime 起 n_ticks 秒，可跨零点）
   n_days: 7                 # main.py run 默认模拟天数
   export_csv: ./data/engine_snapshot.csv   # run 可选导出密度快照

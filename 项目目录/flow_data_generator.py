@@ -4,15 +4,19 @@
 字段对齐：
 - people.csv      : id, birth_tick, src_node, dst_node, kind
 - vehicles.csv    : id, birth_tick, src_node, dst_node, kind, is_internal
-- density_series.csv : tick, timestamp, node_id, people, vehicles, density, level, gate_status, gate_flow_rate
+- density_series.csv : tick, timestamp, node_id, people, vehicles, density, level, gate_status, gate_flow_rate, door_status, door_flow_rate, signal_status, signal_flow_rate
 
 OD 改造：节点时变到达强度曲线 node_curves + 类型级 OD 概率矩阵。
 每 tick 某个节点成为"生成点"的概率 = curve_i(t) / sum(curve(t))，
 从而可用概率控制每个数据的生成点，实现"某些节点在某时间段人流量大"。
 
+逐小时投放：行人可传 people_hourly_counts={小时:人数}，按小时固定目标值投放，
+每小时实际数 = max(poisson(target), 3000)，空间分布仍由节点曲线控制。
+
 依赖：numpy（Python 3.10+）
 用法：
     gen = FlowDataGenerator(n_people=4000, n_vehicles=300, random_state=42)
+    gen = FlowDataGenerator(people_hourly_counts=PEOPLE_HOURLY_DEFAULT, n_vehicles=300)
     ds = gen.generate()         # 生成数据（内存）
     gen.to_csv()                # 写 data/
     gen.sample(tick)            # 引擎逐 tick 取流入实体
@@ -93,6 +97,15 @@ NODE_LIST = [
 ]
 
 # ---------------------------------------------------------------------------
+# 大门 / 信号灯节点集合（与 simulation 引擎 graph_data.yaml 口径一致）
+# ---------------------------------------------------------------------------
+GATE_NODE_IDS = ("gate_south", "gate_west", "gate_east")
+SIGNAL_NODE_IDS = (
+    "cross_zh_south", "cross_zh_mid", "cross_zh_north", "rd_guanggong_1",
+    "pedestrian_bridge", "underpass", "library", "sports_fitness",
+)
+
+# ---------------------------------------------------------------------------
 # 节点容量：按类型默认值 + 关键节点覆盖（density = people / capacity）
 # ---------------------------------------------------------------------------
 TYPE_CAPACITY = {
@@ -101,15 +114,15 @@ TYPE_CAPACITY = {
     "admin": 120,
     "academic": 120,
     "lab": 120,
-    "sports": 150,
-    "living": 150,
+    "sports": 400,
+    "living": 1500,
 }
 CAPACITY_OVERRIDES = {
-    "canteen_1": 180, "canteen_2": 180, "canteen_3": 180, "canteen_4": 180,
-    "west_dorm_13_16": 180, "west_dorm_9_12": 180, "west_dorm_1_4": 180,
-    "west_dorm_5_8": 180, "west_dorm_17_18": 180,
-    "east_dorm_12_14": 180, "east_dorm_8_11": 180, "east_dorm_4_7": 180,
-    "east_dorm_1_3": 180,
+    "canteen_1": 1800, "canteen_2": 1800, "canteen_3": 1000, "canteen_4": 1800,
+    "west_dorm_13_16": 1300, "west_dorm_9_12": 1750, "west_dorm_1_4": 1600,
+    "west_dorm_5_8": 1400, "west_dorm_17_18": 1900,
+    "east_dorm_12_14": 800, "east_dorm_8_11": 1250, "east_dorm_4_7": 1430,
+    "east_dorm_1_3": 160,
 }
 
 # ---------------------------------------------------------------------------
@@ -146,6 +159,17 @@ WAIT_MAX = {
 }
 
 WEEKDAY_NAMES = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+
+# ---------------------------------------------------------------------------
+# 逐小时投放表：{小时: 该小时投放人数}，用于行人（people）按小时固定投放。
+# 每小时实际生成数 = max(poisson(target), 3000)，在目标值上下浮动且不低于 3000。
+# 小时 6~21 对应 6:00~22:00，共 16 小时，合计 64500 人/天。
+# ---------------------------------------------------------------------------
+PEOPLE_HOURLY_DEFAULT = {
+    6: 2000, 7: 4500, 8: 5000, 9: 4000, 10: 3500, 11: 4500,
+    12: 5000, 13: 3500, 14: 4000, 15: 3500, 16: 4000, 17: 4500,
+    18: 5000, 19: 4000, 20: 3500, 21: 2500,
+}
 
 
 def _set_range(base, s, e, v):
@@ -253,6 +277,11 @@ class FlowDataGenerator:
     ----------
     n_people / n_vehicles : int
         计划总人数 / 总车数（按天计，多天时每天各生成该量）。
+        当 people_hourly_counts 给定且非 None 时，行人不再按 n_people 整天泊松投放，
+        而改按每小时固定目标值投放。
+    people_hourly_counts : dict/list, optional
+        行人逐小时投放表 {小时: 人数}（或长度 24 的列表）；传 None 则回退到
+        n_people 泊松投放。每小时实际数 = max(poisson(target), 3000)。
     density_level : str
         'off_peak' / 'peak' / 'ultra_peak'，对应峰化指数 0.8 / 2.0 / 3.0。
     node_curves : dict, optional
@@ -260,12 +289,13 @@ class FlowDataGenerator:
     od_matrix : dict, optional
         类型级 OD 概率覆盖，结构同 TYPE_OD。
     sample_interval : int
-        密度采样间隔（秒），默认 60。
+        密度采样间隔（秒），默认 10。
     start_hour / start_minute : int
         模拟起点时刻（小时/分钟），默认 6:00 起共 n_hours 小时。
         birth_tick=0 即起始时刻，多天时每天 +（n_hours*3600）。
-    n_hours : int
-        模拟时长（小时），默认 16。
+    n_hours : float
+        模拟时长（小时，可小数，如 4.5），默认 16。
+        每天精确时长为 round(n_hours*60) 分钟，多天按该时长对齐换日。
     n_days : int
         模拟天数，默认 1；>1 时跨天连续（birth_tick 每天 +86400）。
     day_profiles : tuple/list
@@ -278,7 +308,8 @@ class FlowDataGenerator:
 
     def __init__(self, n_people=4000, n_vehicles=300, density_level="peak",
                  node_curves=None, od_matrix=None,
-                 sample_interval=60, start_hour=6, start_minute=0, n_hours=16,
+                 people_hourly_counts=None,
+                 sample_interval=10, start_hour=6, start_minute=0, n_hours=16,
                  n_days=1, day_profiles=WEEKDAY_NAMES, start_date="2026-08-03",
                  random_state=42, data_dir="data"):
         self.n_people = int(n_people)
@@ -286,11 +317,14 @@ class FlowDataGenerator:
         self.density_level = density_level
         self.node_curves = node_curves or {}
         self.od_matrix = od_matrix or TYPE_OD
+        self.people_hourly_counts = self._parse_hourly_counts(people_hourly_counts)
         self.sample_interval = int(sample_interval)
         self.start_hour = int(start_hour)
         self.start_minute = int(start_minute)
         self.start_sec = self.start_hour * 3600 + self.start_minute * 60
-        self.n_hours = int(n_hours)
+        self.n_hours = float(n_hours)
+        self._day_min = int(round(self.n_hours * 60))
+        self._day_sec = self._day_min * 60
         self.n_days = int(n_days)
         self.day_profiles = list(day_profiles)
         if len(self.day_profiles) != 7:
@@ -304,12 +338,13 @@ class FlowDataGenerator:
         self.n_nodes = len(self.node_ids)
         self.capacity = np.array([CAPACITY_OVERRIDES.get(n[0], TYPE_CAPACITY[n[2]]) for n in NODE_LIST], dtype=np.float64)
         self.node_types = [n[2] for n in NODE_LIST]
+        self.gate_mask = np.array([n[0] in GATE_NODE_IDS for n in NODE_LIST], dtype=np.bool_)
+        self.signal_mask = np.array([n[0] in SIGNAL_NODE_IDS for n in NODE_LIST], dtype=np.bool_)
         self.xy = np.array([(n[3], n[4]) for n in NODE_LIST], dtype=np.float64)
 
         self._rng = None
         self._entities = None
         self._flow = None
-        self._day_sec = self.n_hours * 3600
 
     # ------------------------------------------------------------------ sklearn 风格
     def fit(self, X=None, y=None):
@@ -320,6 +355,7 @@ class FlowDataGenerator:
             "n_people": self.n_people, "n_vehicles": self.n_vehicles,
             "density_level": self.density_level,
             "node_curves": self.node_curves, "od_matrix": self.od_matrix,
+            "people_hourly_counts": self.people_hourly_counts,
             "sample_interval": self.sample_interval, "start_hour": self.start_hour,
             "start_minute": self.start_minute, "n_hours": self.n_hours,
             "n_days": self.n_days,
@@ -335,6 +371,23 @@ class FlowDataGenerator:
         return self
 
     # ------------------------------------------------------------------ 核心生成
+    def _parse_hourly_counts(self, counts):
+        """把 dict {小时:人数} 或长度 24 的 list 解析为 int64 数组；None 返回 None。"""
+        if counts is None:
+            return None
+        arr = np.zeros(24, dtype=np.int64)
+        if isinstance(counts, dict):
+            for h, v in counts.items():
+                arr[int(h) % 24] = int(v)
+        else:
+            vals = np.asarray(counts, dtype=np.int64)
+            if vals.size != 24:
+                raise ValueError(f"people_hourly_counts 列表需 24 个元素，收到 {vals.size}")
+            arr = vals
+        if (arr < 0).any():
+            raise ValueError("people_hourly_counts 不能有负数")
+        return arr
+
     def _curves(self, weekday="mon"):
         curves = np.zeros((self.n_nodes, 24))
         for i, nid in enumerate(self.node_ids):
@@ -370,7 +423,7 @@ class FlowDataGenerator:
         的节点，即在园区内按时空关系随机出现；外部实体（flag==0，仅园外车辆）
         的 src 强制为三个大门（从 gate 入园）。
         """
-        n_min = self.n_hours * 60
+        n_min = self._day_min
         peaking = {"off_peak": 0.8, "peak": 2.0, "ultra_peak": 3.0}[self.density_level]
 
         hour_grid = self.start_hour + self.start_minute / 60.0 + (np.arange(n_min) * 60 / 3600.0)
@@ -404,6 +457,74 @@ class FlowDataGenerator:
             srcs_out[ext_mask] = self._rng.choice(entrance_idx, size=ext_mask.sum()).astype(np.int32)
         return births, srcs_out, dsts, flags
 
+    def _sample_entities_hourly(self, hourly_counts, internal_prob, curves):
+        """按小时固定投放（行人）。返回 (birth_tick, src, dst, flag)，结构同 _sample_entities。
+
+        每个整点小时的目标人数 target 取自 hourly_counts，实际投放数 =
+        max(poisson(target), 3000) 以保证不低于 3000 且上下浮动；
+        再按该小时的 (节点×分钟) 曲线权重做多项分布，精确分配到各节点与分钟，
+        从而保留"某些节点在某时段人多"的时空特征。
+        """
+        n_min = self._day_min
+        peaking = {"off_peak": 0.8, "peak": 2.0, "ultra_peak": 3.0}[self.density_level]
+        min_floor = 3000
+
+        hour_grid = self.start_hour + self.start_minute / 60.0 + (np.arange(n_min) * 60 / 3600.0)
+        w = np.empty((self.n_nodes, n_min), dtype=np.float64)
+        for i in range(self.n_nodes):
+            w[i] = np.interp(hour_grid % 24, np.arange(24), curves[i])
+        w = np.power(w, peaking)
+
+        births_l, srcs_l, dsts_l, flags_l = [], [], [], []
+        t_start = self.start_hour + self.start_minute / 60.0
+        t_end = t_start + self.n_hours
+        for hh in range(int(np.floor(t_start)), int(np.ceil(t_end))):
+            target = int(hourly_counts[hh % 24])
+            lo = max(0, int(round((hh - t_start) * 60)))
+            hi = min(n_min, int(round((hh + 1 - t_start) * 60)))
+            if hi <= lo or target <= 0:
+                continue
+            actual = max(int(self._rng.poisson(target)), min_floor)
+            p = w[:, lo:hi]
+            total_w = p.sum()
+            if total_w <= 0:
+                continue
+            p = p / total_w
+            counts = self._rng.multinomial(actual, p.ravel()).reshape(self.n_nodes, hi - lo)
+            flat = np.nonzero(counts.ravel())[0]
+            if flat.size == 0:
+                continue
+            srcs_h = flat // (hi - lo)
+            mins_h = flat % (hi - lo) + lo
+            reps = counts.ravel()[flat]
+            n_h = int(reps.sum())
+            srcs = np.repeat(srcs_h, reps).astype(np.int32)
+            mins = np.repeat(mins_h, reps)
+            births = (mins * 60
+                      + self._rng.uniform(0, 60, size=n_h).astype(np.int64))
+            od = self._dst_matrix(srcs, mins, w)
+            dsts = np.array([self._rng.choice(self.n_nodes, p=od[k])
+                             for k in range(n_h)], dtype=np.int32)
+            flags = self._rng.binomial(1, internal_prob, size=n_h).astype(np.int8)
+            births_l.append(births)
+            srcs_l.append(srcs)
+            dsts_l.append(dsts)
+            flags_l.append(flags)
+
+        if not births_l:
+            return (np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int32),
+                    np.empty(0, dtype=np.int32), np.empty(0, dtype=np.int8))
+        births = np.concatenate(births_l)
+        srcs_out = np.concatenate(srcs_l)
+        dsts = np.concatenate(dsts_l)
+        flags = np.concatenate(flags_l)
+
+        entrance_idx = np.array([0, 1, 2], dtype=np.int32)
+        ext_mask = flags == 0
+        if ext_mask.any():
+            srcs_out[ext_mask] = self._rng.choice(entrance_idx, size=ext_mask.sum()).astype(np.int32)
+        return births, srcs_out, dsts, flags
+
     def generate(self):
         rng = np.random.default_rng(self.random_state)
         self._rng = rng
@@ -414,9 +535,14 @@ class FlowDataGenerator:
         for d in range(self.n_days):
             curves = self._curves(self.day_profiles[d % 7])
             offset = d * self._day_sec
+            # 行人：传入了 people_hourly_counts 则按小时固定投放，否则整天泊松；
             # 行人 100% 园内生成（internal_prob=1.0 → src 保留曲线节点）；
             # 车辆 internal_prob=0.4 → 40% 园内按曲线、60% 园外从三大门进入。
-            pb, ps, pd, _ = self._sample_entities(self.n_people, kind=0, internal_prob=1.0, curves=curves)
+            if self.people_hourly_counts is not None:
+                pb, ps, pd, _ = self._sample_entities_hourly(
+                    self.people_hourly_counts, internal_prob=1.0, curves=curves)
+            else:
+                pb, ps, pd, _ = self._sample_entities(self.n_people, kind=0, internal_prob=1.0, curves=curves)
             vb, vs, vd, vf = self._sample_entities(self.n_vehicles, kind=1, internal_prob=0.4, curves=curves)
             people["birth_tick"].append(pb + offset)
             people["src_node"].append(ps)
@@ -448,10 +574,65 @@ class FlowDataGenerator:
         sec = dist / speed
         return int(np.clip(sec, 60, 1800))
 
+    def _hysteresis_series(self, dens_series):
+        """按节点对密度序列做滞回求模，返回 int8 数组（0=open, 1=restricted, 2=closed）。
+
+        阈值对齐 simulation/controller.HysteresisPolicyController 默认值：
+        open_threshold=0.5、close_threshold=0.3、max_close_ratio=1.8；
+        滞回带内保持上一状态（按节点独立记忆）。
+        """
+        n_nodes, n_bin = dens_series.shape
+        open_th, close_th, ratio = 0.5, 0.3, 1.8
+        closed_th = open_th * ratio
+        modes = np.zeros((n_nodes, n_bin), dtype=np.int8)
+        last = np.zeros(n_nodes, dtype=np.int8)
+        for t in range(n_bin):
+            d = dens_series[:, t]
+            mode = np.where(d >= closed_th, 2,
+                            np.where(d >= open_th, 1,
+                                     np.where(d <= close_th, 0, last)))
+            modes[:, t] = mode
+            last = mode
+        return modes
+
+    def _signal_offsets(self):
+        """按绿波走廊 + 行程时间推算信号 offset（复刻 controller._corridor_offsets）。
+
+        走廊 cross_zh_south→mid→north，分支 rd_guanggong_1 挂载于 cross_zh_mid；
+        wave_speed=1.3 m/s，周期 60s（绿30/黄3/红27）。其余信号节点 offset=0。
+        """
+        wave_speed = 1.3
+        idx = self.node_idx
+        offsets = {}
+
+        def _dist(a_id, b_id):
+            ia, ib = idx.get(a_id), idx.get(b_id)
+            if ia is None or ib is None:
+                return 0.0
+            return math.hypot(self.xy[ia, 0] - self.xy[ib, 0], self.xy[ia, 1] - self.xy[ib, 1])
+
+        def _assign(nid, up=None, base=0.0):
+            off = 0 if up is None else int(round(base + _dist(up, nid) / wave_speed)) % 60
+            offsets[nid] = off
+            return float(off)
+
+        chain = [n for n in ("cross_zh_south", "cross_zh_mid", "cross_zh_north") if n in idx]
+        if chain:
+            base = _assign(chain[0])
+            prev = chain[0]
+            for nid in chain[1:]:
+                base = _assign(nid, prev, base)
+                prev = nid
+        for nid, up in (("rd_guanggong_1", "cross_zh_mid"),):
+            if nid in idx and up in offsets:
+                _assign(nid, up, float(offsets.get(up, 0)))
+        return offsets
+
     def _build_density(self, people, vehicles):
-        n_min = self.n_days * self.n_hours * 60
-        occ_p = np.zeros((self.n_nodes, n_min))
-        occ_v = np.zeros((self.n_nodes, n_min))
+        bin_sec = self.sample_interval
+        n_bin = self.n_days * (self._day_sec // bin_sec)
+        occ_p = np.zeros((self.n_nodes, n_bin))
+        occ_v = np.zeros((self.n_nodes, n_bin))
 
         for pool, occ, speed in ((people, occ_p, 1.3), (vehicles, occ_v, 5.0)):
             if pool["birth_tick"].size == 0:
@@ -464,10 +645,10 @@ class FlowDataGenerator:
                 self._rng.uniform(WAIT_MIN[self.node_types[s]], WAIT_MAX[self.node_types[s]])
                 for s in src
             ])
-            s_arr = np.clip(birth // 60, 0, n_min - 1).astype(np.int64)
-            s_leave = np.clip((birth + wait_min * 60) // 60, 0, n_min - 1).astype(np.int64)
-            a_s = np.bincount(src * n_min + s_arr, minlength=self.n_nodes * n_min).reshape(self.n_nodes, n_min)
-            l_s = np.bincount(src * n_min + s_leave, minlength=self.n_nodes * n_min).reshape(self.n_nodes, n_min)
+            s_arr = np.clip(birth // bin_sec, 0, n_bin - 1).astype(np.int64)
+            s_leave = np.clip((birth + wait_min * 60) // bin_sec, 0, n_bin - 1).astype(np.int64)
+            a_s = np.bincount(src * n_bin + s_arr, minlength=self.n_nodes * n_bin).reshape(self.n_nodes, n_bin)
+            l_s = np.bincount(src * n_bin + s_leave, minlength=self.n_nodes * n_bin).reshape(self.n_nodes, n_bin)
             occ += np.cumsum(a_s - l_s, axis=1)
 
             trav = np.array([self._travel_tick(s, d, speed)
@@ -477,33 +658,53 @@ class FlowDataGenerator:
                 self._rng.uniform(DWELL_MIN[self.node_types[d]], DWELL_MAX[self.node_types[d]])
                 for d in dst
             ])
-            arr_min = np.clip(arr // 60, 0, n_min - 1).astype(np.int64)
-            leave_min = np.clip((arr + dwell_min * 60) // 60, 0, n_min - 1).astype(np.int64)
-            a = np.bincount(dst * n_min + arr_min, minlength=self.n_nodes * n_min).reshape(self.n_nodes, n_min)
-            l = np.bincount(dst * n_min + leave_min, minlength=self.n_nodes * n_min).reshape(self.n_nodes, n_min)
+            arr_bin = np.clip(arr // bin_sec, 0, n_bin - 1).astype(np.int64)
+            leave_bin = np.clip((arr + dwell_min * 60) // bin_sec, 0, n_bin - 1).astype(np.int64)
+            a = np.bincount(dst * n_bin + arr_bin, minlength=self.n_nodes * n_bin).reshape(self.n_nodes, n_bin)
+            l = np.bincount(dst * n_bin + leave_bin, minlength=self.n_nodes * n_bin).reshape(self.n_nodes, n_bin)
             occ += np.cumsum(a - l, axis=1)
         return occ_p, occ_v
 
     def _format_density(self, density):
         occ_p, occ_v = density
-        n_min = occ_p.shape[1]
-        n_total = self.n_nodes * n_min
+        n_bin = occ_p.shape[1]
         density_val = occ_p / self.capacity[:, None]
 
-        ticks = np.repeat(np.arange(n_min) * self.sample_interval, self.n_nodes)
-        nodes = np.tile(np.arange(self.n_nodes), n_min)
+        ticks = np.repeat(np.arange(n_bin) * self.sample_interval, self.n_nodes)
+        nodes = np.tile(np.arange(self.n_nodes), n_bin)
         people = occ_p.T.ravel()
         vehicles = occ_v.T.ravel()
         dens = density_val.T.ravel()
         level = np.where(dens < 0.3, "low", np.where(dens < 0.6, "medium",
                         np.where(dens < 0.9, "high", "critical")))
-        gate_status = np.where(dens >= 0.8, 0, np.where(dens >= 0.5, 2, 1))
-        flow = np.round(45.0 * np.clip(1.0 - dens, 0, 1), 1)
+
+        # 大门闸：滞回策略基于车辆密度；园内门：同一策略基于人群密度
+        #（对齐 simulation/controller.HysteresisPolicyController 默认阈值）
+        gate_codes = self._hysteresis_series(occ_v / self.capacity[:, None]).T.ravel()
+        door_codes = self._hysteresis_series(density_val).T.ravel()
+        # 大门吞吐：open→45×4=180，restricted→45×0.3×1=13，closed→0（int）
+        gate_flow = np.where(gate_codes == 0, 180, np.where(gate_codes == 1, 13, 0))
+
+        # 信号灯：绿30/黄3/红27 周期 60s，绿波 offset 对齐 controller._corridor_offsets
+        signal_codes = np.zeros(self.n_nodes * n_bin, dtype=np.int8)
+        signal_flow = np.zeros(self.n_nodes * n_bin, dtype=np.float64)
+        if self.signal_mask.any():
+            offsets = self._signal_offsets()
+            tick_sec = np.arange(n_bin) * self.sample_interval
+            sig_mat = np.zeros((self.n_nodes, n_bin), dtype=np.int8)
+            for ni in np.where(self.signal_mask)[0]:
+                tt = (tick_sec + offsets.get(self.node_ids[ni], 0)) % 60
+                sig_mat[ni] = np.where(tt < 30, 2, np.where(tt < 33, 1, 0))
+            signal_codes = sig_mat.T.ravel()
+            signal_flow = np.where(signal_codes == 2, 90.0, 0.0)
 
         return {
             "tick": ticks, "node_idx": nodes, "people": people, "vehicles": vehicles,
             "density": np.round(dens, 4), "level": level,
-            "gate_status": gate_status, "gate_flow_rate": flow,
+            "gate_codes": gate_codes, "gate_flow": gate_flow,
+            "door_codes": door_codes,
+            "signal_codes": signal_codes, "signal_flow": signal_flow,
+            "gate_mask": self.gate_mask, "signal_mask": self.signal_mask,
         }
 
     def _store_entities(self, people, vehicles):
@@ -554,19 +755,39 @@ class FlowDataGenerator:
         self._write_csv(out / "people.csv", ["id", "birth_tick", "src_node", "dst_node", "kind"], people_rows)
         self._write_csv(out / "vehicles.csv", ["id", "birth_tick", "src_node", "dst_node", "kind", "is_internal"], vehicle_rows)
 
+        # density_series：13 列（对齐 simulation engine.SNAPSHOT_CSV_FIELDS）
         ds = dataset.density_series
-        rows = []
-        for k in range(ds["tick"].size):
-            tick = int(ds["tick"][k])
-            total_sec = int(ds["tick"][k])
-            ts = self._fmt_time(total_sec)
-            rows.append((tick, ts, self.node_ids[int(ds["node_idx"][k])],
-                         int(ds["people"][k]), int(ds["vehicles"][k]),
-                         float(ds["density"][k]), ds["level"][k],
-                         int(ds["gate_status"][k]), float(ds["gate_flow_rate"][k])))
-        self._write_csv(out / "density_series.csv",
-                        ["tick", "timestamp", "node_id", "people", "vehicles", "density", "level", "gate_status", "gate_flow_rate"],
-                        rows)
+        header = ["tick", "timestamp", "node_id", "people", "vehicles", "density",
+                  "level", "gate_status", "gate_flow_rate", "door_status",
+                  "door_flow_rate", "signal_status", "signal_flow_rate"]
+        gate_mask = ds["gate_mask"]
+        signal_mask = ds["signal_mask"]
+        gate_modes = ("open", "restricted", "closed")
+        sig_modes = ("red", "yellow", "green")
+        path = out / "density_series.csv"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(header)
+            for k in range(ds["tick"].size):
+                ni = int(ds["node_idx"][k])
+                tick = int(ds["tick"][k])
+                ts = self._fmt_time(tick)
+                if gate_mask[ni]:
+                    gs = gate_modes[int(ds["gate_codes"][k])]
+                    gf = str(int(ds["gate_flow"][k]))
+                else:
+                    gs, gf = "", ""
+                ds_status = gate_modes[int(ds["door_codes"][k])]
+                if signal_mask[ni]:
+                    ss = sig_modes[int(ds["signal_codes"][k])]
+                    sf = f"{ds['signal_flow'][k]:.1f}"
+                else:
+                    ss, sf = "", ""
+                w.writerow([tick, ts, self.node_ids[ni],
+                            int(ds["people"][k]), int(ds["vehicles"][k]),
+                            f"{ds['density'][k]:.4f}", ds["level"][k],
+                            gs, gf, ds_status, "", ss, sf])
 
     def _fmt_time(self, sec):
         day = sec // self._day_sec
@@ -589,6 +810,7 @@ if __name__ == "__main__":
     out_root = Path(__file__).resolve().parent / "data"
 
     gen = FlowDataGenerator(n_people=4000, n_vehicles=300, density_level="peak",
+                            people_hourly_counts=PEOPLE_HOURLY_DEFAULT,
                             n_days=7, random_state=42, data_dir=out_root)
     ds = gen.generate()
     gen.to_csv(".")

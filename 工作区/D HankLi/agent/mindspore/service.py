@@ -307,18 +307,34 @@ class SecurityService:
             return None
 
     def _classify(self, events):
-        """检测事件 → 入库格式（对齐后端接口字段）。"""
+        """检测事件 → 入库格式（对齐后端接口字段）。
+        阈值/持续时间按事件类型映射：
+          - congestion  : threshold_p85/threshold_p95 → 阈值；predicted_duration_min → 持续
+          - loitering   : rate_threshold → 阈值；sustained_frames → 持续
+          - gate_anomaly: expected_flow/gate_flow_rate → 参考阈值；无持续
+        预计持续兜底：L1/L2 默认 5 时间步（=50秒），L3 默认 10 时间步（=100秒）
+        """
         alerts = []
         for ev in events:
             node_idx = ev["node_id"]
             node_id = self.node_ids[node_idx]
 
             if ev["type"] == "congestion":
-                level = "L3" if ev.get("exceed_ratio", 1) >= 1.5 else "L2"
-                suggested = "门闸限流50%"
+                # 拥堵等级：L1 关注 / L2 预警 / L3 严重
+                if ev.get("severity") == "L1":
+                    level = "L1"
+                    suggested = "关注该节点人流趋势"
+                    threshold = ev.get("threshold_p85", ev.get("threshold_p95", None))
+                else:
+                    level = "L3" if ev.get("exceed_ratio", 1) >= 1.5 else "L2"
+                    suggested = "门闸限流50%"
+                    threshold = ev.get("threshold_p95", None)
+                duration = ev.get("predicted_duration_min", None)
             elif ev["type"] == "loitering":
                 level = "L3" if ev["severity"] == "L3" else "L2"
                 suggested = "派员疏散滞留人群"
+                threshold = ev.get("rate_threshold", None)      # 滞留速率阈值
+                duration = ev.get("sustained_frames", None)     # 持续帧数
             elif ev["type"] == "gate_anomaly":
                 if ev.get("subtype") == "hardware_fault":
                     level = "L3"
@@ -326,9 +342,18 @@ class SecurityService:
                 else:
                     level = "L2"
                     suggested = "检查门闸传感器与通行速率"
+                threshold = ev.get("expected_flow", ev.get("gate_flow_rate", None))
+                duration = None
             else:
                 level = "L2"
                 suggested = "待人工确认"
+                threshold = None
+                duration = None
+
+            # ---- 预计持续兜底：检测器没算出时按等级给默认值（时间步） ----
+            # L1 关注 / L2 预警默认 5 个时间步（=50秒），L3 严重默认 10 个时间步（=100秒）
+            if duration is None:
+                duration = 10 if level == "L3" else 5
 
             alerts.append({
                 "event_id": f"EVT-{datetime.now():%Y%m%d}-{str(uuid.uuid4())[:4].upper()}",
@@ -338,8 +363,8 @@ class SecurityService:
                 "node_id": node_id,
                 "node_name": NODE_NAME_MAP.get(node_id, node_id),
                 "current_density": ev.get("current_density", None),
-                "threshold_density": ev.get("threshold_p95", None),
-                "predicted_duration_min": ev.get("predicted_duration_min", None),
+                "threshold_density": threshold,
+                "predicted_duration_min": duration,
                 "suggested_action": suggested,
                 "status": "active",
             })
@@ -421,7 +446,7 @@ class SecurityService:
                 "node_name": NODE_NAME_MAP.get(demo_node, demo_node),
                 "current_density": 0.9,
                 "threshold_density": 0.8,
-                "predicted_duration_min": 8,
+                "predicted_duration_min": 5,   # L2 默认 5 个时间步（=50秒）
                 "suggested_action": "门闸限流50%",
                 "status": "active",
             }]

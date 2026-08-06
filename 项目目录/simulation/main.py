@@ -53,7 +53,7 @@ from simulation import (  # noqa: E402
     run_integration,
     verify_baseline,
 )
-from flow_data_generator import WEEKDAY_NAMES  # noqa: E402
+from flow_data_generator import PEOPLE_HOURLY_DEFAULT, WEEKDAY_NAMES  # noqa: E402
 
 LIGHT_SELFTESTS = [
     "config",
@@ -117,6 +117,45 @@ def _parse_start(cfg):
     return start_hour, start_minute, start_date, day_profiles
 
 
+def _window_seconds(cfg):
+    """每天仿真窗口时长（秒）= end_time - start_datetime 的当日时刻差。
+
+    优先用 simulation.start_datetime 的时刻 + simulation.end_time（缺省 22:00:00）
+    计算；未配置 start_datetime 时回退 start_date + start_hour。
+    窗口 ≤ 0（起点不在结束前）抛 ValueError。未配 end_time 时返回 None（调用方兜底）。
+    """
+    sim = cfg["simulation"]
+    end = sim.get("end_time")
+    if not end:
+        return None
+    end_dt = datetime.datetime.strptime(str(end), "%H:%M:%S")
+    base = sim.get("start_datetime")
+    if base:
+        start_dt = datetime.datetime.fromisoformat(str(base))
+    else:
+        start_date = datetime.date.fromisoformat(str(sim.get("start_date", "2026-08-03")))
+        start_dt = datetime.datetime.combine(
+            start_date,
+            datetime.time(int(sim.get("start_hour", 6)), int(sim.get("start_minute", 0))))
+    start_sec = start_dt.hour * 3600 + start_dt.minute * 60 + start_dt.second
+    end_sec = end_dt.hour * 3600 + end_dt.minute * 60 + end_dt.second
+    duration = end_sec - start_sec
+    if duration <= 0:
+        raise ValueError(
+            f"end_time({end}) 必须在 start_datetime 当日时刻({start_dt:%H:%M:%S})之后")
+    return duration
+
+
+def _day_ticks(args, main_cfg, cfg):
+    """每天 tick 数，优先级：--n-ticks > end_time 窗口 > main.n_ticks（兜底）。"""
+    if getattr(args, "n_ticks", None) is not None:
+        return int(args.n_ticks)
+    win = _window_seconds(cfg)
+    if win is not None:
+        return int(win)
+    return int(main_cfg.get("n_ticks", 3600))
+
+
 # ---------------------------------------------------------------------------
 # run —— 完整仿真流水线
 # ---------------------------------------------------------------------------
@@ -146,7 +185,7 @@ def _build_engine(cfg, n_people, n_vehicles, import_state=None, import_cache=Non
     start_hour, start_minute, start_date, day_profiles = _parse_start(cfg)
     n_base = int(n_ticks_per_day) if n_ticks_per_day else int(
         cfg.get("main", {}).get("n_ticks", 57600))
-    n_hours = (n_base + 3599) // 3600
+    n_hours = n_base / 3600.0
 
     topo = Topology(cfg["topology"]["file"])
     if import_state:
@@ -155,10 +194,13 @@ def _build_engine(cfg, n_people, n_vehicles, import_state=None, import_cache=Non
         topo.import_cache(import_cache)
 
     gen = FlowDataGenerator(n_people=n_people, n_vehicles=n_vehicles,
+                            people_hourly_counts=cfg["simulation"].get(
+                                "people_hourly_counts") or PEOPLE_HOURLY_DEFAULT,
                             random_state=cfg["simulation"]["seed"], n_days=n_days,
                             start_hour=start_hour, start_minute=start_minute,
                             start_date=start_date.isoformat(),
-                            day_profiles=day_profiles, n_hours=n_hours)
+                            day_profiles=day_profiles, n_hours=n_hours,
+                            density_level=cfg["simulation"].get("density_level", "peak"))
     gen.generate()
 
     # 按 config.yaml 加载移动模型（供 C 扩展 IDM/CAV）
@@ -187,7 +229,7 @@ def cmd_run(args, cfg):
     n_people = args.n_people if args.n_people is not None else int(main_cfg.get("n_people", 2000))
     n_vehicles = args.n_vehicles if args.n_vehicles is not None else int(main_cfg.get("n_vehicles", 150))
     n_days = args.n_days if args.n_days is not None else int(main_cfg.get("n_days", 1))
-    n_base = args.n_ticks if args.n_ticks is not None else int(main_cfg.get("n_ticks", 3600))
+    n_base = _day_ticks(args, main_cfg, cfg)
     n_ticks = n_base * n_days
 
     print(f"== run: {n_people}人 / {n_vehicles}车 × {n_ticks} tick（{n_base}/天 × {n_days}天）==")
@@ -227,16 +269,31 @@ def cmd_run(args, cfg):
         from service import SecurityService
 
         svc = SecurityService.from_config(
-            csv_path=csv_abs,
-            backend_base=str(cfg["simulation"].get("alert_backend", "")),
-            demo_mode=bool(cfg["simulation"].get("demo_mode", False)),
+            csv_path=csv_abs,                          # 与 CsvRecorder 同一文件（config paths.csv_file）
+            backend_base="http://192.168.1.114:8100",  # 后端地址
+            demo_mode=False,                           # 只发真实预警
+            interval_seconds=60,                       # 轮询间隔
         )
         print(f"  预测+预警已启用（读 {csv_abs}，模型 {_TEST_DIR / 'checkpoints'}）")
 
+    # 实时数据上传：--backend 覆盖配置，--no-upload 关闭（默认读 config realtime_backend）
+    from backend_client import BackendClient, from_config
+
+    client = None if args.no_upload else (from_config(cfg) or
+                                          (BackendClient(base_url=args.backend)
+                                           if args.backend else None))
+    if client is not None:
+        print(f"  实时数据上传已启用 -> {client._upload_url}")
+
     def _on_package(files):
+        test_pred = None
+        test_alerts = []
         if svc is not None:
             try:
-                _print_alert_result(svc.check_alerts())
+                result = svc.check_alerts()
+                _print_alert_result(result)
+                test_pred = result.get("predictions")
+                test_alerts = result.get("alerts", [])
             except Exception as e:
                 print(f"  [预测异常跳过] {e}")
         try:
@@ -244,14 +301,22 @@ def cmd_run(args, cfg):
             df_hot = pred.predict_hotspots()
             rows = json.loads(
                 (sender.window_dir / "engine_snapshot.json").read_text(encoding="utf-8"))
-            sender.emit("union_pack", {
+            union_pack = {
                 "engine_snapshot": rows,
+                "vehicle_paths": eng.vehicle_paths_json(),
                 "predict_network": df_net.to_dict(orient="records"),
                 "predict_hotspots": df_hot.to_dict(orient="records"),
-            }, indent=2)
+                "prediction": test_pred,
+                "alerts": test_alerts,
+            }
+            sender.emit("union_pack", union_pack, indent=2)
             (sender.window_dir / "engine_snapshot.json").unlink()
             print(f"  [宏观预测] 网络 {len(df_net)} 节点 | 热点 {len(df_hot)} 区域 "
-                  f"-> union_pack.json")
+                  f"| 预警 {len(test_alerts)} 条 -> union_pack.json")
+            if client is not None:
+                ok = client.send_payload(union_pack)
+                print(f"  [实时上传] {'成功' if ok else '失败'} -> {client._upload_url}")
+            return False
         except Exception as e:
             print(f"  [宏观预测跳过] {e}")
         return False
@@ -330,7 +395,7 @@ def cmd_json(args, cfg):
     n_people = args.n_people or int(main_cfg.get("n_people", 2000))
     n_vehicles = args.n_vehicles or int(main_cfg.get("n_vehicles", 150))
     n_days = args.n_days if args.n_days is not None else int(main_cfg.get("n_days", 1))
-    n_base = args.n_ticks if args.n_ticks is not None else int(main_cfg.get("n_ticks", 3600))
+    n_base = _day_ticks(args, main_cfg, cfg)
     n_ticks = n_base * n_days
     interval = args.interval or 10
 
@@ -376,7 +441,7 @@ def cmd_csv(args, cfg):
     n_people = args.n_people or int(main_cfg.get("n_people", 2000))
     n_vehicles = args.n_vehicles or int(main_cfg.get("n_vehicles", 150))
     n_days = args.n_days if args.n_days is not None else int(main_cfg.get("n_days", 1))
-    n_base = args.n_ticks if args.n_ticks is not None else int(main_cfg.get("n_ticks", 3600))
+    n_base = _day_ticks(args, main_cfg, cfg)
     n_ticks = n_base * n_days
     interval = args.interval or 10
 
@@ -408,14 +473,15 @@ def cmd_data(args, cfg):
     n_vehicles = args.n_vehicles or int(main_cfg.get("n_vehicles", 300))
     data_dir = str(Path(cfg["paths"]["data_dir"]))
     start_hour, start_minute, start_date, day_profiles = _parse_start(cfg)
-    n_base = int(main_cfg.get("n_ticks", 57600))
-    n_hours = (n_base + 3599) // 3600
+    n_base = _day_ticks(args, main_cfg, cfg)
+    n_hours = n_base / 3600.0
     gen = FlowDataGenerator(n_people=n_people, n_vehicles=n_vehicles,
                             random_state=cfg["simulation"]["seed"],
                             n_days=args.n_days, data_dir=data_dir,
                             start_hour=start_hour, start_minute=start_minute,
                             start_date=start_date.isoformat(),
-                            day_profiles=day_profiles, n_hours=n_hours)
+                            day_profiles=day_profiles, n_hours=n_hours,
+                            density_level=cfg["simulation"].get("density_level", "peak"))
     ds = gen.generate()
     out = gen.to_csv(args.subdir)
     print("people:", ds.people["birth_tick"].size,
@@ -502,6 +568,10 @@ def build_parser():
     r.add_argument("--export-cache", default=None, help="导出网络缓存 JSON（控制+路径）")
     r.add_argument("--no-predict", action="store_true",
                    help="关闭预测+预警（只写 JSON+CSV）")
+    r.add_argument("--backend", default=None,
+                   help="实时数据上传后端地址（覆盖 config realtime_backend，如 http://127.0.0.1:8000）")
+    r.add_argument("--no-upload", action="store_true",
+                   help="关闭实时数据上传（不 POST union_pack 给后端）")
     _add_clock_args(r)
     r.set_defaults(func=cmd_run)
 

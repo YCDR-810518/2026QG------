@@ -682,6 +682,7 @@ class CongestionDetector:
         density_feature_idx: int = 0,
         gate_status_feature_idx: int = 3,
         gate_flow_feature_idx: int = 4,
+        min_p95_threshold: float = 0.05,
     ):
         if not 50.0 <= density_percentile <= 100.0:
             raise ValueError(f"density_percentile 应在 [50, 100]，收到 {density_percentile}")
@@ -692,6 +693,7 @@ class CongestionDetector:
         self.loitering_duration = loitering_duration
         self.loitering_rate_threshold = loitering_rate_threshold
         self.sigma_threshold = sigma_threshold
+        self.min_p95_threshold = min_p95_threshold
         self.gate_flow_sigma = gate_flow_sigma
         self.density_feature_idx = density_feature_idx
         self.gate_status_feature_idx = gate_status_feature_idx
@@ -817,17 +819,56 @@ class CongestionDetector:
 
         current_density: (n_nodes,) 当前密度
         X_pred: (n_nodes, pred_horizon) DensityPredictor 输出（可为 None）
+
+        等级判定：
+          - L1（关注）：密度 > P85 且 <= P95（尚未到拥堵，但需关注）
+          - L2（预警）：密度 > P95（确认拥堵）
+          - L3（严重）：密度 > 1.5 × P95（严重拥堵）
+
+        防误报：
+          - 节点 P95 阈值过低（< 0.05，即历史上几乎无人）则跳过，
+            避免天桥/地下通道等天然空节点微小波动就报警
+          - L1 也要求连续 3 帧，过滤瞬时抖动
         """
+        # 节点 P95 阈值下限：低于此值视为"天然空节点"，不参与拥堵/关注判定
+        min_p95_threshold = self.min_p95_threshold
+
         events = []
         for node_i in range(self.n_nodes_):
             stats = self.node_stats_[str(node_i)]
             density = float(current_density[node_i])
 
-            # 条件 1：超过历史分位数
-            if density <= stats["density_p95"]:
+            # ---- 天然空节点过滤：P95 阈值过低则跳过 ----
+            if stats["density_p95"] < min_p95_threshold:
                 self._congestion_counter[str(node_i)] = 0
                 continue
 
+            # ---- L1 关注档：密度超 P85 但未达 P95 ----
+            if density <= stats["density_p85"]:
+                self._congestion_counter[str(node_i)] = 0
+                continue
+
+            if density <= stats["density_p95"]:
+                # 超 P85 未达 P95 → L1 关注（需连续 3 帧，过滤瞬时抖动）
+                self._congestion_counter[str(node_i)] = (
+                    self._congestion_counter.get(str(node_i), 0) + 1
+                )
+                if self._congestion_counter[str(node_i)] < 3:
+                    continue
+                events.append({
+                    "type": "congestion",
+                    "node_id": node_i,
+                    "severity": "L1",
+                    "current_density": round(density, 4),
+                    "threshold_p85": round(stats["density_p85"], 4),
+                    "threshold_p95": round(stats["density_p95"], 4),
+                    "exceed_ratio": round(density / max(stats["density_p95"], 1e-6), 2),
+                    "predicted_duration_min": None,
+                    "timestamp": None,
+                })
+                continue
+
+            # ---- L2/L3：密度超过 P95 ----
             # 条件 2（可选）：超过预测值 + 2σ
             if X_pred is not None:
                 pred_now = float(X_pred[node_i, 0])  # 预测的第一步即为"此刻"
@@ -858,6 +899,7 @@ class CongestionDetector:
                 "node_id": node_i,
                 "severity": severity,
                 "current_density": round(density, 4),
+                "threshold_p85": round(stats["density_p85"], 4),
                 "threshold_p95": round(stats["density_p95"], 4),
                 "exceed_ratio": round(density / max(stats["density_p95"], 1e-6), 2),
                 "predicted_duration_min": duration_est,
@@ -1035,10 +1077,11 @@ class CongestionDetector:
         events.extend(self._detect_loitering(density_recent))
         events.extend(self._detect_gate_anomaly(current_gate_status, current_gate_flow))
 
-        # 去重（同 node + 同 type 在短时间内不重复告警）
+        # 去重（同 node + 同 type + 同等级在短时间内不重复告警）
+        # 注意：key 含 severity，避免 L1 关注占用后拦截后续 L2/L3 拥堵
         deduped = []
         for e in events:
-            key = f"{e['type']}_{e['node_id']}"
+            key = f"{e['type']}_{e['severity']}_{e['node_id']}"
             if key not in self._alerted_events:
                 self._alerted_events.add(key)
                 deduped.append(e)

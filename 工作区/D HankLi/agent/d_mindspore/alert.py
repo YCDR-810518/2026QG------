@@ -37,7 +37,7 @@ from data_config import LEVEL_MAP, GATE_STATUS_MAP, SIGNAL_STATUS_MAP
 # ============================================================
 
 # 1. 数据文件路径（和 train.py / predict.py 保持一致）
-DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\工作区\D HankLi\agent\engine_snapshot.csv"
+DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\data\engine_timeseries.csv"
 
 # 2. 模型 / 归一化参数目录（train.py 运行后自动生成）
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -323,7 +323,7 @@ def main():
             "node_name": NODE_NAME_MAP.get(demo_node, demo_node),
             "current_density": 0.9,
             "threshold_density": 0.8,
-            "predicted_duration_min": 8,
+            "predicted_duration_min": 5,   # L2 默认 5 个时间步（=50秒）
             "suggested_action": "门闸限流50%",
             "status": "active",
         }]

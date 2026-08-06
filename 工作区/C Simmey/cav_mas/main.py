@@ -31,24 +31,7 @@ if hasattr(sys.stderr, "reconfigure"):
 
 
 def build_plan(rng, n_vehicles: int, spawn_interval: float, idm_base: dict) -> list:
-    """按出生时刻生成车辆计划，驾驶员期望速度异质（SEED 保证可复现）。
-
-    Parameters
-    ----------
-    rng : numpy.random.Generator
-        随机数生成器。
-    n_vehicles : int
-        车辆数。
-    spawn_interval : float
-        发车间隔 s。
-    idm_base : dict
-        IDM 基础参数（v0 会被异质化覆盖）。
-
-    Returns
-    -------
-    list[dict]
-        每行含 id / birth_tick / idm_params。
-    """
+    """生成车辆计划（出生 tick 与 IDM 参数）。"""
     return [
         {
             "id": f"car_{i:02d}",
@@ -61,13 +44,6 @@ def build_plan(rng, n_vehicles: int, spawn_interval: float, idm_base: dict) -> l
 
 
 def main(out_dir=None):
-    """运行 L 型局部拓扑 CAV+MAS 对比实验并保存图表。
-
-    Parameters
-    ----------
-    out_dir : str or Path, optional
-        输出目录，缺省为工作区下的 figures/（与包同级）。
-    """
     if out_dir is None:
         out_dir = Path(__file__).resolve().parents[1] / "figures"
     os.makedirs(out_dir, exist_ok=True)

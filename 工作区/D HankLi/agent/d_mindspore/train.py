@@ -40,7 +40,7 @@ from data_config import (
 
 # 训练数据路径（成员F的合并数据：2 周 = 14 天）
 # 也支持更多周的数据（自动检测天数/周数后按比例切分）
-DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\项目目录\data\engine_snapshot.csv"
+DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\工作区\D HankLi\data\density_series.csv"
 
 # 模型存档位置（默认放在本文件所在目录的 checkpoints 文件夹里）
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "checkpoints")
