@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QG园区人流时空分析报告</title>
+<style>
+  :root { --blue:#2c7fb8; --red:#f03b20; --green:#31a354; --ink:#222; --muted:#666; }
+  * { box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei","PingFang SC",-apple-system,sans-serif; color:var(--ink); margin:0; background:#f5f6f8; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 60px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+  .note { background:#fff8e1; border:1px solid #f0d27a; border-radius:8px; padding:10px 14px; font-size:13px; margin:16px 0; }
+  .card { background:#fff; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,.08); padding:20px; margin:20px 0; }
+  .card h2 { font-size:17px; margin:0 0 4px; }
+  .card .desc { color:var(--muted); font-size:12px; margin:0 0 12px; }
+  table { border-collapse: collapse; width:100%; font-size:13px; }
+  th, td { padding:6px 8px; border-bottom:1px solid #e5e7eb; text-align:right; }
+  th { color:var(--muted); font-weight:600; background:#fafafa; }
+  td:first-child, th:first-child { text-align:left; }
+  .legend { display:flex; gap:18px; font-size:13px; margin-bottom:8px; flex-wrap:wrap; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .dot { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .hl { color:var(--red); font-weight:700; }
+  .pill { display:inline-block; background:#eef3f8; border-radius:999px; padding:2px 10px; font-size:12px; margin:2px 4px 2px 0; }
+  ul { margin:8px 0; padding-left:20px; }
+  li { margin:5px 0; font-size:14px; line-height:1.55; }
+  .kpi { display:flex; gap:12px; flex-wrap:wrap; margin:12px 0; }
+  .kpi div { flex:1; min-width:140px; background:#fafbfc; border:1px solid #e5e7eb; border-radius:10px; padding:12px; text-align:center; }
+  .kpi b { display:block; font-size:22px; color:var(--blue); }
+  .kpi span { font-size:12px; color:var(--muted); }
+  svg text { font-family:"Microsoft YaHei",sans-serif; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>QG园区人流时空分析报告</h1>
+  <div class="sub">数据源: data/density_series.csv · 2026-08-03(周一)~08-09(周日) · 61个地点节点 · 06:00–22:00每10秒采样</div>
+
+  <div class="note">⚠️ 本报告基于<b>整点抽样统计</b>(工作日以周一为代表;周六/周日单独)。采样点在整点时刻读取61个节点的瞬时人数并汇总,用于刻画人流的<b>日变化规律</b>。精确的逐小时平均值建议运行项目目录下 <b>analysis_windows.py</b> 脚本获得全量结果。</div>
+
+  <div class="card">
+    <h2>一、每个小时有多少人</h2>
+    <div class="desc">全园61个节点瞬时人数之和(整点抽样)。工作日取周一,周六/周日单独。</div>
+    <div class="legend">
+      <span><i class="dot" style="background:#2c7fb8"></i>工作日(周一)</span>
+      <span><i class="dot" style="background:#f03b20"></i>周六</span>
+      <span><i class="dot" style="background:#31a354"></i>周日</span>
+    </div>
+    <svg viewBox="0 0 800 420" width="100%" height="auto">
+      <!-- grid -->
+      <g stroke="#e5e7eb" stroke-width="1">
+        <line x1="60" y1="380" x2="740" y2="380"/>
+        <line x1="60" y1="280" x2="740" y2="280"/>
+        <line x1="60" y1="180" x2="740" y2="180"/>
+        <line x1="60" y1="80"  x2="740" y2="80"/>
+      </g>
+      <g font-size="11" fill="#888">
+        <text x="20" y="384">0</text>
+        <text x="20" y="284">6000</text>
+        <text x="20" y="184">12000</text>
+        <text x="20" y="84">18000</text>
+        <text x="20" y="20" font-size="12">24000</text>
+      </g>
+      <!-- x labels -->
+      <g font-size="11" fill="#888" text-anchor="middle">
+        <text x="60" y="398">06:00</text><text x="140" y="398">08:00</text><text x="220" y="398">10:00</text>
+        <text x="300" y="398">12:00</text><text x="380" y="398">14:00</text><text x="460" y="398">16:00</text>
+        <text x="540" y="398">18:00</text><text x="620" y="398">20:00</text><text x="700" y="398">22:00</text>
+      </g>
+      <!-- Monday line -->
+      <polyline fill="none" stroke="#2c7fb8" stroke-width="3"
+        points="60,380 100,291 140,219 220,192 300,219 380,297 500,280 540,248 580,182 660,203"/>
+      <g fill="#2c7fb8">
+        <circle cx="60" cy="380" r="4"/><circle cx="100" cy="291" r="4"/><circle cx="140" cy="219" r="4"/>
+        <circle cx="220" cy="192" r="4"/><circle cx="300" cy="219" r="4"/><circle cx="380" cy="297" r="4"/>
+        <circle cx="500" cy="280" r="4"/><circle cx="540" cy="248" r="4"/><circle cx="580" cy="182" r="4"/><circle cx="660" cy="203" r="4"/>
+      </g>
+      <!-- Saturday line -->
+      <polyline fill="none" stroke="#f03b20" stroke-width="3"
+        points="140,346 300,243 500,212 580,43 660,79"/>
+      <g fill="#f03b20">
+        <circle cx="140" cy="346" r="4"/><circle cx="300" cy="243" r="4"/><circle cx="500" cy="212" r="4"/>
+        <circle cx="580" cy="43" r="4"/><circle cx="660" cy="79" r="4"/>
+      </g>
+      <!-- Sunday line -->
+      <polyline fill="none" stroke="#31a354" stroke-width="3"
+        points="140,352 300,273 500,144 580,28 660,104"/>
+      <g fill="#31a354">
+        <circle cx="140" cy="352" r="4"/><circle cx="300" cy="273" r="4"/><circle cx="500" cy="144" r="4"/>
+        <circle cx="580" cy="28" r="4"/><circle cx="660" cy="104" r="4"/>
+      </g>
+    </svg>
+    <table>
+      <thead><tr><th>整点</th><th>工作日(周一)人数</th><th>周六人数</th><th>周日人数</th><th>峰值时段特征</th></tr></thead>
+      <tbody>
+        <tr><td>06:00</td><td>≈0</td><td>—</td><td>—</td><td>仅宿舍有人,全园几乎为空</td></tr>
+        <tr><td>07:00</td><td>5,400</td><td>—</td><td>—</td><td>宿舍为高峰,大门开始进人</td></tr>
+        <tr><td>08:00</td><td>9,800</td><td>2,100</td><td>1,700</td><td>工作日宿舍拥挤(critical);周末仍在低点</td></tr>
+        <tr><td>10:00</td><td><b>11,500</b></td><td>—</td><td>—</td><td>工作日教学楼最高峰(密度≈1.8)</td></tr>
+        <tr><td>12:00</td><td>9,900</td><td>8,400</td><td>6,500</td><td>食堂高峰(密度2.3~3.1)</td></tr>
+        <tr><td>14:00</td><td>5,100</td><td>—</td><td>—</td><td>午后低谷,食堂仍有小高峰</td></tr>
+        <tr><td>17:00</td><td>6,100</td><td>10,300</td><td>14,500</td><td>周末驿站/医院/超市异常高峰(密度6+);工作日教学楼回升</td></tr>
+        <tr><td>18:00</td><td>8,000</td><td>—</td><td>—</td><td>食堂进入晚间高峰(密度≈2.8)</td></tr>
+        <tr><td>19:00</td><td>12,100</td><td><b>20,600</b></td><td><b>21,500</b></td><td>全天最高峰,食堂密度5~7.9,宿舍回升</td></tr>
+        <tr><td>21:00</td><td>10,800</td><td>18,400</td><td>16,800</td><td>宿舍critical(密度1.0~1.9),食堂次高峰</td></tr>
+      </tbody>
+    </table>
+    <div class="kpi">
+      <div><b>~12,100</b><span>工作日19:00峰值(人)</span></div>
+      <div><b>~21,500</b><span>周日19:00全天最高(人)</span></div>
+      <div><b>11,500</b><span>工作日10:00教学楼峰值(人)</span></div>
+      <div><b>密度7.9</b><span>食堂最拥挤时刻</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>二、人流集中在哪些地点</h2>
+    <div class="desc">按"平均在场人数"和"峰值密度"评估。数字为抽样估计。</div>
+    <table>
+      <thead><tr><th>地点(节点)</th><th>平均在场人数</th><th>峰值人数</th><th>峰值密度</th><th>高峰时段</th></tr></thead>
+      <tbody>
+        <tr><td><b>食堂</b> canteen_1~4</td><td>≈700/个</td><td>2,372(canteen_2,周日19时)</td><td><span class="hl">7.9(critical)</span></td><td>12:00、18:00–19:00</td></tr>
+        <tr><td><b>宿舍</b> west/east_dorm、teacher_apt</td><td>≈400/栋</td><td>1,141(west_dorm_9_12,周六21时)</td><td><span class="hl">1.9(critical)</span></td><td>07–08:00、19:00–21:00</td></tr>
+        <tr><td><b>教学楼</b> teach_1~6、library、gongchuanggu、large_classroom</td><td>≈130/楼</td><td>739(teach_4,周一10时)</td><td><span class="hl">1.85(critical)</span></td><td>工作日08–10:00、17:00</td></tr>
+        <tr><td><b>驿站/医院/超市</b> west_express、hospital、supermarket</td><td>≈300/处</td><td>3,304(west_express,周日17时)</td><td><span class="hl">6.6(critical)</span></td><td>周末17:00前后</td></tr>
+        <tr><td><b>体育场馆</b> sports_*、youth_center</td><td>≈60/馆</td><td>218(basketball_b,周六19时)</td><td>0.73(high)</td><td>工作日18–19:00、周末19:00</td></tr>
+        <tr><td><b>科研楼</b> eng_1~4、exp_1~4、science_hall等</td><td>≈40/楼</td><td>121(struct_center,周一10时)</td><td>0.40(medium)</td><td>工作日10:00前后</td></tr>
+      </tbody>
+    </table>
+    <svg viewBox="0 0 800 300" width="100%" height="auto">
+      <g font-size="11" fill="#888">
+        <text x="0" y="16">平均在场人数(抽样)</text>
+      </g>
+      <!-- bars: 食堂700, 驿站医院超市300, 宿舍400, 教学楼130, 体育60, 科研40 -->
+      <!-- scale: 1人 = 0.42px, bar max 700 -> 294px -->
+      <g>
+        <text x="10" y="52" font-size="13" fill="#222">食堂(4个)</text>
+        <rect x="160" y="30" width="294" height="22" fill="#2c7fb8" rx="4"/>
+        <text x="460" y="46" font-size="12" fill="#2c7fb8">≈700</text>
+
+        <text x="10" y="92" font-size="13" fill="#222">宿舍(10栋)</text>
+        <rect x="160" y="70" width="168" height="22" fill="#2c7fb8" rx="4"/>
+        <text x="334" y="86" font-size="12" fill="#2c7fb8">≈400</text>
+
+        <text x="10" y="132" font-size="13" fill="#222">驿站/医院/超市</text>
+        <rect x="160" y="110" width="126" height="22" fill="#f03b20" rx="4"/>
+        <text x="292" y="126" font-size="12" fill="#f03b20">≈300(周末17时峰值3300)</text>
+
+        <text x="10" y="172" font-size="13" fill="#222">教学楼(9栋)</text>
+        <rect x="160" y="150" width="55" height="22" fill="#31a354" rx="4"/>
+        <text x="221" y="166" font-size="12" fill="#31a354">≈130</text>
+
+        <text x="10" y="212" font-size="13" fill="#222">体育场馆(11个)</text>
+        <rect x="160" y="190" width="25" height="22" fill="#31a354" rx="4"/>
+        <text x="191" y="206" font-size="12" fill="#31a354">≈60</text>
+
+        <text x="10" y="252" font-size="13" fill="#222">科研楼(12栋)</text>
+        <rect x="160" y="230" width="17" height="22" fill="#31a354" rx="4"/>
+        <text x="183" y="246" font-size="12" fill="#31a354">≈40</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h2>三、核心结论与要点</h2>
+    <ul>
+      <li><b>全天双峰结构:</b>工作日 10:00 教学楼高峰(≈1.15万人)与 19:00 食堂高峰(≈1.2万人);14:00 为全天最低点(≈5千人)。</li>
+      <li><b>周末整体更晚更集中:</b>上午明显低于工作日(8时仅2千人 vs 9.8千人),但晚高峰远超工作日——19:00 周六≈2.06万、周日≈2.15万人,人群集中在<b>食堂</b>与<b>宿舍</b>。</li>
+      <li><b>密度最高风险点 = 食堂:</b>canteen_1~4 在 19:00 密度达 <span class="hl">5.0~7.9(critical)</span>,12:00 为 2.2~3.1;建议在饭点采取分流/限流或错峰引导。</li>
+      <li><b>宿舍早高峰与晚归:</b>工作日 07–08:00 各宿舍密度 0.9~1.5(critical),21:00 后周末宿舍密度可达 1.9,是仅次于食堂的拥挤点。</li>
+      <li><b>周末17时异常峰:</b>周六/周日 17:00 前后,<b>驿站(west_express)、医院、超市</b>出现 2000~3300 人的异常集中(密度6+),工作日该时段仅200~400人,建议关注该现象成因。</li>
+      <li><b>教学区周末冷清:</b>教学/科研楼周末平均仅工作日1/10左右,可用于错峰或活动场地。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>四、数据与口径说明</h2>
+    <ul>
+      <li>数据共 7 天(2026-08-03 至 08-09),每天 06:00–21:59:50,每 10 秒一个采样,每个采样含 61 个地点节点。</li>
+      <li>本报告数字来自整点时刻抽样(工作日取周一代表),用于刻画规律;如需每个小时 7 天平均的精确值,请运行 <b>analysis_windows.py</b>(已放在项目目录)或等待完整计算。</li>
+      <li>density = 该节点当前人数/容量;level 分级: low &lt; medium &lt; high &lt; critical。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

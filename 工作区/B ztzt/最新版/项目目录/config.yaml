@@ -1,0 +1,73 @@
+# 仿真引擎配置文件（成员 F）— 项目目录工作区版
+# config.py 的 _DEFAULT_CONFIG_PATH 指向本文件；拓扑路径相对本文件所在目录解析。
+# 路径均相对本文件所在目录解析；A 模块目录用于 sys.path 注入 DjShortCut
+
+simulation:
+  seed: 42
+  dt: 1.0                  # 每 tick 模拟秒数
+  max_capacity: 40000      # 实体池预分配上限（>同时在场峰值，避免截断）
+  tick_hz: 1               # 实时目标：1 tick/s（>0 实时节拍；0=全速）
+  clock: base              # 输出时间戳来源: now(当下) / base(start_datetime+tick 秒)
+  start_datetime: "2026-08-03 06:00:00"   # clock=base 时数据起始时间（全天窗口清晨开始，启用 24h 作息曲线）
+  end_time: "22:00:00"                    # 每天仿真结束时刻（窗口 = 06:00 → 22:00，16 小时全天作息）
+  alert_backend: ""        # 预测+预警 POST 后端地址（空=仅本地检测，不发后端）
+  realtime_backend: "http://192.168.1.114:8100"   # 实时数据 union_pack 上传后端地址（空=不上传）
+  realtime_endpoint: /api/v1/sim/batch            # B 提供的实时数据接收路径
+  realtime_username: "111"                        # 后端登录账号
+  realtime_password: "123123"                     # 后端登录密码
+  realtime_token_ttl: 3456000                     # token 缓存秒数（40 天，B: 有效期约 41 天，登录一次即可）
+  demo_mode: false         # 关闭伪造演示预警（无真实预警时不再构造）
+  check_interval: 10       # 调控器调用间隔（tick）
+  enable_signals: true     # 是否启用红绿灯完整信号周期
+  vehicle_compliance: 1.0  # 车辆遵守信号比例
+  ped_compliance: 0     # 行人遵守信号比例
+  movement_class: ConstantSpeedMovement   # 移动模型类名: ConstantSpeedMovement / CavIdmMovement
+  movement_mode: idm                      # CavIdmMovement 模式: idm / cav
+  density_level: peak                 # 到达曲线幂次: off_peak 0.8 / peak 2.0 / ultra_peak 3.0
+
+# ---------------------------------------------------------------------------
+# cav —— CAV/IDM 微观参数统一管理（成员 C，供 CavIdmMovement / cav_pack /
+#        compare_cav / micro_fleet 读取；速度口径统一园区巡航 5.0 m/s）
+# ---------------------------------------------------------------------------
+cav:
+  idm:
+    v0: 5.0                  # 期望巡航速度 m/s（与 Topology.base_speed(1) 一致）
+    a_max: 1.5               # 最大加速度 m/s²
+    b: 2.0                   # 舒适减速度 m/s²
+    s0: 2.0                  # 停车最小间距 m
+    t_head: 1.5              # IDM 跟车时距 s
+  cth: 0.8                   # CAV 恒定车头时距 s
+  kv: 0.6                    # CAV 速度差增益
+  kg: 0.4                    # CAV 间距差增益
+  lookahead: 25.0            # CAV 前视限速距离 m
+  delay_speed_threshold: 1.39  # 5 km/h 以下视为滞留（trip 钩子 / cav_stats 同口径）
+
+# ---------------------------------------------------------------------------
+# micro_fleet —— 微观编队实时帧（成员 C + B + E；默认关闭，仅 8/7 演示窗口启用）
+#   启用时：F 每 interval tick（1s）从真实引擎挑选"车多的大门→固定终点"的 4 辆在途车，
+#   组装 path{startNodeId,endNodeId,routeNodes} + cavFleet[4] 帧，POST 至 B 后端中转，
+#   前端每秒轮询渲染（对齐《CAV小车编队接口定义文档.md》）。
+# ---------------------------------------------------------------------------
+micro_fleet:
+  enabled: false             # 默认关；仅演示窗口手动打开（避免整日 8 万次 POST）
+  interval: 1                # 每 N tick 发一帧（1 tick = 1s）
+  fleet_size: 4              # 编队车辆数
+  dst_node_id: canteen_1     # 固定 O-D 终点（真实节点；zone_canteen 不存在）
+  backend_endpoint: /api/v1/sim/micro-fleet   # B 提供的最新帧接收端点
+
+main:
+  n_people: 60000          # main.py run 默认人数（全天进出人次，峰值同时在场约 8千~1.2万）
+  n_vehicles: 8000          # main.py run 默认车数
+  n_ticks: 57600            # main.py run 默认每天 tick 数（窗口 = start_datetime 起 n_ticks 秒，可跨零点）
+  n_days: 7                 # main.py run 默认模拟天数
+  export_csv: ./data/engine_snapshot.csv   # run 可选导出密度快照
+  pressure_levels: [1000, 2000, 4000, 6000, 8000]   # main.py stress 压测档位
+
+topology:
+  file: ./graph_data.yaml
+  a_module_dir: ./         # DjShortCut.py 所在目录
+
+paths:
+  data_dir: ./data
+  log_dir: ./logs
+  csv_file: ./data/engine_timeseries.csv   # 固定累计 CSV（csv 命令/联动 json 追加落盘）

@@ -1,0 +1,25 @@
+nodes:
+  A:
+    name: A
+    type: road
+    x: 10.0
+    y: 50.0
+    has_traffic_light: false
+    has_gate: false
+    doorId: T1
+  B:
+    name: B
+    type: road
+    x: 90.0
+    y: 50.0
+    has_traffic_light: false
+    has_gate: false
+    doorId: T2
+edges:
+- edgeId: E1
+  nodes:
+  - A
+  - B
+  length: 300.0
+  weight: 1.0
+  capacity: 4

@@ -11,7 +11,7 @@ from .config import CavParams, MergeParams
 from .entities import MergeCoordinator, MergeVehicleAgent
 
 _YIELD_MOUTH = 6.0     # 汇合口让行探测距离 m(对照组 B 车道在此范围感知主路车流)
-_MERGE_GAP = 12.0      # 可插入空档阈值 m(前方空档大于该值视为可汇入)
+_MERGE_GAP = 10.0      # 可插入空档阈值 m(前方空档大于该值视为可汇入)
 _OVERLAP_TOL = 0.5     # 重叠容差 m(位置差小于该值视为已重叠,防止互指死锁)
 
 

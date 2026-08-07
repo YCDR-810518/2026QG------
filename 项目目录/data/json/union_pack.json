@@ -1,0 +1,3967 @@
+{
+  "engine_snapshot": [
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "gate_south",
+      "people": 1,
+      "vehicles": 7,
+      "density": 0.006666666666666667,
+      "level": "low",
+      "gate_status": "open",
+      "gate_flow_rate": 180,
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "gate_west",
+      "people": 0,
+      "vehicles": 10,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "open",
+      "gate_flow_rate": 180,
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "gate_east",
+      "people": 0,
+      "vehicles": 6,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "open",
+      "gate_flow_rate": 180,
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "cross_zh_south",
+      "people": 0,
+      "vehicles": 0,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "cross_zh_mid",
+      "people": 0,
+      "vehicles": 2,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "red",
+      "signal_flow_rate": 0.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "cross_zh_north",
+      "people": 1,
+      "vehicles": 0,
+      "density": 0.0125,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "red",
+      "signal_flow_rate": 0.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "rd_guanggong_1",
+      "people": 0,
+      "vehicles": 0,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "pedestrian_bridge",
+      "people": 0,
+      "vehicles": 0,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "underpass",
+      "people": 0,
+      "vehicles": 0,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "admin_building",
+      "people": 4,
+      "vehicles": 1,
+      "density": 0.02,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "auditorium",
+      "people": 6,
+      "vehicles": 0,
+      "density": 0.03,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "library",
+      "people": 196,
+      "vehicles": 21,
+      "density": 0.49,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "gongchuanggu",
+      "people": 199,
+      "vehicles": 21,
+      "density": 0.4975,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_1",
+      "people": 223,
+      "vehicles": 28,
+      "density": 0.5575,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_2",
+      "people": 206,
+      "vehicles": 28,
+      "density": 0.515,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_3",
+      "people": 246,
+      "vehicles": 29,
+      "density": 0.615,
+      "level": "high",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_4",
+      "people": 226,
+      "vehicles": 22,
+      "density": 0.565,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_5",
+      "people": 208,
+      "vehicles": 23,
+      "density": 0.52,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teach_6",
+      "people": 225,
+      "vehicles": 23,
+      "density": 0.5625,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "large_classroom",
+      "people": 208,
+      "vehicles": 21,
+      "density": 0.52,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "restricted",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "eng_1",
+      "people": 77,
+      "vehicles": 12,
+      "density": 0.25666666666666665,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "eng_2",
+      "people": 92,
+      "vehicles": 9,
+      "density": 0.30666666666666664,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "eng_3",
+      "people": 97,
+      "vehicles": 13,
+      "density": 0.3233333333333333,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "eng_4",
+      "people": 96,
+      "vehicles": 12,
+      "density": 0.32,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "exp_1",
+      "people": 99,
+      "vehicles": 10,
+      "density": 0.33,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "exp_2",
+      "people": 102,
+      "vehicles": 11,
+      "density": 0.34,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "exp_3",
+      "people": 83,
+      "vehicles": 8,
+      "density": 0.27666666666666667,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "exp_4",
+      "people": 79,
+      "vehicles": 14,
+      "density": 0.2633333333333333,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "science_hall",
+      "people": 100,
+      "vehicles": 9,
+      "density": 0.3333333333333333,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "struct_center",
+      "people": 99,
+      "vehicles": 10,
+      "density": 0.33,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "env_inst",
+      "people": 89,
+      "vehicles": 11,
+      "density": 0.2966666666666667,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "biomed_inst",
+      "people": 78,
+      "vehicles": 11,
+      "density": 0.26,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_gym",
+      "people": 1,
+      "vehicles": 1,
+      "density": 0.0033333333333333335,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_swimming",
+      "people": 1,
+      "vehicles": 1,
+      "density": 0.0033333333333333335,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_fitness",
+      "people": 4,
+      "vehicles": 0,
+      "density": 0.013333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 90.0
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_cricket",
+      "people": 3,
+      "vehicles": 0,
+      "density": 0.01,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_tennis",
+      "people": 6,
+      "vehicles": 0,
+      "density": 0.02,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_volleyball",
+      "people": 4,
+      "vehicles": 0,
+      "density": 0.013333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_basketball_c",
+      "people": 3,
+      "vehicles": 0,
+      "density": 0.01,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_basketball_b",
+      "people": 4,
+      "vehicles": 1,
+      "density": 0.013333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_basketball_a",
+      "people": 4,
+      "vehicles": 0,
+      "density": 0.013333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_football",
+      "people": 7,
+      "vehicles": 1,
+      "density": 0.023333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "sports_training",
+      "people": 4,
+      "vehicles": 0,
+      "density": 0.013333333333333334,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "youth_center",
+      "people": 2,
+      "vehicles": 0,
+      "density": 0.006666666666666667,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_dorm_13_16",
+      "people": 82,
+      "vehicles": 7,
+      "density": 0.13666666666666666,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_dorm_9_12",
+      "people": 79,
+      "vehicles": 9,
+      "density": 0.13166666666666665,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_dorm_1_4",
+      "people": 75,
+      "vehicles": 14,
+      "density": 0.125,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_dorm_5_8",
+      "people": 97,
+      "vehicles": 9,
+      "density": 0.16166666666666665,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_dorm_17_18",
+      "people": 91,
+      "vehicles": 10,
+      "density": 0.15166666666666667,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "canteen_3",
+      "people": 322,
+      "vehicles": 38,
+      "density": 1.0733333333333333,
+      "level": "critical",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "closed",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "canteen_4",
+      "people": 320,
+      "vehicles": 47,
+      "density": 1.0666666666666667,
+      "level": "critical",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "closed",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "west_express",
+      "people": 139,
+      "vehicles": 23,
+      "density": 0.278,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "east_dorm_12_14",
+      "people": 88,
+      "vehicles": 10,
+      "density": 0.14666666666666667,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "east_dorm_8_11",
+      "people": 99,
+      "vehicles": 16,
+      "density": 0.165,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "east_dorm_4_7",
+      "people": 77,
+      "vehicles": 13,
+      "density": 0.12833333333333333,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "east_dorm_1_3",
+      "people": 85,
+      "vehicles": 13,
+      "density": 0.14166666666666666,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "teacher_apt",
+      "people": 71,
+      "vehicles": 6,
+      "density": 0.142,
+      "level": "low",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "hospital",
+      "people": 161,
+      "vehicles": 14,
+      "density": 0.322,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "supermarket",
+      "people": 173,
+      "vehicles": 19,
+      "density": 0.346,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "canteen_1",
+      "people": 367,
+      "vehicles": 46,
+      "density": 1.2233333333333334,
+      "level": "critical",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "closed",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 31200,
+      "timestamp": "2026-08-03 14:40:00",
+      "node_id": "canteen_2",
+      "people": 338,
+      "vehicles": 40,
+      "density": 1.1266666666666667,
+      "level": "critical",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "closed",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    }
+  ],
+  "vehicle_paths": [
+    {
+      "src": "gate_south",
+      "dst": "cross_zh_south",
+      "path": [
+        "gate_south",
+        "cross_zh_south"
+      ],
+      "travelTime": 2.12
+    },
+    {
+      "src": "gate_south",
+      "dst": "cross_zh_mid",
+      "path": [
+        "gate_south",
+        "cross_zh_south",
+        "cross_zh_mid"
+      ],
+      "travelTime": 6.75
+    },
+    {
+      "src": "gate_south",
+      "dst": "cross_zh_north",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "cross_zh_north"
+      ],
+      "travelTime": 8.47
+    },
+    {
+      "src": "gate_south",
+      "dst": "rd_guanggong_1",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "teach_1",
+        "teach_2",
+        "rd_guanggong_1"
+      ],
+      "travelTime": 7.14
+    },
+    {
+      "src": "gate_south",
+      "dst": "pedestrian_bridge",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "pedestrian_bridge"
+      ],
+      "travelTime": 6.43
+    },
+    {
+      "src": "gate_south",
+      "dst": "underpass",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass"
+      ],
+      "travelTime": 6.19
+    },
+    {
+      "src": "gate_south",
+      "dst": "admin_building",
+      "path": [
+        "gate_south",
+        "admin_building"
+      ],
+      "travelTime": 0.76
+    },
+    {
+      "src": "gate_south",
+      "dst": "auditorium",
+      "path": [
+        "gate_south",
+        "auditorium"
+      ],
+      "travelTime": 0.42
+    },
+    {
+      "src": "gate_south",
+      "dst": "library",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library"
+      ],
+      "travelTime": 3.39
+    },
+    {
+      "src": "gate_south",
+      "dst": "gongchuanggu",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu"
+      ],
+      "travelTime": 4.47
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_1",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "teach_1"
+      ],
+      "travelTime": 4.95
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_2",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "teach_1",
+        "teach_2"
+      ],
+      "travelTime": 5.75
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_3",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "teach_3"
+      ],
+      "travelTime": 4.8
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_4",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "teach_3",
+        "teach_4"
+      ],
+      "travelTime": 5.62
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_5",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "teach_5"
+      ],
+      "travelTime": 4.11
+    },
+    {
+      "src": "gate_south",
+      "dst": "teach_6",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "teach_6"
+      ],
+      "travelTime": 5.29
+    },
+    {
+      "src": "gate_south",
+      "dst": "large_classroom",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "teach_3",
+        "large_classroom"
+      ],
+      "travelTime": 5.37
+    },
+    {
+      "src": "gate_south",
+      "dst": "eng_1",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1"
+      ],
+      "travelTime": 3.24
+    },
+    {
+      "src": "gate_south",
+      "dst": "eng_2",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2"
+      ],
+      "travelTime": 2.84
+    },
+    {
+      "src": "gate_south",
+      "dst": "eng_3",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3"
+      ],
+      "travelTime": 2.44
+    },
+    {
+      "src": "gate_south",
+      "dst": "eng_4",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4"
+      ],
+      "travelTime": 2.04
+    },
+    {
+      "src": "gate_south",
+      "dst": "exp_1",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "exp_1"
+      ],
+      "travelTime": 4.24
+    },
+    {
+      "src": "gate_south",
+      "dst": "exp_2",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "exp_2"
+      ],
+      "travelTime": 3.84
+    },
+    {
+      "src": "gate_south",
+      "dst": "exp_3",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "exp_3"
+      ],
+      "travelTime": 3.44
+    },
+    {
+      "src": "gate_south",
+      "dst": "exp_4",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "exp_4"
+      ],
+      "travelTime": 3.04
+    },
+    {
+      "src": "gate_south",
+      "dst": "science_hall",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "science_hall"
+      ],
+      "travelTime": 3.21
+    },
+    {
+      "src": "gate_south",
+      "dst": "struct_center",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "exp_1",
+        "struct_center"
+      ],
+      "travelTime": 5.04
+    },
+    {
+      "src": "gate_south",
+      "dst": "env_inst",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "exp_2",
+        "env_inst"
+      ],
+      "travelTime": 4.66
+    },
+    {
+      "src": "gate_south",
+      "dst": "biomed_inst",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "science_hall",
+        "biomed_inst"
+      ],
+      "travelTime": 4.21
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_gym",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym"
+      ],
+      "travelTime": 6.95
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_swimming",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming"
+      ],
+      "travelTime": 6.25
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_fitness",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness"
+      ],
+      "travelTime": 5.21
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_cricket",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball",
+        "sports_tennis",
+        "sports_cricket"
+      ],
+      "travelTime": 7.63
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_tennis",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball",
+        "sports_tennis"
+      ],
+      "travelTime": 6.51
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_volleyball",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball"
+      ],
+      "travelTime": 5.7
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_basketball_c",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c"
+      ],
+      "travelTime": 4.88
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_basketball_b",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b"
+      ],
+      "travelTime": 4.08
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_basketball_a",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a"
+      ],
+      "travelTime": 3.48
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_football",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football"
+      ],
+      "travelTime": 3.78
+    },
+    {
+      "src": "gate_south",
+      "dst": "sports_training",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training"
+      ],
+      "travelTime": 2.48
+    },
+    {
+      "src": "gate_south",
+      "dst": "youth_center",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "youth_center"
+      ],
+      "travelTime": 5.71
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_dorm_13_16",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball",
+        "sports_tennis",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_13_16"
+      ],
+      "travelTime": 10.51
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_dorm_9_12",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8",
+        "west_dorm_9_12"
+      ],
+      "travelTime": 9.9
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_dorm_1_4",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_express",
+        "west_dorm_1_4"
+      ],
+      "travelTime": 9.63
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_dorm_5_8",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8"
+      ],
+      "travelTime": 8.88
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_dorm_17_18",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball",
+        "sports_tennis",
+        "canteen_4",
+        "west_dorm_17_18"
+      ],
+      "travelTime": 9.2
+    },
+    {
+      "src": "gate_south",
+      "dst": "canteen_3",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3"
+      ],
+      "travelTime": 8.03
+    },
+    {
+      "src": "gate_south",
+      "dst": "canteen_4",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_basketball_a",
+        "sports_basketball_b",
+        "sports_basketball_c",
+        "sports_volleyball",
+        "sports_tennis",
+        "canteen_4"
+      ],
+      "travelTime": 8.56
+    },
+    {
+      "src": "gate_south",
+      "dst": "west_express",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "sports_training",
+        "sports_football",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_express"
+      ],
+      "travelTime": 9.03
+    },
+    {
+      "src": "gate_south",
+      "dst": "east_dorm_12_14",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14"
+      ],
+      "travelTime": 7.89
+    },
+    {
+      "src": "gate_south",
+      "dst": "east_dorm_8_11",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11"
+      ],
+      "travelTime": 9.01
+    },
+    {
+      "src": "gate_south",
+      "dst": "east_dorm_4_7",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "east_dorm_4_7"
+      ],
+      "travelTime": 9.81
+    },
+    {
+      "src": "gate_south",
+      "dst": "east_dorm_1_3",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "eng_1",
+        "teach_1",
+        "teach_2",
+        "rd_guanggong_1",
+        "east_dorm_1_3"
+      ],
+      "travelTime": 8.87
+    },
+    {
+      "src": "gate_south",
+      "dst": "teacher_apt",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "hospital",
+        "teacher_apt"
+      ],
+      "travelTime": 12.53
+    },
+    {
+      "src": "gate_south",
+      "dst": "hospital",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "hospital"
+      ],
+      "travelTime": 11.31
+    },
+    {
+      "src": "gate_south",
+      "dst": "supermarket",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket"
+      ],
+      "travelTime": 10.64
+    },
+    {
+      "src": "gate_south",
+      "dst": "canteen_1",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "canteen_1"
+      ],
+      "travelTime": 11.34
+    },
+    {
+      "src": "gate_south",
+      "dst": "canteen_2",
+      "path": [
+        "gate_south",
+        "admin_building",
+        "library",
+        "gongchuanggu",
+        "underpass",
+        "canteen_2"
+      ],
+      "travelTime": 7.19
+    },
+    {
+      "src": "gate_west",
+      "dst": "cross_zh_south",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "cross_zh_south"
+      ],
+      "travelTime": 7.62
+    },
+    {
+      "src": "gate_west",
+      "dst": "cross_zh_mid",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "canteen_3",
+        "cross_zh_mid"
+      ],
+      "travelTime": 4.29
+    },
+    {
+      "src": "gate_west",
+      "dst": "cross_zh_north",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "west_dorm_1_4",
+        "cross_zh_north"
+      ],
+      "travelTime": 5.06
+    },
+    {
+      "src": "gate_west",
+      "dst": "rd_guanggong_1",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "canteen_2",
+        "east_dorm_1_3",
+        "rd_guanggong_1"
+      ],
+      "travelTime": 10.51
+    },
+    {
+      "src": "gate_west",
+      "dst": "pedestrian_bridge",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "canteen_3",
+        "sports_gym",
+        "pedestrian_bridge"
+      ],
+      "travelTime": 4.78
+    },
+    {
+      "src": "gate_west",
+      "dst": "underpass",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass"
+      ],
+      "travelTime": 5.76
+    },
+    {
+      "src": "gate_west",
+      "dst": "admin_building",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building"
+      ],
+      "travelTime": 8.3
+    },
+    {
+      "src": "gate_west",
+      "dst": "auditorium",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "auditorium"
+      ],
+      "travelTime": 9.02
+    },
+    {
+      "src": "gate_west",
+      "dst": "library",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "library"
+      ],
+      "travelTime": 8.56
+    },
+    {
+      "src": "gate_west",
+      "dst": "gongchuanggu",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu"
+      ],
+      "travelTime": 7.48
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_1",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_3",
+        "teach_1"
+      ],
+      "travelTime": 9.08
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_2",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_6",
+        "teach_4",
+        "teach_2"
+      ],
+      "travelTime": 9.7
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_3",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_3"
+      ],
+      "travelTime": 8.08
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_4",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_6",
+        "teach_4"
+      ],
+      "travelTime": 8.9
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_5",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_5"
+      ],
+      "travelTime": 7.88
+    },
+    {
+      "src": "gate_west",
+      "dst": "teach_6",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_6"
+      ],
+      "travelTime": 8.3
+    },
+    {
+      "src": "gate_west",
+      "dst": "large_classroom",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "teach_3",
+        "large_classroom"
+      ],
+      "travelTime": 8.65
+    },
+    {
+      "src": "gate_west",
+      "dst": "eng_1",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "library",
+        "eng_1"
+      ],
+      "travelTime": 10.08
+    },
+    {
+      "src": "gate_west",
+      "dst": "eng_2",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2"
+      ],
+      "travelTime": 10.38
+    },
+    {
+      "src": "gate_west",
+      "dst": "eng_3",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "eng_3"
+      ],
+      "travelTime": 9.98
+    },
+    {
+      "src": "gate_west",
+      "dst": "eng_4",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4"
+      ],
+      "travelTime": 9.58
+    },
+    {
+      "src": "gate_west",
+      "dst": "exp_1",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "library",
+        "eng_1",
+        "exp_1"
+      ],
+      "travelTime": 11.08
+    },
+    {
+      "src": "gate_west",
+      "dst": "exp_2",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "exp_2"
+      ],
+      "travelTime": 11.38
+    },
+    {
+      "src": "gate_west",
+      "dst": "exp_3",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "exp_3"
+      ],
+      "travelTime": 10.98
+    },
+    {
+      "src": "gate_west",
+      "dst": "exp_4",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "exp_4"
+      ],
+      "travelTime": 10.58
+    },
+    {
+      "src": "gate_west",
+      "dst": "science_hall",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "science_hall"
+      ],
+      "travelTime": 10.75
+    },
+    {
+      "src": "gate_west",
+      "dst": "struct_center",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "gongchuanggu",
+        "library",
+        "eng_1",
+        "exp_1",
+        "struct_center"
+      ],
+      "travelTime": 11.88
+    },
+    {
+      "src": "gate_west",
+      "dst": "env_inst",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "eng_3",
+        "eng_2",
+        "exp_2",
+        "env_inst"
+      ],
+      "travelTime": 12.2
+    },
+    {
+      "src": "gate_west",
+      "dst": "biomed_inst",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training",
+        "admin_building",
+        "eng_4",
+        "science_hall",
+        "biomed_inst"
+      ],
+      "travelTime": 11.75
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_gym",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "canteen_3",
+        "sports_gym"
+      ],
+      "travelTime": 4.11
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_swimming",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming"
+      ],
+      "travelTime": 3.55
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_fitness",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness"
+      ],
+      "travelTime": 4.59
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_cricket",
+      "path": [
+        "gate_west",
+        "sports_cricket"
+      ],
+      "travelTime": 1.55
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_tennis",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis"
+      ],
+      "travelTime": 2.55
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_volleyball",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball"
+      ],
+      "travelTime": 3.36
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_basketball_c",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c"
+      ],
+      "travelTime": 4.18
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_basketball_b",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b"
+      ],
+      "travelTime": 4.98
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_basketball_a",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a"
+      ],
+      "travelTime": 5.58
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_football",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "sports_football"
+      ],
+      "travelTime": 6.02
+    },
+    {
+      "src": "gate_west",
+      "dst": "sports_training",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_training"
+      ],
+      "travelTime": 6.58
+    },
+    {
+      "src": "gate_west",
+      "dst": "youth_center",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center"
+      ],
+      "travelTime": 5.09
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_dorm_13_16",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_13_16"
+      ],
+      "travelTime": 2.45
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_dorm_9_12",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "west_dorm_9_12"
+      ],
+      "travelTime": 3.2
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_dorm_1_4",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "west_dorm_1_4"
+      ],
+      "travelTime": 3.35
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_dorm_5_8",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8"
+      ],
+      "travelTime": 2.18
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_dorm_17_18",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18"
+      ],
+      "travelTime": 1.14
+    },
+    {
+      "src": "gate_west",
+      "dst": "canteen_3",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "canteen_3"
+      ],
+      "travelTime": 3.03
+    },
+    {
+      "src": "gate_west",
+      "dst": "canteen_4",
+      "path": [
+        "gate_west",
+        "canteen_4"
+      ],
+      "travelTime": 0.5
+    },
+    {
+      "src": "gate_west",
+      "dst": "west_express",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "west_dorm_1_4",
+        "west_express"
+      ],
+      "travelTime": 3.95
+    },
+    {
+      "src": "gate_west",
+      "dst": "east_dorm_12_14",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14"
+      ],
+      "travelTime": 7.46
+    },
+    {
+      "src": "gate_west",
+      "dst": "east_dorm_8_11",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11"
+      ],
+      "travelTime": 8.58
+    },
+    {
+      "src": "gate_west",
+      "dst": "east_dorm_4_7",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "east_dorm_4_7"
+      ],
+      "travelTime": 9.38
+    },
+    {
+      "src": "gate_west",
+      "dst": "east_dorm_1_3",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "canteen_2",
+        "east_dorm_1_3"
+      ],
+      "travelTime": 8.78
+    },
+    {
+      "src": "gate_west",
+      "dst": "teacher_apt",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "hospital",
+        "teacher_apt"
+      ],
+      "travelTime": 12.1
+    },
+    {
+      "src": "gate_west",
+      "dst": "hospital",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "hospital"
+      ],
+      "travelTime": 10.88
+    },
+    {
+      "src": "gate_west",
+      "dst": "supermarket",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket"
+      ],
+      "travelTime": 10.21
+    },
+    {
+      "src": "gate_west",
+      "dst": "canteen_1",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "supermarket",
+        "canteen_1"
+      ],
+      "travelTime": 10.91
+    },
+    {
+      "src": "gate_west",
+      "dst": "canteen_2",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "sports_tennis",
+        "sports_swimming",
+        "sports_fitness",
+        "youth_center",
+        "underpass",
+        "canteen_2"
+      ],
+      "travelTime": 6.76
+    },
+    {
+      "src": "gate_east",
+      "dst": "cross_zh_south",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "admin_building",
+        "sports_training",
+        "cross_zh_south"
+      ],
+      "travelTime": 10.62
+    },
+    {
+      "src": "gate_east",
+      "dst": "cross_zh_mid",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "cross_zh_mid"
+      ],
+      "travelTime": 7.03
+    },
+    {
+      "src": "gate_east",
+      "dst": "cross_zh_north",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "east_dorm_12_14",
+        "cross_zh_north"
+      ],
+      "travelTime": 6.51
+    },
+    {
+      "src": "gate_east",
+      "dst": "rd_guanggong_1",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1"
+      ],
+      "travelTime": 1.48
+    },
+    {
+      "src": "gate_east",
+      "dst": "pedestrian_bridge",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "pedestrian_bridge"
+      ],
+      "travelTime": 8.62
+    },
+    {
+      "src": "gate_east",
+      "dst": "underpass",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass"
+      ],
+      "travelTime": 6.23
+    },
+    {
+      "src": "gate_east",
+      "dst": "admin_building",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "admin_building"
+      ],
+      "travelTime": 7.86
+    },
+    {
+      "src": "gate_east",
+      "dst": "auditorium",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "admin_building",
+        "auditorium"
+      ],
+      "travelTime": 8.58
+    },
+    {
+      "src": "gate_east",
+      "dst": "library",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "large_classroom",
+        "teach_3",
+        "library"
+      ],
+      "travelTime": 5.52
+    },
+    {
+      "src": "gate_east",
+      "dst": "gongchuanggu",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "large_classroom",
+        "teach_3",
+        "gongchuanggu"
+      ],
+      "travelTime": 4.71
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_1",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1"
+      ],
+      "travelTime": 3.67
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_2",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2"
+      ],
+      "travelTime": 2.87
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_3",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "large_classroom",
+        "teach_3"
+      ],
+      "travelTime": 4.11
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_4",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_4"
+      ],
+      "travelTime": 3.67
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_5",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "large_classroom",
+        "teach_3",
+        "teach_5"
+      ],
+      "travelTime": 4.83
+    },
+    {
+      "src": "gate_east",
+      "dst": "teach_6",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_6"
+      ],
+      "travelTime": 3.9
+    },
+    {
+      "src": "gate_east",
+      "dst": "large_classroom",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "large_classroom"
+      ],
+      "travelTime": 3.54
+    },
+    {
+      "src": "gate_east",
+      "dst": "eng_1",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1"
+      ],
+      "travelTime": 5.38
+    },
+    {
+      "src": "gate_east",
+      "dst": "eng_2",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2"
+      ],
+      "travelTime": 5.78
+    },
+    {
+      "src": "gate_east",
+      "dst": "eng_3",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3"
+      ],
+      "travelTime": 6.18
+    },
+    {
+      "src": "gate_east",
+      "dst": "eng_4",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4"
+      ],
+      "travelTime": 6.58
+    },
+    {
+      "src": "gate_east",
+      "dst": "exp_1",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "exp_1"
+      ],
+      "travelTime": 6.38
+    },
+    {
+      "src": "gate_east",
+      "dst": "exp_2",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "exp_2"
+      ],
+      "travelTime": 6.78
+    },
+    {
+      "src": "gate_east",
+      "dst": "exp_3",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "exp_3"
+      ],
+      "travelTime": 7.18
+    },
+    {
+      "src": "gate_east",
+      "dst": "exp_4",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "exp_4"
+      ],
+      "travelTime": 7.58
+    },
+    {
+      "src": "gate_east",
+      "dst": "science_hall",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "science_hall"
+      ],
+      "travelTime": 7.75
+    },
+    {
+      "src": "gate_east",
+      "dst": "struct_center",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "exp_1",
+        "struct_center"
+      ],
+      "travelTime": 7.18
+    },
+    {
+      "src": "gate_east",
+      "dst": "env_inst",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "exp_2",
+        "env_inst"
+      ],
+      "travelTime": 7.6
+    },
+    {
+      "src": "gate_east",
+      "dst": "biomed_inst",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "exp_3",
+        "biomed_inst"
+      ],
+      "travelTime": 8.07
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_gym",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym"
+      ],
+      "travelTime": 9.14
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_swimming",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming"
+      ],
+      "travelTime": 8.44
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_fitness",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness"
+      ],
+      "travelTime": 7.4
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_cricket",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_tennis",
+        "sports_cricket"
+      ],
+      "travelTime": 10.56
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_tennis",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_tennis"
+      ],
+      "travelTime": 9.44
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_volleyball",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_volleyball"
+      ],
+      "travelTime": 9.36
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_basketball_c",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_volleyball",
+        "sports_basketball_c"
+      ],
+      "travelTime": 10.18
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_basketball_b",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_basketball_a",
+        "sports_basketball_b"
+      ],
+      "travelTime": 9.8
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_basketball_a",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_basketball_a"
+      ],
+      "travelTime": 9.2
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_football",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_football"
+      ],
+      "travelTime": 8.83
+    },
+    {
+      "src": "gate_east",
+      "dst": "sports_training",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "teach_2",
+        "teach_1",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "admin_building",
+        "sports_training"
+      ],
+      "travelTime": 9.58
+    },
+    {
+      "src": "gate_east",
+      "dst": "youth_center",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center"
+      ],
+      "travelTime": 6.9
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_dorm_13_16",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8",
+        "west_dorm_9_12",
+        "west_dorm_13_16"
+      ],
+      "travelTime": 13.09
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_dorm_9_12",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8",
+        "west_dorm_9_12"
+      ],
+      "travelTime": 12.09
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_dorm_1_4",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_express",
+        "west_dorm_1_4"
+      ],
+      "travelTime": 11.82
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_dorm_5_8",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8"
+      ],
+      "travelTime": 11.07
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_dorm_17_18",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_dorm_5_8",
+        "west_dorm_17_18"
+      ],
+      "travelTime": 12.11
+    },
+    {
+      "src": "gate_east",
+      "dst": "canteen_3",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3"
+      ],
+      "travelTime": 10.22
+    },
+    {
+      "src": "gate_east",
+      "dst": "canteen_4",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_tennis",
+        "canteen_4"
+      ],
+      "travelTime": 11.49
+    },
+    {
+      "src": "gate_east",
+      "dst": "west_express",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "underpass",
+        "youth_center",
+        "sports_fitness",
+        "sports_swimming",
+        "sports_gym",
+        "canteen_3",
+        "west_express"
+      ],
+      "travelTime": 11.22
+    },
+    {
+      "src": "gate_east",
+      "dst": "east_dorm_12_14",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2",
+        "east_dorm_12_14"
+      ],
+      "travelTime": 5.93
+    },
+    {
+      "src": "gate_east",
+      "dst": "east_dorm_8_11",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "east_dorm_4_7",
+        "east_dorm_8_11"
+      ],
+      "travelTime": 5.05
+    },
+    {
+      "src": "gate_east",
+      "dst": "east_dorm_4_7",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "east_dorm_4_7"
+      ],
+      "travelTime": 4.25
+    },
+    {
+      "src": "gate_east",
+      "dst": "east_dorm_1_3",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3"
+      ],
+      "travelTime": 3.21
+    },
+    {
+      "src": "gate_east",
+      "dst": "teacher_apt",
+      "path": [
+        "gate_east",
+        "canteen_1",
+        "supermarket",
+        "hospital",
+        "teacher_apt"
+      ],
+      "travelTime": 6.9
+    },
+    {
+      "src": "gate_east",
+      "dst": "hospital",
+      "path": [
+        "gate_east",
+        "canteen_1",
+        "supermarket",
+        "hospital"
+      ],
+      "travelTime": 5.68
+    },
+    {
+      "src": "gate_east",
+      "dst": "supermarket",
+      "path": [
+        "gate_east",
+        "canteen_1",
+        "supermarket"
+      ],
+      "travelTime": 5.01
+    },
+    {
+      "src": "gate_east",
+      "dst": "canteen_1",
+      "path": [
+        "gate_east",
+        "canteen_1"
+      ],
+      "travelTime": 4.31
+    },
+    {
+      "src": "gate_east",
+      "dst": "canteen_2",
+      "path": [
+        "gate_east",
+        "rd_guanggong_1",
+        "east_dorm_1_3",
+        "canteen_2"
+      ],
+      "travelTime": 5.23
+    }
+  ],
+  "predict_network": [
+    {
+      "node_id": "gate_south",
+      "pagerank": 0.003636,
+      "betweenness": 0.0011,
+      "heatScore": 1.5,
+      "rank": 58
+    },
+    {
+      "node_id": "gate_west",
+      "pagerank": 0.010631,
+      "betweenness": 0.0,
+      "heatScore": 4.2,
+      "rank": 51
+    },
+    {
+      "node_id": "gate_east",
+      "pagerank": 0.002649,
+      "betweenness": 0.0,
+      "heatScore": 1.0,
+      "rank": 60
+    },
+    {
+      "node_id": "cross_zh_south",
+      "pagerank": 0.008505,
+      "betweenness": 0.0,
+      "heatScore": 3.4,
+      "rank": 54
+    },
+    {
+      "node_id": "cross_zh_mid",
+      "pagerank": 0.126816,
+      "betweenness": 0.0,
+      "heatScore": 50.0,
+      "rank": 3
+    },
+    {
+      "node_id": "cross_zh_north",
+      "pagerank": 0.126016,
+      "betweenness": 0.339,
+      "heatScore": 67.0,
+      "rank": 1
+    },
+    {
+      "node_id": "rd_guanggong_1",
+      "pagerank": 0.011772,
+      "betweenness": 0.2972,
+      "heatScore": 19.9,
+      "rank": 13
+    },
+    {
+      "node_id": "pedestrian_bridge",
+      "pagerank": 0.006897,
+      "betweenness": 0.0621,
+      "heatScore": 5.9,
+      "rank": 47
+    },
+    {
+      "node_id": "underpass",
+      "pagerank": 0.005244,
+      "betweenness": 0.9153,
+      "heatScore": 48.9,
+      "rank": 4
+    },
+    {
+      "node_id": "admin_building",
+      "pagerank": 0.012577,
+      "betweenness": 0.7514,
+      "heatScore": 43.4,
+      "rank": 7
+    },
+    {
+      "node_id": "auditorium",
+      "pagerank": 0.003066,
+      "betweenness": 0.0,
+      "heatScore": 1.2,
+      "rank": 59
+    },
+    {
+      "node_id": "library",
+      "pagerank": 0.040227,
+      "betweenness": 0.0,
+      "heatScore": 15.9,
+      "rank": 21
+    },
+    {
+      "node_id": "gongchuanggu",
+      "pagerank": 0.027087,
+      "betweenness": 0.1119,
+      "heatScore": 16.4,
+      "rank": 20
+    },
+    {
+      "node_id": "teach_1",
+      "pagerank": 0.028639,
+      "betweenness": 0.0,
+      "heatScore": 11.3,
+      "rank": 28
+    },
+    {
+      "node_id": "teach_2",
+      "pagerank": 0.018247,
+      "betweenness": 0.0,
+      "heatScore": 7.2,
+      "rank": 39
+    },
+    {
+      "node_id": "teach_3",
+      "pagerank": 0.047837,
+      "betweenness": 0.0,
+      "heatScore": 18.9,
+      "rank": 15
+    },
+    {
+      "node_id": "teach_4",
+      "pagerank": 0.025292,
+      "betweenness": 0.0,
+      "heatScore": 10.0,
+      "rank": 33
+    },
+    {
+      "node_id": "teach_5",
+      "pagerank": 0.027862,
+      "betweenness": 0.0,
+      "heatScore": 11.0,
+      "rank": 30
+    },
+    {
+      "node_id": "teach_6",
+      "pagerank": 0.027023,
+      "betweenness": 0.0,
+      "heatScore": 10.7,
+      "rank": 31
+    },
+    {
+      "node_id": "large_classroom",
+      "pagerank": 0.020377,
+      "betweenness": 0.0667,
+      "heatScore": 11.4,
+      "rank": 27
+    },
+    {
+      "node_id": "eng_1",
+      "pagerank": 0.010117,
+      "betweenness": 0.1266,
+      "heatScore": 10.5,
+      "rank": 32
+    },
+    {
+      "node_id": "eng_2",
+      "pagerank": 0.009115,
+      "betweenness": 0.1672,
+      "heatScore": 12.2,
+      "rank": 26
+    },
+    {
+      "node_id": "eng_3",
+      "pagerank": 0.010212,
+      "betweenness": 0.2158,
+      "heatScore": 15.1,
+      "rank": 22
+    },
+    {
+      "node_id": "eng_4",
+      "pagerank": 0.013966,
+      "betweenness": 0.6362,
+      "heatScore": 38.1,
+      "rank": 9
+    },
+    {
+      "node_id": "exp_1",
+      "pagerank": 0.008556,
+      "betweenness": 0.0655,
+      "heatScore": 6.7,
+      "rank": 40
+    },
+    {
+      "node_id": "exp_2",
+      "pagerank": 0.014226,
+      "betweenness": 0.165,
+      "heatScore": 14.1,
+      "rank": 23
+    },
+    {
+      "node_id": "exp_3",
+      "pagerank": 0.01484,
+      "betweenness": 0.2226,
+      "heatScore": 17.3,
+      "rank": 18
+    },
+    {
+      "node_id": "exp_4",
+      "pagerank": 0.009923,
+      "betweenness": 0.252,
+      "heatScore": 16.8,
+      "rank": 19
+    },
+    {
+      "node_id": "science_hall",
+      "pagerank": 0.013499,
+      "betweenness": 0.0497,
+      "heatScore": 7.9,
+      "rank": 38
+    },
+    {
+      "node_id": "struct_center",
+      "pagerank": 0.008179,
+      "betweenness": 0.0,
+      "heatScore": 3.2,
+      "rank": 55
+    },
+    {
+      "node_id": "env_inst",
+      "pagerank": 0.011978,
+      "betweenness": 0.0023,
+      "heatScore": 4.8,
+      "rank": 50
+    },
+    {
+      "node_id": "biomed_inst",
+      "pagerank": 0.013638,
+      "betweenness": 0.0023,
+      "heatScore": 5.5,
+      "rank": 48
+    },
+    {
+      "node_id": "sports_gym",
+      "pagerank": 0.004965,
+      "betweenness": 0.0136,
+      "heatScore": 2.7,
+      "rank": 57
+    },
+    {
+      "node_id": "sports_swimming",
+      "pagerank": 0.015443,
+      "betweenness": 0.2226,
+      "heatScore": 17.5,
+      "rank": 17
+    },
+    {
+      "node_id": "sports_fitness",
+      "pagerank": 0.013659,
+      "betweenness": 0.9763,
+      "heatScore": 55.4,
+      "rank": 2
+    },
+    {
+      "node_id": "sports_cricket",
+      "pagerank": 0.01663,
+      "betweenness": 0.0621,
+      "heatScore": 9.7,
+      "rank": 34
+    },
+    {
+      "node_id": "sports_tennis",
+      "pagerank": 0.015792,
+      "betweenness": 0.122,
+      "heatScore": 12.5,
+      "rank": 24
+    },
+    {
+      "node_id": "sports_volleyball",
+      "pagerank": 0.013904,
+      "betweenness": 0.1107,
+      "heatScore": 11.2,
+      "rank": 29
+    },
+    {
+      "node_id": "sports_basketball_c",
+      "pagerank": 0.010286,
+      "betweenness": 0.0972,
+      "heatScore": 9.0,
+      "rank": 36
+    },
+    {
+      "node_id": "sports_basketball_b",
+      "pagerank": 0.008299,
+      "betweenness": 0.1141,
+      "heatScore": 9.1,
+      "rank": 35
+    },
+    {
+      "node_id": "sports_basketball_a",
+      "pagerank": 0.01015,
+      "betweenness": 0.1627,
+      "heatScore": 12.3,
+      "rank": 25
+    },
+    {
+      "node_id": "sports_football",
+      "pagerank": 0.006782,
+      "betweenness": 0.6429,
+      "heatScore": 35.6,
+      "rank": 10
+    },
+    {
+      "node_id": "sports_training",
+      "pagerank": 0.006982,
+      "betweenness": 0.7571,
+      "heatScore": 41.5,
+      "rank": 8
+    },
+    {
+      "node_id": "youth_center",
+      "pagerank": 0.00343,
+      "betweenness": 0.8667,
+      "heatScore": 45.7,
+      "rank": 6
+    },
+    {
+      "node_id": "west_dorm_13_16",
+      "pagerank": 0.009295,
+      "betweenness": 0.0,
+      "heatScore": 3.7,
+      "rank": 53
+    },
+    {
+      "node_id": "west_dorm_9_12",
+      "pagerank": 0.008146,
+      "betweenness": 0.061,
+      "heatScore": 6.3,
+      "rank": 46
+    },
+    {
+      "node_id": "west_dorm_1_4",
+      "pagerank": 0.009195,
+      "betweenness": 0.2927,
+      "heatScore": 18.6,
+      "rank": 16
+    },
+    {
+      "node_id": "west_dorm_5_8",
+      "pagerank": 0.008511,
+      "betweenness": 0.061,
+      "heatScore": 6.5,
+      "rank": 41
+    },
+    {
+      "node_id": "west_dorm_17_18",
+      "pagerank": 0.009302,
+      "betweenness": 0.0,
+      "heatScore": 3.7,
+      "rank": 52
+    },
+    {
+      "node_id": "canteen_3",
+      "pagerank": 0.016393,
+      "betweenness": 0.0,
+      "heatScore": 6.5,
+      "rank": 42
+    },
+    {
+      "node_id": "canteen_4",
+      "pagerank": 0.016393,
+      "betweenness": 0.0,
+      "heatScore": 6.5,
+      "rank": 43
+    },
+    {
+      "node_id": "west_express",
+      "pagerank": 0.002462,
+      "betweenness": 0.0,
+      "heatScore": 1.0,
+      "rank": 61
+    },
+    {
+      "node_id": "east_dorm_12_14",
+      "pagerank": 0.004876,
+      "betweenness": 0.8565,
+      "heatScore": 45.8,
+      "rank": 5
+    },
+    {
+      "node_id": "east_dorm_8_11",
+      "pagerank": 0.009203,
+      "betweenness": 0.5537,
+      "heatScore": 32.0,
+      "rank": 11
+    },
+    {
+      "node_id": "east_dorm_4_7",
+      "pagerank": 0.005983,
+      "betweenness": 0.3797,
+      "heatScore": 21.8,
+      "rank": 12
+    },
+    {
+      "node_id": "east_dorm_1_3",
+      "pagerank": 0.005559,
+      "betweenness": 0.3333,
+      "heatScore": 19.3,
+      "rank": 14
+    },
+    {
+      "node_id": "teacher_apt",
+      "pagerank": 0.004855,
+      "betweenness": 0.0158,
+      "heatScore": 2.7,
+      "rank": 56
+    },
+    {
+      "node_id": "hospital",
+      "pagerank": 0.004439,
+      "betweenness": 0.0621,
+      "heatScore": 4.9,
+      "rank": 49
+    },
+    {
+      "node_id": "supermarket",
+      "pagerank": 0.007625,
+      "betweenness": 0.1062,
+      "heatScore": 8.4,
+      "rank": 37
+    },
+    {
+      "node_id": "canteen_1",
+      "pagerank": 0.016393,
+      "betweenness": 0.0,
+      "heatScore": 6.5,
+      "rank": 44
+    },
+    {
+      "node_id": "canteen_2",
+      "pagerank": 0.016393,
+      "betweenness": 0.0,
+      "heatScore": 6.5,
+      "rank": 45
+    }
+  ],
+  "predict_hotspots": [
+    {
+      "region": "living_1",
+      "nodeIds": [
+        "gate_west",
+        "cross_zh_south",
+        "cross_zh_mid",
+        "cross_zh_north",
+        "pedestrian_bridge",
+        "underpass",
+        "sports_gym",
+        "sports_swimming",
+        "sports_fitness",
+        "sports_cricket",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_football",
+        "sports_training",
+        "youth_center",
+        "west_dorm_13_16",
+        "west_dorm_9_12",
+        "west_dorm_1_4",
+        "west_dorm_5_8",
+        "west_dorm_17_18",
+        "canteen_3",
+        "canteen_4",
+        "west_express",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "east_dorm_4_7",
+        "east_dorm_1_3",
+        "teacher_apt",
+        "hospital",
+        "supermarket",
+        "canteen_1",
+        "canteen_2"
+      ],
+      "attractScore": 100.0
+    },
+    {
+      "region": "lab_1",
+      "nodeIds": [
+        "gate_south",
+        "admin_building",
+        "auditorium",
+        "eng_1",
+        "eng_2",
+        "eng_3",
+        "eng_4",
+        "exp_1",
+        "exp_2",
+        "exp_3",
+        "exp_4",
+        "science_hall",
+        "struct_center",
+        "env_inst",
+        "biomed_inst"
+      ],
+      "attractScore": 30.9
+    },
+    {
+      "region": "academic_1",
+      "nodeIds": [
+        "gate_east",
+        "rd_guanggong_1",
+        "library",
+        "gongchuanggu",
+        "teach_1",
+        "teach_2",
+        "teach_3",
+        "teach_4",
+        "teach_5",
+        "teach_6",
+        "large_classroom"
+      ],
+      "attractScore": 20.8
+    }
+  ],
+  "prediction": {
+    "timestamp": "2026-08-03 14:40:00",
+    "period": {
+      "start": "2026-08-03 14:40:10",
+      "end": "2026-08-03 14:40:30"
+    },
+    "density_stats": {
+      "admin_building": 0.023499999195337296,
+      "auditorium": 0.03099999949336052,
+      "biomed_inst": 0.2522999942302704,
+      "canteen_1": 0.5562999844551086,
+      "canteen_2": 0.5527999997138977,
+      "canteen_3": 0.5454000234603882,
+      "canteen_4": 0.5357000231742859,
+      "cross_zh_mid": 0.0012000000569969416,
+      "cross_zh_north": 0.009100000374019146,
+      "cross_zh_south": 0.0010000000474974513,
+      "east_dorm_12_14": 0.16439999639987946,
+      "east_dorm_1_3": 0.1534000039100647,
+      "east_dorm_4_7": 0.14169999957084656,
+      "east_dorm_8_11": 0.1809999942779541,
+      "eng_1": 0.2460000067949295,
+      "eng_2": 0.28540000319480896,
+      "eng_3": 0.30489999055862427,
+      "eng_4": 0.2847999930381775,
+      "env_inst": 0.27720001339912415,
+      "exp_1": 0.29980000853538513,
+      "exp_2": 0.31139999628067017,
+      "exp_3": 0.2644999921321869,
+      "exp_4": 0.2590999901294708,
+      "gate_east": 0.0,
+      "gate_south": 0.0,
+      "gate_west": 0.0,
+      "gongchuanggu": 0.45730000734329224,
+      "hospital": 0.31200000643730164,
+      "large_classroom": 0.47540000081062317,
+      "library": 0.46369999647140503,
+      "pedestrian_bridge": 0.0005000000237487257,
+      "rd_guanggong_1": 0.0005000000237487257,
+      "science_hall": 0.32249999046325684,
+      "sports_basketball_a": 0.018400000408291817,
+      "sports_basketball_b": 0.016499999910593033,
+      "sports_basketball_c": 0.012600000016391277,
+      "sports_cricket": 0.012000000104308128,
+      "sports_fitness": 0.013899999670684338,
+      "sports_football": 0.025299999862909317,
+      "sports_gym": 0.004399999976158142,
+      "sports_swimming": 0.004399999976158142,
+      "sports_tennis": 0.02329999953508377,
+      "sports_training": 0.016100000590085983,
+      "sports_volleyball": 0.0142000000923872,
+      "struct_center": 0.3025999963283539,
+      "supermarket": 0.33340001106262207,
+      "teach_1": 0.49729999899864197,
+      "teach_2": 0.46799999475479126,
+      "teach_3": 0.5078999996185303,
+      "teach_4": 0.4941999912261963,
+      "teach_5": 0.4668999910354614,
+      "teach_6": 0.5002999901771545,
+      "teacher_apt": 0.15520000457763672,
+      "underpass": 0.0005000000237487257,
+      "west_dorm_13_16": 0.15449999272823334,
+      "west_dorm_17_18": 0.16380000114440918,
+      "west_dorm_1_4": 0.13600000739097595,
+      "west_dorm_5_8": 0.17970000207424164,
+      "west_dorm_9_12": 0.1445000022649765,
+      "west_express": 0.2696000039577484,
+      "youth_center": 0.009100000374019146
+    }
+  },
+  "alerts": []
+}

@@ -77,36 +77,63 @@ def plot_speed_delay_bar(stats_idm, stats_cav, out_dir):
 
 # ===========================================================================
 def plot_space_time(topo, frames_idm, frames_cav, out_dir):
-    """双车道时空图:横轴时间、纵轴里程;A 车道橙色、B 车道蓝色;
-    汇合点 s_merge 处横线,排队的水平深色段清晰可见。"""
+    """时空轨迹图(仿照 cav_mas 的 space_time):横轴时间、纵轴里程,
+    轨迹按车速 RdYlGn 着色(红=低速蠕动 绿=高速行驶);合流区红色色带 +
+    地标点线 + 右侧色条。"""
     last_active = max(
         [i for i in range(len(frames_idm)) if frames_idm[i]]
         + [i for i in range(len(frames_cav)) if frames_cav[i]]
     ) + 20
 
+    landmarks = [(0.0, "入口"), (topo.total_length, "出口")]
+
     fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True, constrained_layout=True)
-    notes = ["主路优先：汇入车排队停车", "时隙协同：到点即插不停车"]
+    notes = ["人工驾驶：合流区减速蠕行找空档", "时隙协同：到点即插、全程不停车"]
     for ax, frames, title, note in zip(
         axes, [frames_idm, frames_cav],
-        ["IDM 对照组：60° 汇合口停车排队（B 车道）", "CAV 实验组：时隙分配平滑汇合"],
+        ["IDM 对照组：合流口减速蠕行抢空档", "CAV 实验组：时隙分配平滑汇合"],
         notes,
     ):
         by_vid = {}
         for t, fr in enumerate(frames):
             for vid, lane, s, v in fr:
-                by_vid.setdefault(vid, []).append((t, s, v, lane))
-        for vid, pts in by_vid.items():
-            pts = np.array(pts, dtype=object)
-            lane = pts[0, 3]
-            color = _COLOR_A if lane == "A" else _COLOR_B
-            ax.plot(pts[:, 0].astype(float), pts[:, 1].astype(float),
-                    color=color, lw=1.0, alpha=0.65, zorder=3)
+                # 按 id 抽样(隔一辆取一辆),避免轨迹过密糊成一团
+                if int(vid.split('_')[-1]) % 2 == 0:
+                    by_vid.setdefault(vid, []).append((t, s, v))
+        segs, cols = [], []
+        for pts in by_vid.values():
+            pts = np.array(pts)
+            for i in range(len(pts) - 1):
+                segs.append([(pts[i, 0], pts[i, 1]), (pts[i + 1, 0], pts[i + 1, 1])])
+                cols.append(float((pts[i, 2] + pts[i + 1, 2]) / 2))
+        if segs:
+            lc = LineCollection(segs, cmap="RdYlGn",
+                                norm=plt.Normalize(0.0, topo.v_road),
+                                linewidths=1.0, alpha=0.7, zorder=3)
+            lc.set_array(cols)
+            ax.add_collection(lc)
         if note:
-            ax.text(6, topo.total_length - 20, note, fontsize=10, fontweight="bold",
-                    color=_COLOR_B, ha="left", zorder=5)
-        # 汇合点与车道分界
+            ax.text(6, topo.total_length - 30, note, fontsize=10, fontweight="bold",
+                    color=_COLOR_B, ha="left", zorder=5,
+                    bbox=dict(facecolor="white", alpha=0.8, edgecolor="none", pad=1.5))
+        # 1. 地标点线(入口 / 出口,白底文字防遮挡)
+        for s0, name in landmarks:
+            ax.axhline(s0, color="#888888", ls=":", lw=0.9, zorder=1)
+            y_txt = s0 - 15 if s0 >= topo.total_length - 10 else s0 + 4
+            ax.text(2, y_txt, f"{name} {s0:.0f}m", ha="left", va="bottom",
+                    fontsize=9, color="#333333", zorder=5,
+                    bbox=dict(facecolor="white", alpha=0.8, edgecolor="none", pad=1.5))
+        # 2. 合流区色带 + 虚线边界
+        ax.axhspan(topo.zone_lo, topo.zone_hi, color="r", alpha=0.12, zorder=2)
+        ax.axhline(topo.zone_lo, ls="--", color="r", lw=0.8, zorder=2)
+        ax.axhline(topo.zone_hi, ls="--", color="r", lw=0.8, zorder=2)
+        ax.text(last_active - 5, topo.zone_hi - 8, "合流区", color="r", fontsize=9,
+                ha="right", zorder=4,
+                bbox=dict(facecolor="white", alpha=0.6, edgecolor="none", pad=1))
+        # 3. 汇合点线
         ax.axhline(topo.s_merge, color="#d43a2f", ls="--", lw=1.2, zorder=2)
-        ax.text(2, topo.s_merge + 4, "60° 汇合点", color="#d43a2f", fontsize=9, zorder=5,
+        ax.text(2, topo.s_merge - 6, f"60° 汇合点 {topo.s_merge:.0f}m", color="#d43a2f",
+                fontsize=9, zorder=5,
                 bbox=dict(facecolor="white", alpha=0.8, edgecolor="none", pad=1))
         ax.set_xlim(0, last_active)
         ax.set_ylim(-6, topo.total_length + 6)
@@ -114,10 +141,12 @@ def plot_space_time(topo, frames_idm, frames_cav, out_dir):
         ax.set_ylabel("里程 / m")
         ax.set_title(title)
         ax.grid(alpha=0.3)
-        ax.text(0.99, 0.02, "橙色=A车道 蓝色=B车道",
+        ax.text(0.99, 0.02, "颜色=车速｜红=低速蠕动｜绿=高速行驶",
                 transform=ax.transAxes, ha="right", fontsize=8.5, color="#444444",
                 bbox=dict(facecolor="white", alpha=0.75, edgecolor="none", pad=2),
                 zorder=6)
+    fig.colorbar(ScalarMappable(norm=plt.Normalize(0.0, topo.v_road), cmap="RdYlGn"),
+                 ax=axes, shrink=0.75, label="速度 m/s", pad=0.02)
     fig.savefig(os.path.join(out_dir, "merge_space_time.png"), dpi=150)
     plt.close(fig)
 

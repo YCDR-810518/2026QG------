@@ -407,6 +407,7 @@ class DensityPredictor:
         patience: int = 10,
         feature_names: Optional[List[str]] = None,
         validation_data: Optional[Tuple[np.ndarray, np.ndarray]] = None,
+        init_from: bool = False,
         verbose: bool = True,
         **fit_params,
     ) -> "DensityPredictor":
@@ -443,8 +444,27 @@ class DensityPredictor:
         n_feat, n_nodes = self._validate_input(X, y, fit=True)
         self.feature_names_ = feature_names
 
-        # 构建 / 重建模型
-        self._build_model(n_feat)
+        if init_from:
+            # 增量训练：复用现有模型参数，不重建
+            if self.model_ is None or not self.is_fitted_:
+                raise RuntimeError(
+                    "init_from=True 但当前没有已训练的模型，"
+                    "请先 load 已训练模型或先 fit 一次"
+                )
+            # 校验模型结构匹配
+            if getattr(self.model_, "window_size", None) != self.window_size or \
+               getattr(self.model_, "pred_horizon", None) != self.pred_horizon or \
+               self._n_features != n_feat:
+                raise ValueError(
+                    "增量训练要求模型结构与新数据一致："
+                    f"当前 window={getattr(self.model_, 'window_size', '?')}, "
+                    f"pred={getattr(self.model_, 'pred_horizon', '?')}, "
+                    f"feat={self._n_features}；新数据 window={self.window_size}, "
+                    f"pred={self.pred_horizon}, feat={n_feat}"
+                )
+        else:
+            # 从零训练：重建模型
+            self._build_model(n_feat)
 
         # ---- 划分训练/验证集（按时间顺序，避免未来信息泄露） ----
         if validation_data is not None:
@@ -667,28 +687,39 @@ class DensityPredictor:
 # ============================================================================
 
 
+# 绝对拥堵阈值唯一来源（low/medium/high/critical），与 CSV level 列口径一致
+# （simulation 版从 metrics.py 引入，此处内联避免跨目录依赖）
+LEVEL_THRESHOLDS = (0.3, 0.6, 0.9)
+
+_SEV_RANK = {"L1": 1, "L2": 2, "L3": 3}  # 事件等级排序（用于升级判定）
+
+
 class CongestionDetector:
     """
-    园区异常检测器（MindSpore 版）
+    园区异常检测器
 
-    基于统计基线实现三类异常检测：
-      1. 异常拥堵 — 密度超历史分位数 + 预测残差验证
-      2. 人员滞留 — 密度变化率持续低于阈值
+    基于统计基线 + 绝对密度阈值实现三类异常检测：
+      1. 异常拥堵 — 绝对密度阈值（与 metrics.LEVEL_THRESHOLDS 对齐）+ 连续帧确认
+      2. 人员滞留 — 密度不低于下限且变化率持续低于阈值
       3. 门闸异常 — 状态码故障 / 流速异常 / 响应失灵
-
-    注意：本类只使用 numpy，不涉及 MindSpore 张量，因此与原 PyTorch 版
-    逻辑完全一致、无需改动。
 
     Parameters
     ----------
-    density_percentile : float, default=95.0
-        拥堵判定的密度分位数（P95）。
+    abs_levels : tuple of float, default=metrics.LEVEL_THRESHOLDS (0.3, 0.6, 0.9)
+        拥堵绝对阈值档位：L1 关注 ≥ 0.3（medium）/ L2 预警 ≥ 0.6（high）/
+        L3 严重 ≥ 0.9（critical），与 CSV level 列口径完全一致。
+    confirm_frames : int, default=3
+        触发/解除报警所需的连续帧数（帧 = 每次 check_alerts 调用）。
+    exit_ratio : float, default=0.6
+        报警退出阈值 = 当前等级触发阈值 × exit_ratio（滞回，避免临界抖动反复触发）。
+    loitering_density_min : float, default=0.5
+        滞留判定的绝对密度下限：低于该值（含空节点）直接跳过，不报滞留。
     loitering_duration : int, default=5
-        滞留判定所需的最小连续帧数（分钟）。
+        滞留判定所需的最小连续帧数。
     loitering_rate_threshold : float, default=0.01
-        滞留判定的密度变化率阈值（人/m²/分钟）。
+        滞留判定的密度变化率阈值。
     sigma_threshold : float, default=2.0
-        残差异常阈值（σ 倍数），用于拥堵确认。
+        保留参数（历史兼容，不再参与拥堵判定）。
     gate_flow_sigma : float, default=3.0
         门闸流速异常的 σ 倍数。
     density_feature_idx : int, default=0
@@ -697,6 +728,17 @@ class CongestionDetector:
         门闸状态码在 X 中的列索引。
     gate_flow_feature_idx : int, default=4
         门闸流速在 X 中的列索引。
+    min_p95_threshold : float, default=0.05
+        保留参数（历史兼容，低活跃节点过滤已改为绝对口径）。
+
+    Attributes
+    ----------
+    is_fitted_ : bool
+    node_stats_ : dict
+        以 node 索引为 key 的统计量字典（仅供事件详情展示，不参与触发）。
+        {"0": {"density_mean", "density_std", "density_p85", "density_p95",
+               "gate_flow_mean", "gate_flow_std", "density_change_mean",
+               "density_change_std"}, ...}
     """
 
     def __init__(
@@ -709,20 +751,38 @@ class CongestionDetector:
         density_feature_idx: int = 0,
         gate_status_feature_idx: int = 3,
         gate_flow_feature_idx: int = 4,
+        min_p95_threshold: float = 0.05,
+        abs_levels: Tuple[float, ...] = LEVEL_THRESHOLDS,
+        confirm_frames: int = 3,
+        exit_ratio: float = 0.6,
+        loitering_density_min: float = 0.5,
     ):
         if not 50.0 <= density_percentile <= 100.0:
             raise ValueError(f"density_percentile 应在 [50, 100]，收到 {density_percentile}")
         if loitering_duration < 1:
             raise ValueError(f"loitering_duration 应 ≥ 1，收到 {loitering_duration}")
+        if confirm_frames < 1:
+            raise ValueError(f"confirm_frames 应 ≥ 1，收到 {confirm_frames}")
+        if not 0.0 < exit_ratio < 1.0:
+            raise ValueError(f"exit_ratio 应在 (0, 1)，收到 {exit_ratio}")
 
         self.density_percentile = density_percentile
         self.loitering_duration = loitering_duration
         self.loitering_rate_threshold = loitering_rate_threshold
         self.sigma_threshold = sigma_threshold
+        self.min_p95_threshold = min_p95_threshold
         self.gate_flow_sigma = gate_flow_sigma
         self.density_feature_idx = density_feature_idx
         self.gate_status_feature_idx = gate_status_feature_idx
         self.gate_flow_feature_idx = gate_flow_feature_idx
+
+        # ---- 绝对拥堵阈值（触发档位，与 metrics.LEVEL_THRESHOLDS 对齐） ----
+        self.abs_levels = tuple(float(x) for x in abs_levels)
+        if len(self.abs_levels) != 3 or any(x <= 0 for x in self.abs_levels):
+            raise ValueError(f"abs_levels 应为 3 个正阈值 (L1, L2, L3)，收到 {self.abs_levels}")
+        self.confirm_frames = int(confirm_frames)
+        self.exit_ratio = float(exit_ratio)
+        self.loitering_density_min = float(loitering_density_min)
 
         # 拟合后填充
         self.is_fitted_ = False
@@ -732,8 +792,10 @@ class CongestionDetector:
 
         # 运行时状态（跨 predict 调用持续追踪）
         self._loitering_counter: Dict[str, int] = {}    # node_idx → 连续低流速帧数
-        self._congestion_counter: Dict[str, int] = {}   # node_idx → 连续拥堵帧数
-        self._alerted_events: set = set()                # 已告警事件去重
+        self._congestion_counter: Dict[str, int] = {}   # node_idx → 连续超阈值帧数
+        self._active_episodes: Dict[Tuple[int, str], dict] = {}  # (node_idx,type) → {severity, below_frames}
+        self._node_max_density: Dict[str, float] = {}   # node_idx → 当前运行累计最大密度
+        self._alerted_events: set = set()                # 门闸异常一次性去重（持续性故障）
 
     # ------------------------------------------------------------------
     # 拟合
@@ -828,11 +890,39 @@ class CongestionDetector:
         """重置运行时追踪状态"""
         self._loitering_counter = {}
         self._congestion_counter = {}
+        self._active_episodes = {}
+        self._node_max_density = {}
         self._alerted_events.clear()
 
     # ------------------------------------------------------------------
     # 三类异常检测
     # ------------------------------------------------------------------
+
+    def _threshold_of(self, severity: str) -> float:
+        """按等级返回绝对触发阈值（L1/L2/L3 → abs_levels 对应档位）。"""
+        rank = {"L1": 0, "L2": 1, "L3": 2}.get(severity, 2)
+        return float(self.abs_levels[rank])
+
+    def _make_congestion_event(self, node_i, level, trigger, density, stats, X_pred):
+        """组装拥堵事件（绝对阈值口径，预测仅用于预计持续时长）。"""
+        duration_est = None
+        if X_pred is not None:
+            pred_series = X_pred[node_i, 1:]  # 未来几步
+            below_mask = pred_series < self.abs_levels[0]  # 回落到 L1 以下视为结束
+            if np.any(below_mask):
+                duration_est = int(np.argmax(below_mask)) + 1  # 帧后回落
+        return {
+            "type": "congestion",
+            "node_id": node_i,
+            "severity": level,
+            "current_density": round(density, 4),
+            "threshold_abs": round(trigger, 4),
+            "threshold_p85": round(stats.get("density_p85", 0.0), 4),
+            "threshold_p95": round(stats.get("density_p95", 0.0), 4),
+            "exceed_ratio": round(density / max(trigger, 1e-6), 2),
+            "predicted_duration_min": duration_est,
+            "timestamp": None,  # 由调用方填入
+        }
 
     def _detect_congestion(
         self,
@@ -840,103 +930,163 @@ class CongestionDetector:
         X_pred: Optional[np.ndarray],
     ) -> List[dict]:
         """
-        检测异常拥堵。
+        检测异常拥堵（绝对密度阈值，与 metrics.LEVEL_THRESHOLDS 对齐）。
 
         current_density: (n_nodes,) 当前密度
-        X_pred: (n_nodes, pred_horizon) DensityPredictor 输出（可为 None）
+        X_pred: (n_nodes, pred_horizon) DensityPredictor 输出（可为 None），
+                仅用于估算预计持续时长，**不参与触发判定**（避免模型偏差
+                导致漏报/误报）。
+
+        等级判定：
+          - L1（关注）：密度 ≥ 0.3（medium）
+          - L2（预警）：密度 ≥ 0.6（high）
+          - L3（严重）：密度 ≥ 0.9（critical，density 可 >1 过载，天然覆盖）
+
+        防误报 / 防重复 / 防漏报：
+          - 低活跃节点过滤：当前运行累计最大密度 < L1 阈值（0.3）的节点跳过
+            （天桥/地下通道等天然空节点）；累计值随运行实时更新，
+            不会卡死正在上涨的节点（不漏报）
+          - 连续 confirm_frames 帧确认，过滤瞬时抖动（不乱报）
+          - 事件状态机：同一 (node, type) 报警持续期间同等级不重复发；
+            升级（L1→L2→L3）才发新事件；密度**掉出该事件当前档位**
+            （L2 事件密度 <0.6、L3 事件 <0.9）持续 confirm_frames 帧后解除，
+            之后可重新触发——保证早/午/晚每个高峰都能独立报警，
+            同时持续拥堵期间不重复（一次拥堵一条，不"终身禁报"）。
         """
+        l1, l2, l3 = self.abs_levels
+
         events = []
         for node_i in range(self.n_nodes_):
-            stats = self.node_stats_[str(node_i)]
+            stats = self.node_stats_.get(str(node_i), {})
             density = float(current_density[node_i])
+            key = str(node_i)
+            ep_key = (node_i, "congestion")
 
-            # 条件 1：超过历史分位数
-            if density <= stats["density_p95"]:
-                self._congestion_counter[str(node_i)] = 0
+            # ---- 运行期累计最大密度（低活跃节点过滤，绝对口径） ----
+            self._node_max_density[key] = max(self._node_max_density.get(key, 0.0), density)
+            if self._node_max_density[key] < l1:
+                self._congestion_counter[key] = 0
                 continue
 
-            # 条件 2（可选）：超过预测值 + 2σ
-            if X_pred is not None:
-                pred_now = float(X_pred[node_i, 0])  # 预测的第一步即为"此刻"
-                threshold = pred_now + self.sigma_threshold * max(stats["density_std"], 1e-6)
-                if density <= threshold:
-                    self._congestion_counter[str(node_i)] = 0
-                    continue
+            # ---- 当前绝对档位 ----
+            if density >= l3:
+                level, trigger = "L3", l3
+            elif density >= l2:
+                level, trigger = "L2", l2
+            elif density >= l1:
+                level, trigger = "L1", l1
+            else:
+                level, trigger = None, None
 
-            # 持续帧计数
-            self._congestion_counter[str(node_i)] = (
-                self._congestion_counter.get(str(node_i), 0) + 1
-            )
-            if self._congestion_counter[str(node_i)] < 3:
-                continue  # 需连续 3 帧才告警
+            # ---- 报警持续中：同等级不重复发，仅升级发新事件；
+            #      密度掉出事件档位持续 confirm_frames 帧后解除 ----
+            ep = self._active_episodes.get(ep_key)
+            if ep is not None:
+                ep_trigger = self._threshold_of(ep["severity"])
+                if level is not None and density >= ep_trigger:
+                    # 仍在该事件档位内（含升级）
+                    ep["below_frames"] = 0
+                    if _SEV_RANK[level] > _SEV_RANK[ep["severity"]]:
+                        ep["severity"] = level
+                        events.append(self._make_congestion_event(
+                            node_i, level, trigger, density, stats, X_pred))
+                else:
+                    # 掉出事件档位 → 累计退出帧，持续 confirm_frames 帧后解除
+                    ep["below_frames"] += 1
+                    if ep["below_frames"] >= self.confirm_frames:
+                        del self._active_episodes[ep_key]
+                        # 解除时清零确认计数：重新触发需重新连续确认（防"秒触发"）
+                        self._congestion_counter[key] = 0
+                continue
 
-            # 估算持续时间（预测曲线何时回落到 P85 以下）
-            duration_est = None
-            if X_pred is not None:
-                pred_series = X_pred[node_i, 1:]  # 未来几步
-                below_mask = pred_series < stats["density_p85"]
-                if np.any(below_mask):
-                    duration_est = int(np.argmax(below_mask)) + 1  # 分钟后回落
-
-            severity = "L3" if density > stats["density_p95"] * 1.5 else "L2"
-
-            event = {
-                "type": "congestion",
-                "node_id": node_i,
-                "severity": severity,
-                "current_density": round(density, 4),
-                "threshold_p95": round(stats["density_p95"], 4),
-                "exceed_ratio": round(density / max(stats["density_p95"], 1e-6), 2),
-                "predicted_duration_min": duration_est,
-                "timestamp": None,
-            }
-            events.append(event)
+            # ---- 未报警：连续 confirm_frames 帧确认后才触发 ----
+            if level is None:
+                self._congestion_counter[key] = 0
+                continue
+            self._congestion_counter[key] = self._congestion_counter.get(key, 0) + 1
+            if self._congestion_counter[key] < self.confirm_frames:
+                continue
+            self._active_episodes[ep_key] = {"severity": level, "below_frames": 0}
+            events.append(self._make_congestion_event(
+                node_i, level, trigger, density, stats, X_pred))
 
         return events
 
     def _detect_loitering(self, density_recent: np.ndarray) -> List[dict]:
         """
-        检测人员滞留。
+        检测人员滞留（带绝对密度下限）。
 
         density_recent: (n_recent_frames, n_nodes) 最近若干帧的密度
+
+        规则：仅当密度不低于 loitering_density_min（默认 0.5）且平均绝对
+        变化率持续低于 loitering_rate_threshold 时才计为滞留；空节点 /
+        低密度节点直接跳过（不乱报）。连续帧达到 loitering_duration 触发
+        滞留事件；等级按绝对密度档位（与拥堵口径一致）：
+        density < 0.9 → L2，density ≥ 0.9 → L3（红色=严重）。
+        密度恢复变化后自动解除，可重新触发。
         """
         events = []
         if density_recent.shape[0] < 2:
             return events  # 至少需要 2 帧才能算变化率
 
         for node_i in range(self.n_nodes_):
-            stats = self.node_stats_[str(node_i)]
+            key = str(node_i)
+            ep_key = (node_i, "loitering")
             node_density = density_recent[:, node_i]
+            density_now = float(node_density[-1])
+
+            # ---- 绝对密度下限：低于下限不算滞留 ----
+            if density_now < self.loitering_density_min:
+                self._loitering_counter[key] = 0
+                self._active_episodes.pop(ep_key, None)
+                continue
 
             # 计算最近帧的平均绝对变化率
             diffs = np.abs(np.diff(node_density))
             recent_rate = float(np.mean(diffs))
 
-            # 变化率低于阈值 → 可能滞留
-            if recent_rate < self.loitering_rate_threshold:
-                self._loitering_counter[str(node_i)] = (
-                    self._loitering_counter.get(str(node_i), 0) + 1
-                )
-            else:
-                self._loitering_counter[str(node_i)] = 0
+            # 变化率高于阈值 → 正常流动，重置
+            if recent_rate >= self.loitering_rate_threshold:
+                self._loitering_counter[key] = 0
+                self._active_episodes.pop(ep_key, None)
                 continue
 
-            if self._loitering_counter[str(node_i)] >= self.loitering_duration:
-                severity = (
-                    "L3" if self._loitering_counter[str(node_i)] >= self.loitering_duration * 2
-                    else "L2"
-                )
-                event = {
+            # 连续低变化率帧累计
+            self._loitering_counter[key] = self._loitering_counter.get(key, 0) + 1
+            counter = self._loitering_counter[key]
+            ep = self._active_episodes.get(ep_key)
+
+            # 等级按绝对密度定级（≥0.9 → L3，否则 L2），持续帧数只作触发条件
+            severity = "L3" if density_now >= self.abs_levels[2] else "L2"
+
+            if ep is None:
+                if counter < self.loitering_duration:
+                    continue
+                self._active_episodes[ep_key] = {"severity": severity}
+                events.append({
                     "type": "loitering",
                     "node_id": node_i,
                     "severity": severity,
                     "density_change_rate": round(recent_rate, 6),
                     "rate_threshold": self.loitering_rate_threshold,
-                    "sustained_frames": self._loitering_counter[str(node_i)],
-                    "current_density": round(float(node_density[-1]), 4),
+                    "sustained_frames": counter,
+                    "current_density": round(density_now, 4),
                     "timestamp": None,
-                }
-                events.append(event)
+                })
+            else:
+                # 报警持续中：密度档位升级（L2→L3）才发新事件，同等级不重复
+                if _SEV_RANK[severity] > _SEV_RANK[ep["severity"]]:
+                    ep["severity"] = severity
+                    events.append({
+                        "type": "loitering",
+                        "node_id": node_i,
+                        "severity": severity,
+                        "density_change_rate": round(recent_rate, 6),
+                        "rate_threshold": self.loitering_rate_threshold,
+                        "sustained_frames": counter,
+                        "current_density": round(density_now, 4),
+                        "timestamp": None,
+                    })
 
         return events
 
@@ -946,14 +1096,22 @@ class CongestionDetector:
 
         gate_status: (n_nodes,) 门闸状态码
         gate_flow:   (n_nodes,) 门闸流速
+
+        注：仿真引擎写入的 gate_flow_rate 是 throughput_cap（放行上限）而非
+        实际通行流量，因此规则 2/3 在仿真场景基本不触发；规则 1（故障码）
+        属持续性硬件故障，按 (节点, 子类型) 一次性去重，不重复告警。
         """
         events = []
         for node_i in range(self.n_nodes_):
             status = int(gate_status[node_i])
             flow = float(gate_flow[node_i])
 
-            # 规则 1：硬件故障
+            # 规则 1：硬件故障（持续性故障，一次性去重）
             if status == 3:
+                dkey = f"gate_anomaly_hardware_fault_{node_i}"
+                if dkey in self._alerted_events:
+                    continue
+                self._alerted_events.add(dkey)
                 events.append({
                     "type": "gate_anomaly",
                     "node_id": node_i,
@@ -965,8 +1123,12 @@ class CongestionDetector:
                 })
                 continue
 
-            # 规则 2：流速为零但状态非关闭 → 疑似传感器故障
+            # 规则 2：流速为零但状态非关闭 → 疑似传感器故障（一次性去重）
             if flow == 0.0 and status != 0:
+                dkey = f"gate_anomaly_sensor_suspect_{node_i}"
+                if dkey in self._alerted_events:
+                    continue
+                self._alerted_events.add(dkey)
                 events.append({
                     "type": "gate_anomaly",
                     "node_id": node_i,
@@ -979,11 +1141,15 @@ class CongestionDetector:
                 })
                 continue
 
-            # 规则 3：流速统计异常（低于历史均值 3σ）
+            # 规则 3：流速统计异常（低于历史均值 3σ，一次性去重）
             stats = self.node_stats_[str(node_i)]
             if stats["gate_flow_std"] > 0 and flow > 0:
                 z_score = (flow - stats["gate_flow_mean"]) / stats["gate_flow_std"]
                 if z_score < -self.gate_flow_sigma:
+                    dkey = f"gate_anomaly_flow_drop_{node_i}"
+                    if dkey in self._alerted_events:
+                        continue
+                    self._alerted_events.add(dkey)
                     events.append({
                         "type": "gate_anomaly",
                         "node_id": node_i,
@@ -1026,7 +1192,7 @@ class CongestionDetector:
         Returns
         -------
         events : list of dict
-            异常事件列表。
+            异常事件列表，每项包含 type / node_id / severity / detail 等字段。
         """
         if not self.is_fitted_:
             raise RuntimeError("检测器尚未拟合，请先调用 fit()")
@@ -1057,26 +1223,19 @@ class CongestionDetector:
         density_recent = X_current[:, :, self.density_feature_idx]  # (T, N)
 
         # ---- 执行三类检测 ----
+        # 去重由各检测器内部状态机负责：拥堵/滞留按 (node, type) 事件状态机
+        # （持续期间不重复、升级才发新、回落解除后可重入）；门闸异常按
+        # (node, subtype) 一次性去重（持续性故障）。
         events = []
         events.extend(self._detect_congestion(current_density, X_pred))
         events.extend(self._detect_loitering(density_recent))
         events.extend(self._detect_gate_anomaly(current_gate_status, current_gate_flow))
 
-        # 去重（同 node + 同 type 在短时间内不重复告警）
-        deduped = []
-        for e in events:
-            key = f"{e['type']}_{e['node_id']}"
-            if key not in self._alerted_events:
-                self._alerted_events.add(key)
-                deduped.append(e)
-
-        return deduped
+        return events
 
     def reset_alerts(self) -> None:
-        """清空告警去重记录（如切换时段时调用）。"""
-        self._alerted_events.clear()
-        self._loitering_counter.clear()
-        self._congestion_counter.clear()
+        """重置报警状态（如切换时段/重新拟合时调用）。"""
+        self._reset_state()
 
     # ------------------------------------------------------------------
     # 持久化
@@ -1112,6 +1271,10 @@ class CongestionDetector:
             "density_feature_idx": self.density_feature_idx,
             "gate_status_feature_idx": self.gate_status_feature_idx,
             "gate_flow_feature_idx": self.gate_flow_feature_idx,
+            "abs_levels": list(self.abs_levels),
+            "confirm_frames": self.confirm_frames,
+            "exit_ratio": self.exit_ratio,
+            "loitering_density_min": self.loitering_density_min,
         }
         with open(os.path.join(path, "config.json"), "w", encoding="utf-8") as f:
             json.dump(config, f, ensure_ascii=False, indent=2)
@@ -1152,6 +1315,10 @@ class CongestionDetector:
             density_feature_idx=config["density_feature_idx"],
             gate_status_feature_idx=config["gate_status_feature_idx"],
             gate_flow_feature_idx=config["gate_flow_feature_idx"],
+            abs_levels=config.get("abs_levels", LEVEL_THRESHOLDS),
+            confirm_frames=config.get("confirm_frames", 3),
+            exit_ratio=config.get("exit_ratio", 0.6),
+            loitering_density_min=config.get("loitering_density_min", 0.5),
         )
         instance.n_nodes_ = stats_payload["n_nodes"]
         instance.feature_names_ = stats_payload.get("feature_names")

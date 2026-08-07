@@ -1,0 +1,3577 @@
+{
+ "meta": {
+  "source": "demo_platoon_edge.py",
+  "fleet_size": 4,
+  "path_nodes": [
+   "gate_south",
+   "cross_zh_south"
+  ],
+  "segment_lengths": [
+   211.9
+  ],
+  "total_path_length": 211.9,
+  "v_lead": 2.5,
+  "spacing": 30.0,
+  "dt": 0.1,
+  "n_ticks": 53,
+  "n_records": 212,
+  "edge_ids": [
+   "E3"
+  ],
+  "converged_tick": 8,
+  "x_max": 20
+ },
+ "frames": [
+  {
+   "tick": 0,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 56.51,
+      "y": 7.97
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 90.0,
+     "distance_to_target": 121.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 59.15,
+      "y": 7.05
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 28.0,
+     "mileage": 62.0,
+     "distance_to_target": 149.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 62.22,
+      "y": 5.97
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 32.5,
+     "mileage": 29.5,
+     "distance_to_target": 182.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 65.0,
+      "y": 5.0
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 29.5,
+     "mileage": 0.0,
+     "distance_to_target": 211.9
+    }
+   ]
+  },
+  {
+   "tick": 1,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 56.27,
+      "y": 8.06
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 92.5,
+     "distance_to_target": 119.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 58.96,
+      "y": 7.12
+     },
+     "speed": 1.601,
+     "acceleration": -0.568,
+     "distance_to_front": 28.463,
+     "mileage": 64.037,
+     "distance_to_target": 147.863
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 61.92,
+      "y": 6.08
+     },
+     "speed": 3.193,
+     "acceleration": -0.697,
+     "distance_to_front": 31.445,
+     "mileage": 32.592,
+     "distance_to_target": 179.308
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 64.76,
+      "y": 5.08
+     },
+     "speed": 2.814,
+     "acceleration": 0.426,
+     "distance_to_front": 30.034,
+     "mileage": 2.559,
+     "distance_to_target": 209.341
+    }
+   ]
+  },
+  {
+   "tick": 2,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 56.03,
+      "y": 8.14
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 95.0,
+     "distance_to_target": 116.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 58.82,
+      "y": 7.16
+     },
+     "speed": 1.441,
+     "acceleration": 0.146,
+     "distance_to_front": 29.493,
+     "mileage": 65.507,
+     "distance_to_target": 146.393
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 61.67,
+      "y": 6.17
+     },
+     "speed": 2.188,
+     "acceleration": -0.86,
+     "distance_to_front": 30.176,
+     "mileage": 35.331,
+     "distance_to_target": 176.569
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 64.49,
+      "y": 5.18
+     },
+     "speed": 2.562,
+     "acceleration": -0.676,
+     "distance_to_front": 29.98,
+     "mileage": 5.351,
+     "distance_to_target": 206.549
+    }
+   ]
+  },
+  {
+   "tick": 3,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 55.8,
+      "y": 8.22
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 97.5,
+     "distance_to_target": 114.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 58.67,
+      "y": 7.22
+     },
+     "speed": 1.839,
+     "acceleration": 0.542,
+     "distance_to_front": 30.403,
+     "mileage": 67.097,
+     "distance_to_target": 144.803
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 61.48,
+      "y": 6.23
+     },
+     "speed": 1.871,
+     "acceleration": 0.112,
+     "distance_to_front": 29.802,
+     "mileage": 37.295,
+     "distance_to_target": 174.605
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 64.28,
+      "y": 5.25
+     },
+     "speed": 1.97,
+     "acceleration": -0.331,
+     "distance_to_front": 29.684,
+     "mileage": 7.611,
+     "distance_to_target": 204.289
+    }
+   ]
+  },
+  {
+   "tick": 4,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 55.56,
+      "y": 8.3
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 100.0,
+     "distance_to_target": 111.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 58.47,
+      "y": 7.29
+     },
+     "speed": 2.411,
+     "acceleration": 0.543,
+     "distance_to_front": 30.805,
+     "mileage": 69.195,
+     "distance_to_target": 142.705
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 61.29,
+      "y": 6.3
+     },
+     "speed": 2.282,
+     "acceleration": 0.542,
+     "distance_to_front": 29.877,
+     "mileage": 39.318,
+     "distance_to_target": 172.582
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 64.1,
+      "y": 5.32
+     },
+     "speed": 2.079,
+     "acceleration": 0.411,
+     "distance_to_front": 29.75,
+     "mileage": 9.569,
+     "distance_to_target": 202.331
+    }
+   ]
+  },
+  {
+   "tick": 5,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 55.33,
+      "y": 8.39
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 102.5,
+     "distance_to_target": 109.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 58.22,
+      "y": 7.37
+     },
+     "speed": 2.826,
+     "acceleration": 0.286,
+     "distance_to_front": 30.685,
+     "mileage": 71.815,
+     "distance_to_target": 140.085
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 61.05,
+      "y": 6.38
+     },
+     "speed": 2.761,
+     "acceleration": 0.369,
+     "distance_to_front": 29.982,
+     "mileage": 41.832,
+     "distance_to_target": 170.068
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 63.88,
+      "y": 5.39
+     },
+     "speed": 2.599,
+     "acceleration": 0.501,
+     "distance_to_front": 29.955,
+     "mileage": 11.877,
+     "distance_to_target": 200.023
+    }
+   ]
+  },
+  {
+   "tick": 6,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 55.09,
+      "y": 8.47
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 105.0,
+     "distance_to_target": 106.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 57.95,
+      "y": 7.47
+     },
+     "speed": 2.941,
+     "acceleration": -0.016,
+     "distance_to_front": 30.283,
+     "mileage": 74.717,
+     "distance_to_target": 137.183
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 60.78,
+      "y": 6.48
+     },
+     "speed": 2.937,
+     "acceleration": 0.021,
+     "distance_to_front": 30.016,
+     "mileage": 44.702,
+     "distance_to_target": 167.198
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 63.62,
+      "y": 5.48
+     },
+     "speed": 2.913,
+     "acceleration": 0.135,
+     "distance_to_front": 30.052,
+     "mileage": 14.649,
+     "distance_to_target": 197.251
+    }
+   ]
+  },
+  {
+   "tick": 7,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 54.85,
+      "y": 8.55
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 107.5,
+     "distance_to_target": 104.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 57.67,
+      "y": 7.56
+     },
+     "speed": 2.808,
+     "acceleration": -0.206,
+     "distance_to_front": 29.886,
+     "mileage": 77.614,
+     "distance_to_target": 134.286
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 60.51,
+      "y": 6.57
+     },
+     "speed": 2.818,
+     "acceleration": -0.205,
+     "distance_to_front": 30.011,
+     "mileage": 47.603,
+     "distance_to_target": 164.297
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 63.34,
+      "y": 5.58
+     },
+     "speed": 2.853,
+     "acceleration": -0.187,
+     "distance_to_front": 30.042,
+     "mileage": 17.561,
+     "distance_to_target": 194.339
+    }
+   ]
+  },
+  {
+   "tick": 8,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 54.62,
+      "y": 8.63
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 110.0,
+     "distance_to_target": 101.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 57.42,
+      "y": 7.65
+     },
+     "speed": 2.575,
+     "acceleration": -0.232,
+     "distance_to_front": 29.682,
+     "mileage": 80.318,
+     "distance_to_target": 131.582
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 60.25,
+      "y": 6.66
+     },
+     "speed": 2.58,
+     "acceleration": -0.238,
+     "distance_to_front": 30.002,
+     "mileage": 50.316,
+     "distance_to_target": 161.584
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 63.08,
+      "y": 5.67
+     },
+     "speed": 2.605,
+     "acceleration": -0.261,
+     "distance_to_front": 30.009,
+     "mileage": 20.307,
+     "distance_to_target": 191.593
+    }
+   ]
+  },
+  {
+   "tick": 9,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 54.38,
+      "y": 8.72
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 112.5,
+     "distance_to_target": 99.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 57.18,
+      "y": 7.74
+     },
+     "speed": 2.388,
+     "acceleration": -0.139,
+     "distance_to_front": 29.7,
+     "mileage": 82.8,
+     "distance_to_target": 129.1
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 60.02,
+      "y": 6.74
+     },
+     "speed": 2.388,
+     "acceleration": -0.142,
+     "distance_to_front": 29.999,
+     "mileage": 52.801,
+     "distance_to_target": 159.099
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 62.85,
+      "y": 5.75
+     },
+     "speed": 2.392,
+     "acceleration": -0.158,
+     "distance_to_front": 29.994,
+     "mileage": 22.808,
+     "distance_to_target": 189.092
+    }
+   ]
+  },
+  {
+   "tick": 10,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 54.15,
+      "y": 8.8
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 115.0,
+     "distance_to_target": 96.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 56.96,
+      "y": 7.81
+     },
+     "speed": 2.319,
+     "acceleration": -0.012,
+     "distance_to_front": 29.854,
+     "mileage": 85.146,
+     "distance_to_target": 126.754
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 59.79,
+      "y": 6.82
+     },
+     "speed": 2.318,
+     "acceleration": -0.013,
+     "distance_to_front": 29.999,
+     "mileage": 55.147,
+     "distance_to_target": 156.753
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 62.63,
+      "y": 5.83
+     },
+     "speed": 2.314,
+     "acceleration": -0.015,
+     "distance_to_front": 29.995,
+     "mileage": 25.153,
+     "distance_to_target": 186.747
+    }
+   ]
+  },
+  {
+   "tick": 11,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 53.91,
+      "y": 8.88
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 117.5,
+     "distance_to_target": 94.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 56.74,
+      "y": 7.89
+     },
+     "speed": 2.36,
+     "acceleration": 0.076,
+     "distance_to_front": 30.023,
+     "mileage": 87.477,
+     "distance_to_target": 124.423
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 59.58,
+      "y": 6.9
+     },
+     "speed": 2.36,
+     "acceleration": 0.076,
+     "distance_to_front": 30.0,
+     "mileage": 57.477,
+     "distance_to_target": 154.423
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 62.41,
+      "y": 5.91
+     },
+     "speed": 2.357,
+     "acceleration": 0.079,
+     "distance_to_front": 29.999,
+     "mileage": 27.478,
+     "distance_to_target": 184.422
+    }
+   ]
+  },
+  {
+   "tick": 12,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 53.67,
+      "y": 8.96
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 120.0,
+     "distance_to_target": 91.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 56.52,
+      "y": 7.97
+     },
+     "speed": 2.453,
+     "acceleration": 0.097,
+     "distance_to_front": 30.122,
+     "mileage": 89.878,
+     "distance_to_target": 122.022
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 59.35,
+      "y": 6.98
+     },
+     "speed": 2.453,
+     "acceleration": 0.097,
+     "distance_to_front": 30.0,
+     "mileage": 59.878,
+     "distance_to_target": 152.022
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 62.18,
+      "y": 5.99
+     },
+     "speed": 2.453,
+     "acceleration": 0.099,
+     "distance_to_front": 30.001,
+     "mileage": 29.877,
+     "distance_to_target": 182.023
+    }
+   ]
+  },
+  {
+   "tick": 13,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 53.44,
+      "y": 9.05
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 122.5,
+     "distance_to_target": 89.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 56.28,
+      "y": 8.05
+     },
+     "speed": 2.536,
+     "acceleration": 0.065,
+     "distance_to_front": 30.129,
+     "mileage": 92.371,
+     "distance_to_target": 119.529
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 59.11,
+      "y": 7.06
+     },
+     "speed": 2.536,
+     "acceleration": 0.065,
+     "distance_to_front": 30.0,
+     "mileage": 62.371,
+     "distance_to_target": 149.529
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 61.94,
+      "y": 6.07
+     },
+     "speed": 2.536,
+     "acceleration": 0.065,
+     "distance_to_front": 30.001,
+     "mileage": 32.37,
+     "distance_to_target": 179.53
+    }
+   ]
+  },
+  {
+   "tick": 14,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 53.2,
+      "y": 9.13
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 125.0,
+     "distance_to_target": 86.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 56.04,
+      "y": 8.14
+     },
+     "speed": 2.573,
+     "acceleration": 0.013,
+     "distance_to_front": 30.072,
+     "mileage": 94.928,
+     "distance_to_target": 116.972
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 58.87,
+      "y": 7.14
+     },
+     "speed": 2.573,
+     "acceleration": 0.013,
+     "distance_to_front": 30.0,
+     "mileage": 64.928,
+     "distance_to_target": 146.972
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 61.7,
+      "y": 6.15
+     },
+     "speed": 2.573,
+     "acceleration": 0.013,
+     "distance_to_front": 30.0,
+     "mileage": 34.927,
+     "distance_to_target": 176.973
+    }
+   ]
+  },
+  {
+   "tick": 15,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 52.97,
+      "y": 9.21
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 127.5,
+     "distance_to_target": 84.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 55.8,
+      "y": 8.22
+     },
+     "speed": 2.562,
+     "acceleration": -0.027,
+     "distance_to_front": 30.001,
+     "mileage": 97.499,
+     "distance_to_target": 114.401
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 58.63,
+      "y": 7.23
+     },
+     "speed": 2.562,
+     "acceleration": -0.027,
+     "distance_to_front": 30.0,
+     "mileage": 67.499,
+     "distance_to_target": 144.401
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 61.46,
+      "y": 6.24
+     },
+     "speed": 2.562,
+     "acceleration": -0.027,
+     "distance_to_front": 30.0,
+     "mileage": 37.499,
+     "distance_to_target": 174.401
+    }
+   ]
+  },
+  {
+   "tick": 16,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 52.73,
+      "y": 9.29
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 130.0,
+     "distance_to_target": 81.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 55.56,
+      "y": 8.3
+     },
+     "speed": 2.526,
+     "acceleration": -0.04,
+     "distance_to_front": 29.954,
+     "mileage": 100.046,
+     "distance_to_target": 111.854
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 58.39,
+      "y": 7.31
+     },
+     "speed": 2.526,
+     "acceleration": -0.04,
+     "distance_to_front": 30.0,
+     "mileage": 70.046,
+     "distance_to_target": 141.854
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 61.22,
+      "y": 6.32
+     },
+     "speed": 2.526,
+     "acceleration": -0.04,
+     "distance_to_front": 30.0,
+     "mileage": 40.046,
+     "distance_to_target": 171.854
+    }
+   ]
+  },
+  {
+   "tick": 17,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 52.49,
+      "y": 9.38
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 132.5,
+     "distance_to_target": 79.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 55.32,
+      "y": 8.39
+     },
+     "speed": 2.49,
+     "acceleration": -0.03,
+     "distance_to_front": 29.945,
+     "mileage": 102.555,
+     "distance_to_target": 109.345
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 58.15,
+      "y": 7.4
+     },
+     "speed": 2.49,
+     "acceleration": -0.03,
+     "distance_to_front": 30.0,
+     "mileage": 72.555,
+     "distance_to_target": 139.345
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 60.98,
+      "y": 6.41
+     },
+     "speed": 2.49,
+     "acceleration": -0.03,
+     "distance_to_front": 30.0,
+     "mileage": 42.555,
+     "distance_to_target": 169.345
+    }
+   ]
+  },
+  {
+   "tick": 18,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 52.26,
+      "y": 9.46
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 135.0,
+     "distance_to_target": 76.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 55.09,
+      "y": 8.47
+     },
+     "speed": 2.471,
+     "acceleration": -0.009,
+     "distance_to_front": 29.965,
+     "mileage": 105.035,
+     "distance_to_target": 106.865
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 57.92,
+      "y": 7.48
+     },
+     "speed": 2.471,
+     "acceleration": -0.009,
+     "distance_to_front": 30.0,
+     "mileage": 75.035,
+     "distance_to_target": 136.865
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 60.75,
+      "y": 6.49
+     },
+     "speed": 2.471,
+     "acceleration": -0.009,
+     "distance_to_front": 30.0,
+     "mileage": 45.035,
+     "distance_to_target": 166.865
+    }
+   ]
+  },
+  {
+   "tick": 19,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 52.02,
+      "y": 9.54
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 137.5,
+     "distance_to_target": 74.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 54.85,
+      "y": 8.55
+     },
+     "speed": 2.473,
+     "acceleration": 0.009,
+     "distance_to_front": 29.995,
+     "mileage": 107.505,
+     "distance_to_target": 104.395
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 57.68,
+      "y": 7.56
+     },
+     "speed": 2.473,
+     "acceleration": 0.009,
+     "distance_to_front": 30.0,
+     "mileage": 77.505,
+     "distance_to_target": 134.395
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 60.52,
+      "y": 6.57
+     },
+     "speed": 2.473,
+     "acceleration": 0.009,
+     "distance_to_front": 30.0,
+     "mileage": 47.505,
+     "distance_to_target": 164.395
+    }
+   ]
+  },
+  {
+   "tick": 20,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 51.79,
+      "y": 9.62
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 140.0,
+     "distance_to_target": 71.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 54.62,
+      "y": 8.63
+     },
+     "speed": 2.487,
+     "acceleration": 0.016,
+     "distance_to_front": 30.017,
+     "mileage": 109.983,
+     "distance_to_target": 101.917
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 57.45,
+      "y": 7.64
+     },
+     "speed": 2.487,
+     "acceleration": 0.016,
+     "distance_to_front": 30.0,
+     "mileage": 79.983,
+     "distance_to_target": 131.917
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 60.28,
+      "y": 6.65
+     },
+     "speed": 2.487,
+     "acceleration": 0.016,
+     "distance_to_front": 30.0,
+     "mileage": 49.983,
+     "distance_to_target": 161.917
+    }
+   ]
+  },
+  {
+   "tick": 21,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 51.55,
+      "y": 9.71
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 142.5,
+     "distance_to_target": 69.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 54.38,
+      "y": 8.72
+     },
+     "speed": 2.502,
+     "acceleration": 0.013,
+     "distance_to_front": 30.023,
+     "mileage": 112.477,
+     "distance_to_target": 99.423
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 57.22,
+      "y": 7.72
+     },
+     "speed": 2.502,
+     "acceleration": 0.013,
+     "distance_to_front": 30.0,
+     "mileage": 82.477,
+     "distance_to_target": 129.423
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 60.05,
+      "y": 6.73
+     },
+     "speed": 2.502,
+     "acceleration": 0.013,
+     "distance_to_front": 30.0,
+     "mileage": 52.477,
+     "distance_to_target": 159.423
+    }
+   ]
+  },
+  {
+   "tick": 22,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 51.31,
+      "y": 9.79
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 145.0,
+     "distance_to_target": 66.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 54.15,
+      "y": 8.8
+     },
+     "speed": 2.511,
+     "acceleration": 0.005,
+     "distance_to_front": 30.016,
+     "mileage": 114.984,
+     "distance_to_target": 96.916
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 56.98,
+      "y": 7.81
+     },
+     "speed": 2.511,
+     "acceleration": 0.005,
+     "distance_to_front": 30.0,
+     "mileage": 84.984,
+     "distance_to_target": 126.916
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 59.81,
+      "y": 6.82
+     },
+     "speed": 2.511,
+     "acceleration": 0.005,
+     "distance_to_front": 30.0,
+     "mileage": 54.984,
+     "distance_to_target": 156.916
+    }
+   ]
+  },
+  {
+   "tick": 23,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 51.08,
+      "y": 9.87
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 147.5,
+     "distance_to_target": 64.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 53.91,
+      "y": 8.88
+     },
+     "speed": 2.512,
+     "acceleration": -0.003,
+     "distance_to_front": 30.004,
+     "mileage": 117.496,
+     "distance_to_target": 94.404
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 56.74,
+      "y": 7.89
+     },
+     "speed": 2.512,
+     "acceleration": -0.003,
+     "distance_to_front": 30.0,
+     "mileage": 87.496,
+     "distance_to_target": 124.404
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 59.57,
+      "y": 6.9
+     },
+     "speed": 2.512,
+     "acceleration": -0.003,
+     "distance_to_front": 30.0,
+     "mileage": 57.496,
+     "distance_to_target": 154.404
+    }
+   ]
+  },
+  {
+   "tick": 24,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 50.84,
+      "y": 9.96
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 150.0,
+     "distance_to_target": 61.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 53.67,
+      "y": 8.96
+     },
+     "speed": 2.507,
+     "acceleration": -0.006,
+     "distance_to_front": 29.994,
+     "mileage": 120.006,
+     "distance_to_target": 91.894
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 56.5,
+      "y": 7.97
+     },
+     "speed": 2.507,
+     "acceleration": -0.006,
+     "distance_to_front": 30.0,
+     "mileage": 90.006,
+     "distance_to_target": 121.894
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 59.34,
+      "y": 6.98
+     },
+     "speed": 2.507,
+     "acceleration": -0.006,
+     "distance_to_front": 30.0,
+     "mileage": 60.006,
+     "distance_to_target": 151.894
+    }
+   ]
+  },
+  {
+   "tick": 25,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 50.61,
+      "y": 10.04
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 152.5,
+     "distance_to_target": 59.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 53.44,
+      "y": 9.05
+     },
+     "speed": 2.5,
+     "acceleration": -0.006,
+     "distance_to_front": 29.991,
+     "mileage": 122.509,
+     "distance_to_target": 89.391
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 56.27,
+      "y": 8.06
+     },
+     "speed": 2.5,
+     "acceleration": -0.006,
+     "distance_to_front": 30.0,
+     "mileage": 92.509,
+     "distance_to_target": 119.391
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 59.1,
+      "y": 7.06
+     },
+     "speed": 2.5,
+     "acceleration": -0.006,
+     "distance_to_front": 30.0,
+     "mileage": 62.509,
+     "distance_to_target": 149.391
+    }
+   ]
+  },
+  {
+   "tick": 26,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 50.37,
+      "y": 10.12
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 155.0,
+     "distance_to_target": 56.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 53.2,
+      "y": 9.13
+     },
+     "speed": 2.496,
+     "acceleration": -0.003,
+     "distance_to_front": 29.993,
+     "mileage": 125.007,
+     "distance_to_target": 86.893
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 56.03,
+      "y": 8.14
+     },
+     "speed": 2.496,
+     "acceleration": -0.003,
+     "distance_to_front": 30.0,
+     "mileage": 95.007,
+     "distance_to_target": 116.893
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 58.86,
+      "y": 7.15
+     },
+     "speed": 2.496,
+     "acceleration": -0.003,
+     "distance_to_front": 30.0,
+     "mileage": 65.007,
+     "distance_to_target": 146.893
+    }
+   ]
+  },
+  {
+   "tick": 27,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 50.13,
+      "y": 10.2
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 157.5,
+     "distance_to_target": 54.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 52.97,
+      "y": 9.21
+     },
+     "speed": 2.495,
+     "acceleration": 0.001,
+     "distance_to_front": 29.998,
+     "mileage": 127.502,
+     "distance_to_target": 84.398
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 55.8,
+      "y": 8.22
+     },
+     "speed": 2.495,
+     "acceleration": 0.001,
+     "distance_to_front": 30.0,
+     "mileage": 97.502,
+     "distance_to_target": 114.398
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 58.63,
+      "y": 7.23
+     },
+     "speed": 2.495,
+     "acceleration": 0.001,
+     "distance_to_front": 30.0,
+     "mileage": 67.502,
+     "distance_to_target": 144.398
+    }
+   ]
+  },
+  {
+   "tick": 28,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 49.9,
+      "y": 10.29
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 160.0,
+     "distance_to_target": 51.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 52.73,
+      "y": 9.29
+     },
+     "speed": 2.497,
+     "acceleration": 0.003,
+     "distance_to_front": 30.002,
+     "mileage": 129.998,
+     "distance_to_target": 81.902
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 55.56,
+      "y": 8.3
+     },
+     "speed": 2.497,
+     "acceleration": 0.003,
+     "distance_to_front": 30.0,
+     "mileage": 99.998,
+     "distance_to_target": 111.902
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 58.39,
+      "y": 7.31
+     },
+     "speed": 2.497,
+     "acceleration": 0.003,
+     "distance_to_front": 30.0,
+     "mileage": 69.998,
+     "distance_to_target": 141.902
+    }
+   ]
+  },
+  {
+   "tick": 29,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 49.66,
+      "y": 10.37
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 162.5,
+     "distance_to_target": 49.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 52.49,
+      "y": 9.38
+     },
+     "speed": 2.5,
+     "acceleration": 0.003,
+     "distance_to_front": 30.004,
+     "mileage": 132.496,
+     "distance_to_target": 79.404
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 55.33,
+      "y": 8.39
+     },
+     "speed": 2.5,
+     "acceleration": 0.003,
+     "distance_to_front": 30.0,
+     "mileage": 102.496,
+     "distance_to_target": 109.404
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 58.16,
+      "y": 7.39
+     },
+     "speed": 2.5,
+     "acceleration": 0.003,
+     "distance_to_front": 30.0,
+     "mileage": 72.496,
+     "distance_to_target": 139.404
+    }
+   ]
+  },
+  {
+   "tick": 30,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 49.43,
+      "y": 10.45
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 165.0,
+     "distance_to_target": 46.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 52.26,
+      "y": 9.46
+     },
+     "speed": 2.501,
+     "acceleration": 0.001,
+     "distance_to_front": 30.003,
+     "mileage": 134.997,
+     "distance_to_target": 76.903
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 55.09,
+      "y": 8.47
+     },
+     "speed": 2.501,
+     "acceleration": 0.001,
+     "distance_to_front": 30.0,
+     "mileage": 104.997,
+     "distance_to_target": 106.903
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 57.92,
+      "y": 7.48
+     },
+     "speed": 2.501,
+     "acceleration": 0.001,
+     "distance_to_front": 30.0,
+     "mileage": 74.997,
+     "distance_to_target": 136.903
+    }
+   ]
+  },
+  {
+   "tick": 31,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 49.19,
+      "y": 10.53
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 167.5,
+     "distance_to_target": 44.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 52.02,
+      "y": 9.54
+     },
+     "speed": 2.502,
+     "acceleration": -0.0,
+     "distance_to_front": 30.001,
+     "mileage": 137.499,
+     "distance_to_target": 74.401
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 54.85,
+      "y": 8.55
+     },
+     "speed": 2.502,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 107.499,
+     "distance_to_target": 104.401
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 57.69,
+      "y": 7.56
+     },
+     "speed": 2.502,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 77.499,
+     "distance_to_target": 134.401
+    }
+   ]
+  },
+  {
+   "tick": 32,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 48.95,
+      "y": 10.62
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 170.0,
+     "distance_to_target": 41.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 51.79,
+      "y": 9.62
+     },
+     "speed": 2.501,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 140.0,
+     "distance_to_target": 71.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 54.62,
+      "y": 8.63
+     },
+     "speed": 2.501,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 110.0,
+     "distance_to_target": 101.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 57.45,
+      "y": 7.64
+     },
+     "speed": 2.501,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 80.0,
+     "distance_to_target": 131.9
+    }
+   ]
+  },
+  {
+   "tick": 33,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 48.72,
+      "y": 10.7
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 172.5,
+     "distance_to_target": 39.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 51.55,
+      "y": 9.71
+     },
+     "speed": 2.5,
+     "acceleration": -0.001,
+     "distance_to_front": 29.999,
+     "mileage": 142.501,
+     "distance_to_target": 69.399
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 54.38,
+      "y": 8.72
+     },
+     "speed": 2.5,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 112.501,
+     "distance_to_target": 99.399
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 57.21,
+      "y": 7.73
+     },
+     "speed": 2.5,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 82.501,
+     "distance_to_target": 129.399
+    }
+   ]
+  },
+  {
+   "tick": 34,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 48.48,
+      "y": 10.78
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 175.0,
+     "distance_to_target": 36.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 51.31,
+      "y": 9.79
+     },
+     "speed": 2.499,
+     "acceleration": -0.001,
+     "distance_to_front": 29.999,
+     "mileage": 145.001,
+     "distance_to_target": 66.899
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 54.15,
+      "y": 8.8
+     },
+     "speed": 2.499,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 115.001,
+     "distance_to_target": 96.899
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 56.98,
+      "y": 7.81
+     },
+     "speed": 2.499,
+     "acceleration": -0.001,
+     "distance_to_front": 30.0,
+     "mileage": 85.001,
+     "distance_to_target": 126.899
+    }
+   ]
+  },
+  {
+   "tick": 35,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 48.25,
+      "y": 10.86
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 177.5,
+     "distance_to_target": 34.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 51.08,
+      "y": 9.87
+     },
+     "speed": 2.499,
+     "acceleration": -0.0,
+     "distance_to_front": 29.999,
+     "mileage": 147.501,
+     "distance_to_target": 64.399
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 53.91,
+      "y": 8.88
+     },
+     "speed": 2.499,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 117.501,
+     "distance_to_target": 94.399
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 56.74,
+      "y": 7.89
+     },
+     "speed": 2.499,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 87.501,
+     "distance_to_target": 124.399
+    }
+   ]
+  },
+  {
+   "tick": 36,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 48.01,
+      "y": 10.95
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 180.0,
+     "distance_to_target": 31.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 50.84,
+      "y": 9.96
+     },
+     "speed": 2.499,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 150.0,
+     "distance_to_target": 61.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 53.67,
+      "y": 8.96
+     },
+     "speed": 2.499,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 120.0,
+     "distance_to_target": 91.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 56.51,
+      "y": 7.97
+     },
+     "speed": 2.499,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 90.0,
+     "distance_to_target": 121.9
+    }
+   ]
+  },
+  {
+   "tick": 37,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 47.77,
+      "y": 11.03
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 182.5,
+     "distance_to_target": 29.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 50.61,
+      "y": 10.04
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.001,
+     "mileage": 152.499,
+     "distance_to_target": 59.401
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 53.44,
+      "y": 9.05
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 122.499,
+     "distance_to_target": 89.401
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 56.27,
+      "y": 8.06
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 92.499,
+     "distance_to_target": 119.401
+    }
+   ]
+  },
+  {
+   "tick": 38,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 47.54,
+      "y": 11.11
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 185.0,
+     "distance_to_target": 26.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 50.37,
+      "y": 10.12
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.001,
+     "mileage": 154.999,
+     "distance_to_target": 56.901
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 53.2,
+      "y": 9.13
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 124.999,
+     "distance_to_target": 86.901
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 56.03,
+      "y": 8.14
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 94.999,
+     "distance_to_target": 116.901
+    }
+   ]
+  },
+  {
+   "tick": 39,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 47.3,
+      "y": 11.19
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 187.5,
+     "distance_to_target": 24.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 50.13,
+      "y": 10.2
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 157.5,
+     "distance_to_target": 54.4
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 52.97,
+      "y": 9.21
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 127.5,
+     "distance_to_target": 84.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 55.8,
+      "y": 8.22
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 97.5,
+     "distance_to_target": 114.4
+    }
+   ]
+  },
+  {
+   "tick": 40,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 47.07,
+      "y": 11.28
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 190.0,
+     "distance_to_target": 21.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 49.9,
+      "y": 10.29
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 160.0,
+     "distance_to_target": 51.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 52.73,
+      "y": 9.29
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 130.0,
+     "distance_to_target": 81.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 55.56,
+      "y": 8.3
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 100.0,
+     "distance_to_target": 111.9
+    }
+   ]
+  },
+  {
+   "tick": 41,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 46.83,
+      "y": 11.36
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 192.5,
+     "distance_to_target": 19.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 49.66,
+      "y": 10.37
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 162.5,
+     "distance_to_target": 49.4
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 52.49,
+      "y": 9.38
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 132.5,
+     "distance_to_target": 79.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 55.33,
+      "y": 8.39
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 102.5,
+     "distance_to_target": 109.4
+    }
+   ]
+  },
+  {
+   "tick": 42,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 46.6,
+      "y": 11.44
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 195.0,
+     "distance_to_target": 16.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 49.43,
+      "y": 10.45
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 165.0,
+     "distance_to_target": 46.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 52.26,
+      "y": 9.46
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 135.0,
+     "distance_to_target": 76.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 55.09,
+      "y": 8.47
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 105.0,
+     "distance_to_target": 106.9
+    }
+   ]
+  },
+  {
+   "tick": 43,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 46.36,
+      "y": 11.52
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 197.5,
+     "distance_to_target": 14.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 49.19,
+      "y": 10.53
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 167.5,
+     "distance_to_target": 44.4
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 52.02,
+      "y": 9.54
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 137.5,
+     "distance_to_target": 74.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 54.85,
+      "y": 8.55
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 107.5,
+     "distance_to_target": 104.4
+    }
+   ]
+  },
+  {
+   "tick": 44,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 46.12,
+      "y": 11.61
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 200.0,
+     "distance_to_target": 11.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 48.95,
+      "y": 10.62
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 170.0,
+     "distance_to_target": 41.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 51.79,
+      "y": 9.62
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 140.0,
+     "distance_to_target": 71.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 54.62,
+      "y": 8.63
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 110.0,
+     "distance_to_target": 101.9
+    }
+   ]
+  },
+  {
+   "tick": 45,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.89,
+      "y": 11.69
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 202.5,
+     "distance_to_target": 9.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 48.72,
+      "y": 10.7
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 172.5,
+     "distance_to_target": 39.4
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 51.55,
+      "y": 9.71
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 142.5,
+     "distance_to_target": 69.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 54.38,
+      "y": 8.72
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 112.5,
+     "distance_to_target": 99.4
+    }
+   ]
+  },
+  {
+   "tick": 46,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.65,
+      "y": 11.77
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 205.0,
+     "distance_to_target": 6.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 48.48,
+      "y": 10.78
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 175.0,
+     "distance_to_target": 36.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 51.31,
+      "y": 9.79
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 145.0,
+     "distance_to_target": 66.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 54.15,
+      "y": 8.8
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 115.0,
+     "distance_to_target": 96.9
+    }
+   ]
+  },
+  {
+   "tick": 47,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.42,
+      "y": 11.85
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 207.5,
+     "distance_to_target": 4.4
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 48.25,
+      "y": 10.86
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 177.5,
+     "distance_to_target": 34.4
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 51.08,
+      "y": 9.87
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 147.5,
+     "distance_to_target": 64.4
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.91,
+      "y": 8.88
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 30.0,
+     "mileage": 117.5,
+     "distance_to_target": 94.4
+    }
+   ]
+  },
+  {
+   "tick": 48,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.18,
+      "y": 11.94
+     },
+     "speed": 2.5,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 210.0,
+     "distance_to_target": 1.9
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 48.01,
+      "y": 10.95
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 180.0,
+     "distance_to_target": 31.9
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 50.84,
+      "y": 9.96
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 150.0,
+     "distance_to_target": 61.9
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.67,
+      "y": 8.96
+     },
+     "speed": 2.5,
+     "acceleration": -0.0,
+     "distance_to_front": 30.0,
+     "mileage": 120.0,
+     "distance_to_target": 91.9
+    }
+   ]
+  },
+  {
+   "tick": 49,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.0,
+      "y": 12.0
+     },
+     "speed": 0.0,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 211.9,
+     "distance_to_target": 0.0
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 47.78,
+      "y": 11.03
+     },
+     "speed": 2.239,
+     "acceleration": -1.35,
+     "distance_to_front": 29.413,
+     "mileage": 182.487,
+     "distance_to_target": 29.413
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 50.61,
+      "y": 10.04
+     },
+     "speed": 2.239,
+     "acceleration": -1.35,
+     "distance_to_front": 30.0,
+     "mileage": 152.487,
+     "distance_to_target": 59.413
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.44,
+      "y": 9.05
+     },
+     "speed": 2.239,
+     "acceleration": -1.35,
+     "distance_to_front": 30.0,
+     "mileage": 122.487,
+     "distance_to_target": 89.413
+    }
+   ]
+  },
+  {
+   "tick": 50,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.0,
+      "y": 12.0
+     },
+     "speed": 0.0,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 211.9,
+     "distance_to_target": 0.0
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 47.63,
+      "y": 11.08
+     },
+     "speed": 0.651,
+     "acceleration": -1.619,
+     "distance_to_front": 27.871,
+     "mileage": 184.029,
+     "distance_to_target": 27.871
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 50.46,
+      "y": 10.09
+     },
+     "speed": 0.651,
+     "acceleration": -1.619,
+     "distance_to_front": 30.0,
+     "mileage": 154.029,
+     "distance_to_target": 57.871
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.29,
+      "y": 9.1
+     },
+     "speed": 0.651,
+     "acceleration": -1.619,
+     "distance_to_front": 30.0,
+     "mileage": 124.029,
+     "distance_to_target": 87.871
+    }
+   ]
+  },
+  {
+   "tick": 51,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.0,
+      "y": 12.0
+     },
+     "speed": 0.0,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 211.9,
+     "distance_to_target": 0.0
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 47.61,
+      "y": 11.08
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 27.7,
+     "mileage": 184.2,
+     "distance_to_target": 27.7
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 50.45,
+      "y": 10.09
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 30.0,
+     "mileage": 154.2,
+     "distance_to_target": 57.7
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.28,
+      "y": 9.1
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 30.0,
+     "mileage": 124.2,
+     "distance_to_target": 87.7
+    }
+   ]
+  },
+  {
+   "tick": 52,
+   "gate_id": "gate_south",
+   "total_path_length": 211.9,
+   "path": {
+    "start_node_id": "gate_south",
+    "end_node_id": "cross_zh_south",
+    "route_nodes": [
+     "gate_south",
+     "cross_zh_south"
+    ]
+   },
+   "fleet": [
+    {
+     "car_id": "CAV_L1",
+     "role": "leader",
+     "position": {
+      "x": 45.0,
+      "y": 12.0
+     },
+     "speed": 0.0,
+     "acceleration": 0.0,
+     "distance_to_front": 0.0,
+     "mileage": 211.9,
+     "distance_to_target": 0.0
+    },
+    {
+     "car_id": "CAV_F1",
+     "role": "follower",
+     "position": {
+      "x": 47.61,
+      "y": 11.08
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 27.7,
+     "mileage": 184.2,
+     "distance_to_target": 27.7
+    },
+    {
+     "car_id": "CAV_F2",
+     "role": "follower",
+     "position": {
+      "x": 50.45,
+      "y": 10.09
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 30.0,
+     "mileage": 154.2,
+     "distance_to_target": 57.7
+    },
+    {
+     "car_id": "CAV_F3",
+     "role": "follower",
+     "position": {
+      "x": 53.28,
+      "y": 9.1
+     },
+     "speed": 0.0,
+     "acceleration": -1.38,
+     "distance_to_front": 30.0,
+     "mileage": 124.2,
+     "distance_to_target": 87.7
+    }
+   ]
+  }
+ ]
+}

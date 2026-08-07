@@ -1,0 +1,175 @@
+{
+  "engine_snapshot": [
+    {
+      "tick": 600,
+      "timestamp": "2026-08-03 06:10:00",
+      "node_id": "gate_south",
+      "people": 0,
+      "vehicles": 5,
+      "density": 0.0,
+      "level": "low",
+      "gate_status": "open",
+      "gate_flow_rate": 180,
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 600,
+      "timestamp": "2026-08-03 06:10:00",
+      "node_id": "canteen_1",
+      "people": 214,
+      "vehicles": 2,
+      "density": 0.64,
+      "level": "medium",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "open",
+      "door_flow_rate": "",
+      "signal_status": "",
+      "signal_flow_rate": ""
+    },
+    {
+      "tick": 600,
+      "timestamp": "2026-08-03 06:10:00",
+      "node_id": "cross_zh_mid",
+      "people": 152,
+      "vehicles": 6,
+      "density": 0.71,
+      "level": "high",
+      "gate_status": "",
+      "gate_flow_rate": "",
+      "door_status": "",
+      "door_flow_rate": "",
+      "signal_status": "green",
+      "signal_flow_rate": 180
+    }
+  ],
+  "vehicle_paths": [
+    {
+      "src": "gate_south",
+      "dst": "admin_building",
+      "path": [
+        "gate_south",
+        "admin_building"
+      ],
+      "travelTime": 2.12
+    },
+    {
+      "src": "gate_west",
+      "dst": "canteen_2",
+      "path": [
+        "gate_west",
+        "canteen_4",
+        "west_dorm_17_18",
+        "west_dorm_5_8",
+        "canteen_3",
+        "cross_zh_mid",
+        "underpass",
+        "canteen_2"
+      ],
+      "travelTime": 11.32
+    }
+  ],
+  "predict_network": [
+    {
+      "node_id": "gate_south",
+      "pagerank": 0.012873,
+      "betweenness": 0.0011,
+      "heatScore": 19.3,
+      "rank": 53
+    },
+    {
+      "node_id": "canteen_1",
+      "pagerank": 0.02345,
+      "betweenness": 0.0521,
+      "heatScore": 87.6,
+      "rank": 1
+    },
+    {
+      "node_id": "cross_zh_mid",
+      "pagerank": 0.01812,
+      "betweenness": 0.0988,
+      "heatScore": 72.4,
+      "rank": 2
+    }
+  ],
+  "predict_hotspots": [
+    {
+      "region": "living_1",
+      "nodeIds": [
+        "gate_west",
+        "cross_zh_south",
+        "cross_zh_mid",
+        "cross_zh_north",
+        "pedestrian_bridge",
+        "underpass",
+        "sports_gym",
+        "sports_swimming",
+        "sports_fitness",
+        "sports_cricket",
+        "sports_tennis",
+        "sports_volleyball",
+        "sports_basketball_c",
+        "sports_basketball_b",
+        "sports_basketball_a",
+        "sports_football",
+        "sports_training",
+        "youth_center",
+        "west_dorm_13_16",
+        "west_dorm_9_12",
+        "west_dorm_1_4",
+        "west_dorm_5_8",
+        "west_dorm_17_18",
+        "canteen_3",
+        "canteen_4",
+        "west_express",
+        "east_dorm_12_14",
+        "east_dorm_8_11",
+        "east_dorm_4_7",
+        "east_dorm_1_3",
+        "teacher_apt",
+        "hospital",
+        "supermarket",
+        "canteen_1",
+        "canteen_2"
+      ],
+      "attractScore": 100.0
+    }
+  ],
+  "prediction": {
+    "timestamp": "2026-08-03 06:10:00",
+    "period": {
+      "start": "2026-08-03 06:10:10",
+      "end": "2026-08-03 06:10:30"
+    },
+    "density_stats": {
+      "admin_building": 0.0008,
+      "canteen_1": 0.6401,
+      "cross_zh_mid": 0.7104,
+      "gate_south": 0.0088,
+      "gate_west": 0.0091,
+      "gate_east": 0.0093,
+      "library": 0.0001,
+      "teach_1": 0.0008,
+      "underpass": 0.0001,
+      "west_dorm_13_16": 0.0117
+    }
+  },
+  "alerts": [
+    {
+      "event_id": "EVT-20260806-AB12",
+      "timestamp": "2026-08-06 15:10:00",
+      "level": "L2",
+      "type": "congestion",
+      "node_id": "cross_zh_mid",
+      "node_name": "中央交叉口",
+      "current_density": 0.9,
+      "threshold_density": 0.8,
+      "predicted_duration_min": 5,
+      "suggested_action": "门闸限流50%",
+      "status": "active"
+    }
+  ]
+}

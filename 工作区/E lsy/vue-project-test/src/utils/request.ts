@@ -30,6 +30,11 @@ service.interceptors.response.use(
   (response) => {
     const res = response.data
     // 根据 API 文档，通用响应结构包含 code 字段[cite: 5]
+    // 兜底：后端返回非对象（null / 纯文本 / 空串等）时统一当异常处理，避免 res.code 访问抛 TypeError
+    if (!res || typeof res !== 'object') {
+      console.error('API 请求异常: 后端返回数据格式异常', res)
+      return Promise.reject(new Error('后端返回数据格式异常'))
+    }
     if (res.code !== 200 && res.code !== 0) {
       console.error('API 请求异常:', res.msg)
       return Promise.reject(new Error(res.msg || 'Error'))

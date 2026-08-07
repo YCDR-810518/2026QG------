@@ -18,6 +18,9 @@ import numpy as np
 
 from .config import DEFAULT_IDM, MergeParams
 
+_CREEP_SPEED = 0.8    # 让行时蠕动滑行速度下限 m/s(人工驾驶不停死,找空档插入)
+_MERGE_SLOW = 3.0     # 人工驾驶合流区减速上限 m/s(两车道共担让行责任)
+
 
 class MergeVehicleAgent:
     """汇合场景车辆智能体(MAS 单元)。
@@ -76,6 +79,10 @@ class MergeVehicleAgent:
         p = self.p
         c = self.cav_params
 
+        if not has_cav and self.topo.in_merge_zone(self.s):
+            # 人工驾驶:合流区自觉减速让行(两车道都降速,不设绝对优先)
+            v_lim = min(v_lim, _MERGE_SLOW)
+
         if leader is None:
             gap, dv = np.inf, 0.0
         else:
@@ -104,11 +111,14 @@ class MergeVehicleAgent:
                                    + v * dv / (2.0 * np.sqrt(p["a_max"] * p["b"])))
             acc = p["a_max"] * (1.0 - (v / p["v0"]) ** 4 - (s_star / max(gap, 1e-6)) ** 2)
             if blocked:
-                acc = min(acc, -p["b"])                   # 停车等待空档
+                acc = min(acc, -p["b"])                   # 减速让行(不刹停)
             if v > v_lim:
                 acc = min(acc, -p["b"])
 
         self.v = max(0.0, min(v_lim, v + acc * dt))
+        if not has_cav:
+            # 人工驾驶蠕动下限:合流区以怠速蠕行找空档,全程不停死
+            self.v = max(self.v, _CREEP_SPEED)
 
 
 class MergeCoordinator:

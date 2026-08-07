@@ -19,7 +19,7 @@ SEED = 42                # 随机种子(本场景为确定性场景)
 COORD_RANGE = 60.0       # 协调器感知范围 m(进入此范围即申请时隙)
 MERGE_SLOT_GAP = 1.5     # 汇合时隙间隔 s(两车通过汇合点的最小时间差,需≤车流自然间隔)
 MIN_LOOKAHEAD = 2.0      # 时隙最早可分配时刻: now + MIN_LOOKAHEAD
-STOP_SPEED = 0.3         # m/s 以下视为停车(指标统计用)
+STOP_SPEED = 1.5         # m/s 以下视为低速拥堵(排队指标统计口径,覆盖蠕动滑行车)
 
 
 @dataclass

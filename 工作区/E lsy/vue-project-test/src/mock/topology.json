@@ -11,7 +11,7 @@
     { "id": "cross_zh_mid", "name": "中环天桥", "type": "road", "x": 40, "y": 58 },
     { "id": "cross_zh_north", "name": "中环西北路口", "type": "road", "x": 45, "y": 80 },
     { "id": "rd_guanggong_1", "name": "广工一路", "type": "road", "x": 85, "y": 75 },
-    { "id": "pedestrian_bridge", "name": "天桥/球场", "type": "road", "x": 35, "y": 58 },
+    { "id": "pedestrian_bridge", "name": "天桥/球场", "type": "road", "x": 34, "y": 58 },
     { "id": "underpass", "name": "广工通道", "type": "road", "x": 48, "y": 58 },
     { "id": "admin_building", "name": "行政楼/综合楼", "type": "admin", "x": 62, "y": 12 },
     { "id": "auditorium", "name": "大讲堂(圆弧报告厅)", "type": "admin", "x": 70, "y": 10 },

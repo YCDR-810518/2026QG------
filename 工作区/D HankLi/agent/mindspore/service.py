@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 service.py — 预测 + 预警 封装服务（MindSpore 版本，供成员F调用）
-================================================================
+==============================================================
 把 density 预测和预警打包成一个可 import 的服务，供成员F在
 仿真引擎里定时调用：CSV 不断追加数据 → 每隔 interval 秒预测并预警一次。
+
+底层模型为 MindSpore（.ckpt 权重），其余逻辑与 d_mindspore（PyTorch）版完全一致。
 
 典型用法（F 侧）：
     from service import SecurityService
@@ -11,7 +13,7 @@ service.py — 预测 + 预警 封装服务（MindSpore 版本，供成员F调�
     svc = SecurityService.from_config(
         csv_path=r"D:\\...\\density_series.csv",   # F 持续写入的 CSV
         backend_base="http://192.168.1.114:8100",  # 后端地址
-        demo_mode=True,                            # 测试模式：无预警也发演示预警
+        demo_mode=False,                           # 默认关闭：只有真实预警才发
         interval_seconds=60,                       # 轮询间隔
     )
     svc.run_loop()     # 阻塞式定时循环，Ctrl+C 停止
@@ -21,9 +23,12 @@ service.py — 预测 + 预警 封装服务（MindSpore 版本，供成员F调�
 
 说明：
   - 预测：DensityPredictor 用最近 window_size 个时间步（60秒）预测未来 pred_horizon 个时间步（30秒）密度
-  - 预警：CongestionDetector 用最近 RECENT_FRAMES 帧检测三类异常，
-          传入预测结果做拥堵确认，分级后 POST 到后端
-  - 检测器基线：构造时用 CSV 历史前 75% 拟合一次，之后不再重拟
+  - 预警：CongestionDetector 用绝对密度阈值（0.3/0.6/0.9，与 CSV level 口径一致）
+          检测三类异常；预测结果仅用于预计持续时长，不参与触发判定
+  - 去重：拥堵/滞留按 (node, type) 事件状态机——持续期间不重复、升级才发新、
+          回落解除后可重入；门闸异常按 (node, subtype) 一次性去重
+  - 后端：仅 L2/L3 真实拥堵 POST 后端；L1 关注只进 union_pack/控制台
+  - 检测器基线：构造时用 CSV 历史前 75% 拟合一次，之后不再重拟（仅作展示用统计量）
   - CSV 增量：每次 check_alerts 都会重新读 CSV 取最新数据，无需重启
 """
 
@@ -67,7 +72,7 @@ NODE_NAME_MAP = {}
 
 class SecurityService:
     """
-    预测 + 预警封装服务。
+    预测 + 预警封装服务（MindSpore 版）。
 
     Parameters
     ----------
@@ -93,7 +98,7 @@ class SecurityService:
         model_dir: str,
         preprocessor_path: str,
         backend_base: str = "",
-        demo_mode: bool = True,
+        demo_mode: bool = False,
         login_username: str = "ZTZT",
         login_password: str = "Zzt20070124",
         interval_seconds: float = 60.0,
@@ -131,12 +136,18 @@ class SecurityService:
         # 检测器（基线在 load_and_fit_detector 里拟合）
         self.cd = None
 
+        # 每轮预警发送限额：本轮最多发 MAX_ALERTS_PER_ROUND 条，
+        # 超出部分进 _pending_alerts 延迟到下一轮（不丢弃，先到先发）。
+        self.max_alerts_per_round = 3
+        self.max_pending = 50
+        self._pending_alerts: list = []
+
     # ------------------------------------------------------------------
     # 构造器
     # ------------------------------------------------------------------
 
     @classmethod
-    def from_config(cls, csv_path, backend_base="", demo_mode=True,
+    def from_config(cls, csv_path, backend_base="", demo_mode=False,
                     interval_seconds=60.0, **kwargs):
         """从配置创建服务。模型路径默认取本文件同目录 checkpoints。"""
         base = os.path.dirname(os.path.abspath(__file__))
@@ -215,8 +226,8 @@ class SecurityService:
         帧数不足时返回 None（调用方跳过本轮），而不是抛异常。
         """
         df = self._read_csv()
-        _, X_norm, _ = self._build_feature_matrix(df)
-        n_ticks = X_norm.shape[0]
+        X_raw, X_norm, _ = self._build_feature_matrix(df)
+        n_ticks = X_raw.shape[0]
         if n_ticks < 3:
             return None
 
@@ -225,7 +236,9 @@ class SecurityService:
             gate_status_feature_idx=GATE_STATUS_FEATURE_IDX,
             gate_flow_feature_idx=GATE_FLOW_FEATURE_IDX,
         )
-        X_hist = X_norm[: int(n_ticks * HIST_RATIO)]
+        # 检测器使用原始（未归一化）特征：绝对密度阈值 0.3/0.6/0.9 以
+        # 原始密度（人数/容量）为准；预测模型仍用归一化后的 X_norm。
+        X_hist = X_raw[: int(n_ticks * HIST_RATIO)]
         self.cd.fit(X_hist)
         return self.cd
 
@@ -308,11 +321,16 @@ class SecurityService:
 
     def _classify(self, events):
         """检测事件 → 入库格式（对齐后端接口字段）。
-        阈值/持续时间按事件类型映射：
-          - congestion  : threshold_p85/threshold_p95 → 阈值；predicted_duration_min → 持续
+
+        等级/阈值直接采用检测器输出（绝对密度阈值 0.3/0.6/0.9 口径）：
+          - L1 关注（密度 ≥0.3，未真正拥堵）：post_backend=False，
+            仅进 union_pack/控制台，不 POST 后端
+          - L2 预警（密度 ≥0.6）：post_backend=True
+          - L3 严重（密度 ≥0.9）：post_backend=True
+        阈值/持续时间映射：
+          - congestion  : threshold_abs → 阈值；predicted_duration_min → 持续
           - loitering   : rate_threshold → 阈值；sustained_frames → 持续
           - gate_anomaly: expected_flow/gate_flow_rate → 参考阈值；无持续
-        预计持续兜底：L1/L2 默认 5 时间步（=50秒），L3 默认 10 时间步（=100秒）
         """
         alerts = []
         for ev in events:
@@ -320,15 +338,14 @@ class SecurityService:
             node_id = self.node_ids[node_idx]
 
             if ev["type"] == "congestion":
-                # 拥堵等级：L1 关注 / L2 预警 / L3 严重
-                if ev.get("severity") == "L1":
-                    level = "L1"
+                # 等级由检测器按绝对阈值给出，直接采用（不再用 exceed_ratio 重算）
+                level = ev.get("severity", "L2")
+                if level == "L1":
                     suggested = "关注该节点人流趋势"
-                    threshold = ev.get("threshold_p85", ev.get("threshold_p95", None))
+                    threshold = ev.get("threshold_abs", ev.get("threshold_p85", None))
                 else:
-                    level = "L3" if ev.get("exceed_ratio", 1) >= 1.5 else "L2"
                     suggested = "门闸限流50%"
-                    threshold = ev.get("threshold_p95", None)
+                    threshold = ev.get("threshold_abs", ev.get("threshold_p95", None))
                 duration = ev.get("predicted_duration_min", None)
             elif ev["type"] == "loitering":
                 level = "L3" if ev["severity"] == "L3" else "L2"
@@ -367,8 +384,48 @@ class SecurityService:
                 "predicted_duration_min": duration,
                 "suggested_action": suggested,
                 "status": "active",
+                # L1 关注不发后端（仅 union_pack/控制台）；L2/L3 才 POST
+                "post_backend": level != "L1",
             })
         return alerts
+
+    def _throttle_alerts(self, new_alerts):
+        """每轮限额：pending（上轮超限延迟）优先 + 本轮新事件。
+
+        按严重度（L3>L2>L1，同级密度降序）排序，本轮最多发
+        max_alerts_per_round 条，其余延迟到下一轮；同 (node_id, type, level)
+        只保留一条（先到先得）。
+
+        Returns
+        -------
+        list
+            本轮应发送的预警（≤ max_alerts_per_round 条）。
+        """
+        merged = self._pending_alerts + list(new_alerts)
+        seen = set()
+        deduped = []
+        for a in merged:
+            k = (a.get("node_id"), a.get("type"), a.get("level"))
+            if k in seen:
+                continue
+            seen.add(k)
+            deduped.append(a)
+        _sev_order = {"L3": 0, "L2": 1, "L1": 2}
+        deduped.sort(key=lambda a: (
+            _sev_order.get(a.get("level"), 9),
+            -float(a.get("current_density") or 0.0),
+        ))
+        to_send = deduped[: self.max_alerts_per_round]
+        overflow = deduped[self.max_alerts_per_round:]
+        if len(overflow) > self.max_pending:
+            print(f"  [预警队列] 本轮超限 {len(overflow)} 条，"
+                  f"丢弃最旧 {len(overflow) - self.max_pending} 条（防堆积）")
+            overflow = overflow[-self.max_pending:]
+        self._pending_alerts = overflow
+        if overflow:
+            print(f"  [预警队列] 本轮发送 {len(to_send)} 条，"
+                  f"{len(overflow)} 条延迟到下轮")
+        return to_send
 
     def check_alerts(self):
         """
@@ -391,9 +448,9 @@ class SecurityService:
                     "predictions": None, "alerts": [], "posted": [],
                 }
 
-        # 1. 读一次 CSV，构造特征矩阵（预测 + 检测共用同一份数据）
+        # 1. 读一次 CSV，构造特征矩阵（预测用 X_norm，检测用 X_raw 原始尺度）
         df = self._read_csv()
-        _, X_norm, tick_to_ts = self._build_feature_matrix(df)
+        X_raw, X_norm, tick_to_ts = self._build_feature_matrix(df)
         n_ticks = X_norm.shape[0]
         if n_ticks < self.window_size:
             # 帧数不足窗口 → 跳过本轮，不抛异常
@@ -404,7 +461,7 @@ class SecurityService:
                 "predictions": None, "alerts": [], "posted": [],
             }
 
-        # 2. 预测（用于拥堵确认 + 交付）
+        # 2. 预测（交付 + 为检测器提供预计持续时长）
         last_window = X_norm[-self.window_size:]
         X_input = last_window.transpose(1, 0, 2)[None]
         y_pred_norm = self.dp.predict(X_input)
@@ -427,14 +484,14 @@ class SecurityService:
             "density_stats": density_stats,
         }
 
-        # 3. 检测（最近 RECENT_FRAMES 帧，传入预测做拥堵确认）
-        X_recent = X_norm[-RECENT_FRAMES:]
+        # 3. 检测（最近 RECENT_FRAMES 帧，原始尺度特征；预测仅用于预计持续时长）
+        X_recent = X_raw[-RECENT_FRAMES:]
         events = self.cd.predict(X_recent, X_pred=y_pred)
 
-        # 5. 分级
-        alerts = self._classify(events)
+        # 5. 分级 + 每轮限额（延迟队列优先，本轮最多发 3 条）
+        alerts = self._throttle_alerts(self._classify(events))
 
-        # 6. demo 模式：无真实预警时构造一条演示预警
+        # 6. demo 模式：本轮（含延迟队列）无真实预警时构造一条演示预警
         if len(alerts) == 0 and self.demo_mode:
             demo_node = self.node_ids[0]
             alerts = [{
@@ -451,7 +508,7 @@ class SecurityService:
                 "status": "active",
             }]
 
-        # 7. POST 后端
+        # 7. POST 后端（仅 L2/L3 真实拥堵；L1 关注只进 union_pack/控制台）
         posted = []
         if alerts and self.alert_api:
             token = self._login_get_token()
@@ -460,6 +517,8 @@ class SecurityService:
                 headers = {"Authorization": f"Bearer {token}",
                            "Content-Type": "application/json"}
                 for a in alerts:
+                    if not a.get("post_backend", True):
+                        continue
                     try:
                         resp = requests.post(self.alert_api, json=a, headers=headers, timeout=5)
                         body = resp.json()
