@@ -53,7 +53,7 @@ from simulation import (  # noqa: E402
     run_integration,
     verify_baseline,
 )
-from flow_data_generator import PEOPLE_HOURLY_DEFAULT, WEEKDAY_NAMES  # noqa: E402
+from flow_data_generator import WEEKDAY_NAMES  # noqa: E402
 
 LIGHT_SELFTESTS = [
     "config",
@@ -194,8 +194,6 @@ def _build_engine(cfg, n_people, n_vehicles, import_state=None, import_cache=Non
         topo.import_cache(import_cache)
 
     gen = FlowDataGenerator(n_people=n_people, n_vehicles=n_vehicles,
-                            people_hourly_counts=cfg["simulation"].get(
-                                "people_hourly_counts") or PEOPLE_HOURLY_DEFAULT,
                             random_state=cfg["simulation"]["seed"], n_days=n_days,
                             start_hour=start_hour, start_minute=start_minute,
                             start_date=start_date.isoformat(),

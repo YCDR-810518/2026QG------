@@ -1,0 +1,977 @@
+    return func(args, cfg)
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 269, in cmd_run
+    svc = SecurityService.from_config(
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 149, in from_config
+    return cls(
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 118, in __init__
+    raise FileNotFoundError(f"preprocessor.json 不存在: {preprocessor_path}")
+FileNotFoundError: preprocessor.json 不存在: D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\checkpoints\preprocessor.json
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> & D:\anaconda\envs\hand_study_deep_learning\python.exe d:/资料-study/6-QG暑期考核/1-QG园区/项目目录/simulation/main.py
+== run: 20000人 / 5000车 × 113400 tick（16200/天 × 7天）==
+2026-08-05 20:10:05 [INFO] [topology.from_yaml] 从 D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\graph_data.yaml 加载拓扑配置
+2026-08-05 20:10:06 [INFO] [topology.from_yaml] 加载完成: 61 个节点, 105 条边, 7 种节点类型
+2026-08-05 20:10:06 [INFO] [topology.fit] fit: 加载交通网络 (61 节点)
+2026-08-05 20:10:06 [INFO] [topology.fit] fit 完成: 61 个节点已就绪
+2026-08-05 20:10:09 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → rd_guanggong_1 (kind=0)
+2026-08-05 20:10:09 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.55, 路径: cross_zh_mid → underpass → canteen_2 → east_dorm_1_3 → rd_guanggong_1
+  -> 每 10 tick 追加固定 CSV(./data/engine_timeseries.csv) + 吐 JSON(D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\data/json)，实时节拍 1.0 tick/s，时间戳 clock=now
+  宏观预测已启用（读 D:\资料-study\6-QG暑期考核\1-QG园区\data\engine_timeseries.csv）
+Traceback (most recent call last):
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 654, in <module>
+    sys.exit(main())
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 650, in main
+    return func(args, cfg)
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 269, in cmd_run
+    svc = SecurityService.from_config(
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 149, in from_config
+    return cls(
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 120, in __init__
+    self.dp = DensityPredictor.load(model_dir)
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\model.py", line 607, in load
+    raise FileNotFoundError(f"权重文件不存在: {state_path}")
+FileNotFoundError: 权重文件不存在: D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\checkpoints\density_model\model_state.pt
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> & D:\anaconda\envs\hand_study_deep_learning\python.exe d:/资料-study/6-QG暑期考核/1-QG园区/项目目录/simulation/main.py
+== run: 20000人 / 5000车 × 113400 tick（16200/天 × 7天）==
+2026-08-05 20:10:35 [INFO] [topology.from_yaml] 从 D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\graph_data.yaml 加载拓扑配置
+2026-08-05 20:10:35 [INFO] [topology.from_yaml] 加载完成: 61 个节点, 105 条边, 7 种节点类型
+2026-08-05 20:10:35 [INFO] [topology.fit] fit: 加载交通网络 (61 节点)
+2026-08-05 20:10:35 [INFO] [topology.fit] fit 完成: 61 个节点已就绪
+2026-08-05 20:10:37 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → rd_guanggong_1 (kind=0)
+2026-08-05 20:10:37 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.55, 路径: cross_zh_mid → underpass → canteen_2 → east_dorm_1_3 → rd_guanggong_1
+  -> 每 10 tick 追加固定 CSV(./data/engine_timeseries.csv) + 吐 JSON(D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\data/json)，实时节拍 1.0 tick/s，时间戳 clock=now
+  宏观预测已启用（读 D:\资料-study\6-QG暑期考核\1-QG园区\data\engine_timeseries.csv）
+启动预测+预警循环：间隔 60 秒，Ctrl+C 停止
+  CSV: D:\QG\QG2026暑假训练营\中期考核\data\engine_timeseries.csv
+  后端: http://192.168.1.114:8100/api/v1/security/alerts/create | demo_mode: False
+  首次拟合检测器基线 ...
+Traceback (most recent call last):
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 654, in <module>
+    sys.exit(main())
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 650, in main
+    return func(args, cfg)
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 276, in cmd_run
+    svc.run_loop()   # 阻塞式循环，Ctrl+C 停止
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 508, in run_loop
+    self.load_and_fit_detector()
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 219, in load_and_fit_detector
+    df = self._read_csv()
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py", line 166, in _read_csv
+    raise FileNotFoundError(f"CSV 不存在: {self.csv_path}")
+FileNotFoundError: CSV 不存在: D:\QG\QG2026暑假训练营\中期考核\data\engine_timeseries.csv
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> opencode
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> opencode
+                                   ▄     
+  █▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+  █  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀
+  ▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+  Session   排查 service.py 中 CSV 文件不存在错误
+  Continue  opencode -s ses_02e28ddf7ffevXIIFp9T71d0S4
+
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> & D:\anaconda\envs\hand_study_deep_learning\python.exe d:/资料-study/6-QG暑期考核/1-QG园区/项目目录/simulation/main.py
+== run: 20000人 / 5000车 × 113400 tick（16200/天 × 7天）==
+2026-08-05 20:26:13 [INFO] [topology.from_yaml] 从 D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\graph_data.yaml 加载拓扑配置
+2026-08-05 20:26:13 [INFO] [topology.from_yaml] 加载完成: 61 个节点, 105 条边, 7 种节点类型
+2026-08-05 20:26:13 [INFO] [topology.fit] fit: 加载交通网络 (61 节点)
+2026-08-05 20:26:13 [INFO] [topology.fit] fit 完成: 61 个节点已就绪
+2026-08-05 20:26:16 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → rd_guanggong_1 (kind=0)
+2026-08-05 20:26:16 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.55, 路径: cross_zh_mid → underpass → canteen_2 → east_dorm_1_3 → rd_guanggong_1
+  -> 每 10 tick 追加固定 CSV(./data/engine_timeseries.csv) + 吐 JSON(D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\data/json)，实时节拍 1.0 tick/s，时间戳 clock=now
+  宏观预测已启用（读 D:\资料-study\6-QG暑期考核\1-QG园区\data\engine_timeseries.csv）
+  预测+预警已启用（读 D:\资料-study\6-QG暑期考核\1-QG园区\data\engine_timeseries.csv，模型 D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\test\checkpoints）
+  实时数据上传已启用 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:18 [INFO] [topology.predict] 计算最短路径: west_dorm_5_8 → canteen_4 (kind=0)
+2026-08-05 20:26:18 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.68, 路径: west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:26:18 [INFO] [topology.predict] 计算最短路径: canteen_2 → canteen_3 (kind=0)
+2026-08-05 20:26:18 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.06, 路径: canteen_2 → underpass → cross_zh_mid → canteen_3
+2026-08-05 20:26:18 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:18 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:18 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+  [预测跳过] CSV 帧数不足（1 帧），无法拟合检测器基线，跳过本轮
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1617
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:26:19 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:26:19 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1617
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:26:19 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:20 [INFO] [topology.predict] 计算最短路径: exp_3 → west_dorm_5_8 (kind=0)
+2026-08-05 20:26:20 [INFO] [topology.predict] 最短路径: 10 步, 总权值 10.80, 路径: exp_3 → exp_4 → eng_4 → admin_building → sports_training → sports_football → sports_fitness → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8
+2026-08-05 20:26:20 [INFO] [topology.predict] 计算最短路径: gate_west → west_dorm_17_18 (kind=0)
+2026-08-05 20:26:20 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.14, 路径: gate_west → canteen_4 → west_dorm_17_18
+2026-08-05 20:26:21 [INFO] [topology.predict] 计算最短路径: canteen_2 → east_dorm_4_7 (kind=0)
+2026-08-05 20:26:21 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.62, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11 → east_dorm_4_7
+2026-08-05 20:26:22 [INFO] [topology.predict] 计算最短路径: west_dorm_5_8 → canteen_3 (kind=0)
+2026-08-05 20:26:22 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.85, 路径: west_dorm_5_8 → canteen_3
+2026-08-05 20:26:22 [INFO] [topology.predict] 计算最短路径: gate_east → sports_football (kind=1)
+2026-08-05 20:26:22 [INFO] [topology.predict] 最短路径: 7 步, 总权值 8.83, 路径: gate_east → rd_guanggong_1 → east_dorm_1_3 → canteen_2 → underpass → youth_center → sports_fitness → sports_football
+2026-08-05 20:26:22 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:22 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:22 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:26:23 [INFO] [topology.predict] 计算最短路径: east_dorm_4_7 → canteen_2 (kind=1)
+2026-08-05 20:26:23 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.62, 路径: east_dorm_4_7 → east_dorm_8_11 → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:25 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_2 (kind=0)
+2026-08-05 20:26:25 [INFO] [topology.predict] 最短路径: 6 步, 总权值 4.95, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_fitness → youth_center → underpass → canteen_2
+2026-08-05 20:26:25 [INFO] [topology.predict] 计算最短路径: canteen_2 → sports_cricket (kind=0)
+2026-08-05 20:26:25 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.33, 路径: canteen_2 → underpass → youth_center → sports_fitness → sports_swimming → sports_tennis → sports_cricket
+2026-08-05 20:26:26 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → sports_cricket (kind=0)
+2026-08-05 20:26:26 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.00, 路径: west_dorm_13_16 → west_dorm_17_18 → canteen_4 → gate_west → sports_cricket
+2026-08-05 20:26:27 [INFO] [topology.predict] 计算最短路径: canteen_2 → east_dorm_8_11 (kind=0)
+2026-08-05 20:26:27 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.82, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:26:27 [INFO] [topology.predict] 计算最短路径: gate_west → sports_swimming (kind=1)
+2026-08-05 20:26:27 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.55, 路径: gate_west → canteen_4 → sports_tennis → sports_swimming
+2026-08-05 20:26:28 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_1 (kind=0)
+2026-08-05 20:26:28 [INFO] [topology.predict] 最短路径: 9 步, 总权值 9.10, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:26:28 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:28 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:28 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测跳过] CSV 帧数不足（2 帧），无法拟合检测器基线，跳过本轮
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:26:29 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:26:29 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:26:29 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:29 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → east_dorm_1_3 (kind=0)
+2026-08-05 20:26:29 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.81, 路径: west_dorm_13_16 → west_dorm_9_12 → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2 → east_dorm_1_3
+2026-08-05 20:26:31 [INFO] [topology.predict] 计算最短路径: gate_south → sports_basketball_b (kind=1)
+2026-08-05 20:26:31 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.08, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b
+2026-08-05 20:26:32 [INFO] [topology.predict] 计算最短路径: gate_south → youth_center (kind=0)
+2026-08-05 20:26:32 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.71, 路径: gate_south → admin_building → sports_training → sports_football → sports_fitness → youth_center
+2026-08-05 20:26:32 [INFO] [topology.predict] 计算最短路径: sports_cricket → west_dorm_9_12 (kind=0)
+2026-08-05 20:26:32 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.75, 路径: sports_cricket → gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:26:33 [INFO] [topology.predict] 计算最短路径: teach_4 → canteen_2 (kind=0)
+2026-08-05 20:26:33 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.14, 路径: teach_4 → teach_6 → gongchuanggu → underpass → canteen_2
+2026-08-05 20:26:33 [INFO] [topology.predict] 计算最短路径: sports_basketball_b → canteen_2 (kind=0)
+2026-08-05 20:26:33 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.57, 路径: sports_basketball_b → sports_basketball_a → sports_fitness → youth_center → underpass → canteen_2
+2026-08-05 20:26:34 [INFO] [topology.predict] 计算最短路径: sports_basketball_a → canteen_3 (kind=0)
+2026-08-05 20:26:34 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.62, 路径: sports_basketball_a → sports_fitness → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:26:35 [INFO] [topology.predict] 计算最短路径: biomed_inst → canteen_2 (kind=0)
+2026-08-05 20:26:35 [INFO] [topology.predict] 最短路径: 8 步, 总权值 8.01, 路径: biomed_inst → exp_3 → exp_2 → exp_1 → eng_1 → library → gongchuanggu → underpass → canteen_2
+2026-08-05 20:26:35 [INFO] [topology.predict] 计算最短路径: sports_cricket → canteen_3 (kind=0)
+2026-08-05 20:26:35 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.90, 路径: sports_cricket → sports_tennis → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:26:36 [INFO] [topology.predict] 计算最短路径: youth_center → east_dorm_12_14 (kind=0)
+2026-08-05 20:26:36 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.37, 路径: youth_center → underpass → east_dorm_12_14
+2026-08-05 20:26:36 [INFO] [topology.predict] 计算最短路径: canteen_2 → east_dorm_12_14 (kind=0)
+2026-08-05 20:26:36 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.70, 路径: canteen_2 → east_dorm_12_14
+2026-08-05 20:26:37 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_3 (kind=0)
+2026-08-05 20:26:37 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.48, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:26:38 [INFO] [topology.predict] 计算最短路径: gate_south → canteen_1 (kind=1)
+2026-08-05 20:26:38 [INFO] [topology.predict] 最短路径: 8 步, 总权值 11.34, 路径: gate_south → admin_building → library → gongchuanggu → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测跳过] CSV 只有 3 帧，少于窗口 6，跳过本轮
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:26:39 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:26:39 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:26:39 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:26:39 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:39 [INFO] [topology.predict] 计算最短路径: gate_south → east_dorm_4_7 (kind=0)
+2026-08-05 20:26:39 [INFO] [topology.predict] 最短路径: 7 步, 总权值 9.81, 路径: gate_south → admin_building → library → gongchuanggu → underpass → east_dorm_12_14 → east_dorm_8_11 → east_dorm_4_7
+2026-08-05 20:26:39 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_3 (kind=0)
+2026-08-05 20:26:39 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.52, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:26:39 [INFO] [topology.predict] 计算最短路径: canteen_1 → sports_swimming (kind=0)
+2026-08-05 20:26:39 [INFO] [topology.predict] 最短路径: 8 步, 总权值 7.30, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → cross_zh_mid → pedestrian_bridge → sports_gym → sports_swimming
+2026-08-05 20:26:39 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_1 (kind=1)
+2026-08-05 20:26:39 [INFO] [topology.predict] 最短路径: 10 步, 总权值 9.04, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → pedestrian_bridge → cross_zh_mid → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:26:40 [INFO] [topology.predict] 计算最短路径: library → cross_zh_mid (kind=0)
+2026-08-05 20:26:40 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.60, 路径: library → gongchuanggu → underpass → cross_zh_mid
+2026-08-05 20:26:40 [INFO] [topology.predict] 计算最短路径: sports_gym → east_dorm_12_14 (kind=0)
+2026-08-05 20:26:40 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.67, 路径: sports_gym → pedestrian_bridge → cross_zh_mid → underpass → east_dorm_12_14
+2026-08-05 20:26:40 [INFO] [topology.predict] 计算最短路径: sports_football → canteen_1 (kind=0)
+2026-08-05 20:26:40 [INFO] [topology.predict] 最短路径: 7 步, 总权值 7.75, 路径: sports_football → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:26:40 [INFO] [topology.predict] 计算最短路径: canteen_4 → west_dorm_9_12 (kind=0)
+2026-08-05 20:26:40 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.70, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:26:40 [INFO] [topology.predict] 计算最短路径: canteen_2 → canteen_1 (kind=0)
+2026-08-05 20:26:40 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.15, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:26:41 [INFO] [topology.predict] 计算最短路径: exp_2 → canteen_2 (kind=0)
+2026-08-05 20:26:41 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.72, 路径: exp_2 → exp_1 → eng_1 → library → gongchuanggu → underpass → canteen_2
+2026-08-05 20:26:43 [INFO] [topology.predict] 计算最短路径: gate_east → west_dorm_9_12 (kind=0)
+2026-08-05 20:26:43 [INFO] [topology.predict] 最短路径: 7 步, 总权值 9.02, 路径: gate_east → rd_guanggong_1 → east_dorm_1_3 → canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_9_12
+2026-08-05 20:26:45 [INFO] [topology.predict] 计算最短路径: rd_guanggong_1 → canteen_2 (kind=0)
+2026-08-05 20:26:45 [INFO] [topology.predict] 最短路径: 2 步, 总权值 3.75, 路径: rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:26:45 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → canteen_3 (kind=0)
+2026-08-05 20:26:45 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.87, 路径: west_dorm_9_12 → west_dorm_5_8 → canteen_3
+2026-08-05 20:26:45 [INFO] [topology.predict] 计算最短路径: canteen_2 → west_dorm_5_8 (kind=0)
+2026-08-05 20:26:45 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.91, 路径: canteen_2 → underpass → cross_zh_mid → canteen_3 → west_dorm_5_8
+2026-08-05 20:26:45 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:45 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:45 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:26:46 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → canteen_1 (kind=0)
+2026-08-05 20:26:46 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.43, 路径: cross_zh_mid → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:26:46 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → west_express (kind=0)
+2026-08-05 20:26:46 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.61, 路径: east_dorm_1_3 → canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_express
+2026-08-05 20:26:46 [INFO] [topology.predict] 计算最短路径: gate_west → west_dorm_17_18 (kind=1)
+2026-08-05 20:26:46 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.14, 路径: gate_west → canteen_4 → west_dorm_17_18
+2026-08-05 20:26:47 [INFO] [topology.predict] 计算最短路径: gate_south → sports_volleyball (kind=0)
+2026-08-05 20:26:47 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.70, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball
+2026-08-05 20:26:48 [INFO] [topology.predict] 计算最短路径: teacher_apt → teach_1 (kind=0)
+2026-08-05 20:26:48 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.18, 路径: teacher_apt → cross_zh_north → east_dorm_12_14 → underpass → gongchuanggu → teach_3 → teach_1
+2026-08-05 20:26:48 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:48 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:48 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测跳过] CSV 只有 4 帧，少于窗口 6，跳过本轮
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] PageRank 完成: top1=rd_guanggong_1 0.0934
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 0.7
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'eng_4']
+2026-08-05 20:26:49 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:26:49 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] PageRank 完成: top1=rd_guanggong_1 0.0934
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 0.7
+2026-08-05 20:26:49 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'eng_4']
+2026-08-05 20:26:49 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:50 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → east_dorm_1_3 (kind=0)
+2026-08-05 20:26:50 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.72, 路径: east_dorm_12_14 → canteen_2 → east_dorm_1_3
+2026-08-05 20:26:50 [INFO] [topology.predict] 计算最短路径: sports_swimming → west_dorm_17_18 (kind=1)
+2026-08-05 20:26:50 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.67, 路径: sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_17_18
+2026-08-05 20:26:51 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:51 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:51 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:26:52 [INFO] [topology.predict] 计算最短路径: teach_4 → canteen_2 (kind=0)
+2026-08-05 20:26:52 [INFO] [topology.predict] 最短路径: 20 步, 总权值 17.59, 路径: teach_4 → large_classroom → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:52 [INFO] [topology.predict] 计算最短路径: sports_swimming → canteen_2 (kind=0)
+2026-08-05 20:26:52 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.37, 路径: sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:52 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_2 (kind=0)
+2026-08-05 20:26:52 [INFO] [topology.predict] 最短路径: 9 步, 总权值 8.11, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:52 [INFO] [topology.predict] 计算最短路径: supermarket → canteen_2 (kind=0)
+2026-08-05 20:26:52 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.45, 路径: supermarket → east_dorm_8_11 → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:52 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:52 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:52 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:26:55 [INFO] [topology.predict] 计算最短路径: sports_volleyball → canteen_2 (kind=0)
+2026-08-05 20:26:55 [INFO] [topology.predict] 最短路径: 8 步, 总权值 7.29, 路径: sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:55 [INFO] [topology.predict] 计算最短路径: youth_center → canteen_3 (kind=0)
+2026-08-05 20:26:55 [INFO] [topology.predict] 最短路径: 4 步, 总权值 502.82, 路径: youth_center → sports_fitness → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:26:55 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_2 (kind=0)
+2026-08-05 20:26:55 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.15, 路径: canteen_1 → supermarket → east_dorm_8_11 → east_dorm_12_14 → canteen_2
+2026-08-05 20:26:55 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:55 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:55 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:26:57 [INFO] [topology.predict] 计算最短路径: underpass → sports_football (kind=0)
+2026-08-05 20:26:57 [INFO] [topology.predict] 最短路径: 10 步, 总权值 10.53, 路径: underpass → gongchuanggu → teach_3 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_football
+2026-08-05 20:26:57 [INFO] [topology.predict] 计算最短路径: exp_1 → sports_fitness (kind=0)
+2026-08-05 20:26:57 [INFO] [topology.predict] 最短路径: 8 步, 总权值 7.93, 路径: exp_1 → exp_2 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_football → sports_fitness
+2026-08-05 20:26:57 [INFO] [topology.predict] 计算最短路径: west_dorm_17_18 → canteen_4 (kind=0)
+2026-08-05 20:26:57 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.64, 路径: west_dorm_17_18 → canteen_4
+2026-08-05 20:26:58 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:26:58 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:26:58 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测跳过] CSV 只有 5 帧，少于窗口 6，跳过本轮
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1450
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.1
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'sports_volleyball']
+2026-08-05 20:26:59 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:26:59 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1450
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.1
+2026-08-05 20:26:59 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'sports_volleyball']
+2026-08-05 20:26:59 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:26:59 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → canteen_3 (kind=0)
+2026-08-05 20:26:59 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.87, 路径: west_dorm_9_12 → west_dorm_5_8 → canteen_3
+2026-08-05 20:26:59 [INFO] [topology.predict] 计算最短路径: hospital → sports_swimming (kind=1)
+2026-08-05 20:26:59 [INFO] [topology.predict] 最短路径: 7 步, 总权值 8.05, 路径: hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming
+2026-08-05 20:27:00 [INFO] [topology.predict] 计算最短路径: library → canteen_1 (kind=0)
+2026-08-05 20:27:00 [INFO] [topology.predict] 最短路径: 16 步, 总权值 20.17, 路径: library → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:27:01 [INFO] [topology.predict] 计算最短路径: sports_gym → canteen_2 (kind=0)
+2026-08-05 20:27:01 [INFO] [topology.predict] 最短路径: 6 步, 总权值 9.09, 路径: sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:27:01 [INFO] [topology.predict] 计算最短路径: canteen_4 → sports_basketball_a (kind=0)
+2026-08-05 20:27:01 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.08, 路径: canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a
+2026-08-05 20:27:01 [INFO] [topology.predict] 计算最短路径: teacher_apt → sports_swimming (kind=0)
+2026-08-05 20:27:01 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.83, 路径: teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming
+2026-08-05 20:27:01 [INFO] [topology.predict] 计算最短路径: gate_south → west_dorm_13_16 (kind=1)
+2026-08-05 20:27:01 [INFO] [topology.predict] 最短路径: 10 步, 总权值 10.51, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_tennis → canteen_4 → west_dorm_17_18 → west_dorm_13_16
+2026-08-05 20:27:01 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:01 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:01 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:02 [INFO] [topology.predict] 计算最短路径: gate_east → sports_training (kind=0)
+2026-08-05 20:27:02 [INFO] [topology.predict] 最短路径: 15 步, 总权值 596.13, 路径: gate_east → canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training
+2026-08-05 20:27:02 [INFO] [topology.predict] 计算最短路径: teacher_apt → canteen_3 (kind=0)
+2026-08-05 20:27:02 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.31, 路径: teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:27:03 [INFO] [topology.predict] 计算最短路径: canteen_1 → sports_swimming (kind=0)
+2026-08-05 20:27:03 [INFO] [topology.predict] 最短路径: 9 步, 总权值 587.68, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming
+2026-08-05 20:27:04 [INFO] [topology.predict] 计算最短路径: sports_fitness → canteen_4 (kind=0)
+2026-08-05 20:27:04 [INFO] [topology.predict] 最短路径: 3 步, 总权值 4.09, 路径: sports_fitness → sports_swimming → sports_tennis → canteen_4
+2026-08-05 20:27:06 [INFO] [topology.predict] 计算最短路径: west_express → teach_4 (kind=0)
+2026-08-05 20:27:06 [INFO] [topology.predict] 最短路径: 16 步, 总权值 14.00, 路径: west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → large_classroom → teach_4
+2026-08-05 20:27:06 [INFO] [topology.predict] 计算最短路径: east_dorm_4_7 → youth_center (kind=0)
+2026-08-05 20:27:06 [INFO] [topology.predict] 最短路径: 5 步, 总权值 1003.29, 路径: east_dorm_4_7 → east_dorm_8_11 → east_dorm_12_14 → canteen_2 → underpass → youth_center
+2026-08-05 20:27:06 [INFO] [topology.predict] 计算最短路径: canteen_2 → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:06 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.21, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_9_12
+2026-08-05 20:27:06 [INFO] [topology.predict] 计算最短路径: gate_west → east_dorm_8_11 (kind=1)
+2026-08-05 20:27:06 [INFO] [topology.predict] 最短路径: 18 步, 总权值 1406.86, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11
+2026-08-05 20:27:06 [INFO] [topology.predict] 计算最短路径: gate_east → hospital (kind=1)
+2026-08-05 20:27:06 [INFO] [topology.predict] 最短路径: 3 步, 总权值 5.68, 路径: gate_east → canteen_1 → supermarket → hospital
+2026-08-05 20:27:07 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → teacher_apt (kind=0)
+2026-08-05 20:27:07 [INFO] [topology.predict] 最短路径: 23 步, 总权值 1411.59, 路径: west_dorm_9_12 → west_dorm_5_8 → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket → hospital → teacher_apt
+2026-08-05 20:27:07 [INFO] [topology.predict] 计算最短路径: gate_west → west_dorm_9_12 (kind=1)
+2026-08-05 20:27:07 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.20, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:08 [INFO] [topology.predict] 计算最短路径: canteen_2 → env_inst (kind=0)
+2026-08-05 20:27:08 [INFO] [topology.predict] 最短路径: 18 步, 总权值 595.55, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → exp_2 → env_inst
+2026-08-05 20:27:08 [INFO] [topology.predict] 计算最短路径: east_dorm_8_11 → canteen_3 (kind=1)
+2026-08-05 20:27:08 [INFO] [topology.predict] 最短路径: 5 步, 总权值 584.43, 路径: east_dorm_8_11 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:27:08 [INFO] [topology.predict] 计算最短路径: gate_west → east_dorm_1_3 (kind=1)
+2026-08-05 20:27:08 [INFO] [topology.predict] 最短路径: 16 步, 总权值 1405.02, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:27:19 ~ 2026-08-05 20:27:39 | Top3: canteen_2=0.04859999939799309, sports_basketball_c=0.026200000196695328, canteen_1=0.020899999886751175 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1535
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.0
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'cross_zh_mid']
+2026-08-05 20:27:09 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:09 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1535
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.0
+2026-08-05 20:27:09 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'cross_zh_mid']
+2026-08-05 20:27:09 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:10 [INFO] [topology.predict] 计算最短路径: rd_guanggong_1 → canteen_4 (kind=0)
+2026-08-05 20:27:10 [INFO] [topology.predict] 最短路径: 14 步, 总权值 14.18, 路径: rd_guanggong_1 → teach_2 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_tennis → canteen_4
+2026-08-05 20:27:10 [INFO] [topology.predict] 计算最短路径: canteen_1 → sports_volleyball (kind=1)
+2026-08-05 20:27:10 [INFO] [topology.predict] 最短路径: 10 步, 总权值 588.60, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball
+2026-08-05 20:27:10 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → canteen_3 (kind=0)
+2026-08-05 20:27:10 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.31, 路径: east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:27:10 [INFO] [topology.predict] 计算最短路径: east_dorm_8_11 → west_dorm_17_18 (kind=0)
+2026-08-05 20:27:10 [INFO] [topology.predict] 最短路径: 5 步, 总权值 585.04, 路径: east_dorm_8_11 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18
+2026-08-05 20:27:11 [INFO] [topology.predict] 计算最短路径: science_hall → hospital (kind=0)
+2026-08-05 20:27:11 [INFO] [topology.predict] 最短路径: 12 步, 总权值 1400.75, 路径: science_hall → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:27:11 [INFO] [topology.predict] 计算最短路径: sports_volleyball → canteen_3 (kind=0)
+2026-08-05 20:27:11 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.70, 路径: sports_volleyball → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:27:11 [INFO] [topology.predict] 计算最短路径: sports_football → west_dorm_13_16 (kind=0)
+2026-08-05 20:27:11 [INFO] [topology.predict] 最短路径: 9 步, 总权值 9.33, 路径: sports_football → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_tennis → canteen_4 → west_dorm_17_18 → west_dorm_13_16
+2026-08-05 20:27:11 [INFO] [topology.predict] 计算最短路径: west_dorm_1_4 → canteen_2 (kind=0)
+2026-08-05 20:27:11 [INFO] [topology.predict] 最短路径: 19 步, 总权值 1407.98, 路径: west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:27:11 [INFO] [topology.predict] 计算最短路径: sports_volleyball → east_dorm_8_11 (kind=1)
+2026-08-05 20:27:11 [INFO] [topology.predict] 最短路径: 15 步, 总权值 1403.50, 路径: sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11
+2026-08-05 20:27:12 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_2 (kind=0)
+2026-08-05 20:27:12 [INFO] [topology.predict] 最短路径: 17 步, 总权值 1407.04, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:27:12 [INFO] [topology.predict] 计算最短路径: sports_fitness → canteen_3 (kind=0)
+2026-08-05 20:27:12 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.82, 路径: sports_fitness → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:27:13 [INFO] [topology.predict] 计算最短路径: canteen_3 → west_dorm_1_4 (kind=0)
+2026-08-05 20:27:13 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.60, 路径: canteen_3 → west_express → west_dorm_1_4
+2026-08-05 20:27:13 [INFO] [topology.predict] 计算最短路径: gate_south → west_dorm_5_8 (kind=1)
+2026-08-05 20:27:13 [INFO] [topology.predict] 最短路径: 10 步, 总权值 9.25, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8
+2026-08-05 20:27:14 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:14 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.37, 路径: sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8
+2026-08-05 20:27:14 [INFO] [topology.predict] 计算最短路径: gate_east → west_dorm_13_16 (kind=1)
+2026-08-05 20:27:14 [INFO] [topology.predict] 最短路径: 8 步, 总权值 590.41, 路径: gate_east → canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_dorm_9_12 → west_dorm_13_16
+2026-08-05 20:27:15 [INFO] [topology.predict] 计算最短路径: gate_south → canteen_2 (kind=0)
+2026-08-05 20:27:15 [INFO] [topology.predict] 最短路径: 10 步, 总权值 1399.50, 路径: gate_south → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:27:15 [INFO] [topology.predict] 计算最短路径: eng_2 → hospital (kind=0)
+2026-08-05 20:27:15 [INFO] [topology.predict] 最短路径: 9 步, 总权值 1398.78, 路径: eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:27:15 [INFO] [topology.predict] 计算最短路径: sports_football → hospital (kind=0)
+2026-08-05 20:27:15 [INFO] [topology.predict] 最短路径: 14 步, 总权值 1403.88, 路径: sports_football → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:27:15 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:15 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:15 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:16 [INFO] [topology.predict] 计算最短路径: gate_west → exp_1 (kind=0)
+2026-08-05 20:27:16 [INFO] [topology.predict] 最短路径: 13 步, 总权值 11.78, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → exp_1
+2026-08-05 20:27:16 [INFO] [topology.predict] 计算最短路径: west_dorm_1_4 → west_dorm_13_16 (kind=0)
+2026-08-05 20:27:16 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.80, 路径: west_dorm_1_4 → west_dorm_9_12 → west_dorm_13_16
+2026-08-05 20:27:17 [INFO] [topology.predict] 计算最短路径: canteen_4 → west_dorm_13_16 (kind=0)
+2026-08-05 20:27:17 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.95, 路径: canteen_4 → west_dorm_17_18 → west_dorm_13_16
+2026-08-05 20:27:17 [INFO] [topology.predict] 计算最短路径: hospital → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:17 [INFO] [topology.predict] 最短路径: 22 步, 总权值 21.76, 路径: hospital → supermarket → east_dorm_8_11 → east_dorm_4_7 → east_dorm_1_3 → rd_guanggong_1 → teach_2 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:18 [INFO] [topology.predict] 计算最短路径: canteen_3 → canteen_1 (kind=0)
+2026-08-05 20:27:18 [INFO] [topology.predict] 最短路径: 17 步, 总权值 19.81, 路径: canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → gate_east → canteen_1
+2026-08-05 20:27:18 [INFO] [topology.predict] 计算最短路径: supermarket → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:18 [INFO] [topology.predict] 最短路径: 21 步, 总权值 21.09, 路径: supermarket → east_dorm_8_11 → east_dorm_4_7 → east_dorm_1_3 → rd_guanggong_1 → teach_2 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:18 [INFO] [topology.predict] 计算最短路径: canteen_2 → teacher_apt (kind=1)
+2026-08-05 20:27:18 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.34, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11 → supermarket → hospital → teacher_apt
+2026-08-05 20:27:18 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:18 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:18 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:27:29 ~ 2026-08-05 20:27:49 | Top3: canteen_2=0.049300000071525574, sports_basketball_c=0.032099999487400055, gate_south=0.0272000003606081 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1618
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:27:19 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:19 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1618
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:27:19 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:19 [INFO] [topology.predict] 计算最短路径: sports_volleyball → supermarket (kind=0)
+2026-08-05 20:27:19 [INFO] [topology.predict] 最短路径: 7 步, 总权值 7.58, 路径: sports_volleyball → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket
+2026-08-05 20:27:19 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_4 (kind=0)
+2026-08-05 20:27:19 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.68, 路径: sports_basketball_c → sports_volleyball → sports_tennis → canteen_4
+2026-08-05 20:27:19 [INFO] [topology.predict] 计算最短路径: canteen_3 → biomed_inst (kind=0)
+2026-08-05 20:27:19 [INFO] [topology.predict] 最短路径: 9 步, 总权值 10.72, 路径: canteen_3 → sports_gym → sports_swimming → sports_fitness → sports_football → sports_training → admin_building → eng_4 → science_hall → biomed_inst
+2026-08-05 20:27:19 [INFO] [topology.predict] 计算最短路径: west_express → sports_volleyball (kind=0)
+2026-08-05 20:27:19 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.70, 路径: west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball
+2026-08-05 20:27:19 [INFO] [topology.predict] 计算最短路径: canteen_2 → sports_basketball_c (kind=0)
+2026-08-05 20:27:19 [INFO] [topology.predict] 最短路径: 6 步, 总权值 4.95, 路径: canteen_2 → underpass → youth_center → sports_fitness → sports_swimming → sports_volleyball → sports_basketball_c
+2026-08-05 20:27:20 [INFO] [topology.predict] 计算最短路径: gate_east → west_dorm_13_16 (kind=0)
+2026-08-05 20:27:20 [INFO] [topology.predict] 最短路径: 12 步, 总权值 13.09, 路径: gate_east → rd_guanggong_1 → east_dorm_1_3 → canteen_2 → underpass → youth_center → sports_fitness → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_9_12 → west_dorm_13_16
+2026-08-05 20:27:20 [INFO] [topology.predict] 计算最短路径: gate_south → sports_fitness (kind=1)
+2026-08-05 20:27:20 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.21, 路径: gate_south → admin_building → sports_training → sports_football → sports_fitness
+2026-08-05 20:27:22 [INFO] [topology.predict] 计算最短路径: gate_south → east_dorm_12_14 (kind=0)
+2026-08-05 20:27:22 [INFO] [topology.predict] 最短路径: 5 步, 总权值 7.89, 路径: gate_south → admin_building → library → gongchuanggu → underpass → east_dorm_12_14
+2026-08-05 20:27:22 [INFO] [topology.predict] 计算最短路径: sports_basketball_a → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:22 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.49, 路径: sports_basketball_a → sports_fitness → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:22 [INFO] [topology.predict] 计算最短路径: teacher_apt → canteen_2 (kind=0)
+2026-08-05 20:27:22 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.34, 路径: teacher_apt → hospital → supermarket → east_dorm_8_11 → east_dorm_12_14 → canteen_2
+2026-08-05 20:27:22 [INFO] [topology.predict] 计算最短路径: canteen_1 → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:22 [INFO] [topology.predict] 最短路径: 10 步, 总权值 9.99, 路径: canteen_1 → supermarket → east_dorm_8_11 → east_dorm_12_14 → underpass → youth_center → sports_fitness → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8
+2026-08-05 20:27:22 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:22 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:22 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:24 [INFO] [topology.predict] 计算最短路径: gate_south → canteen_3 (kind=1)
+2026-08-05 20:27:24 [INFO] [topology.predict] 最短路径: 3 步, 总权值 8.01, 路径: gate_south → cross_zh_south → cross_zh_mid → canteen_3
+2026-08-05 20:27:25 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_2 (kind=0)
+2026-08-05 20:27:25 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.09, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → canteen_3 → cross_zh_mid → underpass → canteen_2
+2026-08-05 20:27:25 [INFO] [topology.predict] 计算最短路径: west_express → youth_center (kind=0)
+2026-08-05 20:27:25 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.73, 路径: west_express → canteen_3 → cross_zh_mid → underpass → youth_center
+2026-08-05 20:27:26 [INFO] [topology.predict] 计算最短路径: sports_fitness → west_dorm_17_18 (kind=0)
+2026-08-05 20:27:26 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.71, 路径: sports_fitness → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_17_18
+2026-08-05 20:27:26 [INFO] [topology.predict] 计算最短路径: youth_center → canteen_1 (kind=0)
+2026-08-05 20:27:26 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.82, 路径: youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:27:27 [INFO] [topology.predict] 计算最短路径: admin_building → hospital (kind=0)
+2026-08-05 20:27:27 [INFO] [topology.predict] 最短路径: 7 步, 总权值 10.55, 路径: admin_building → library → gongchuanggu → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:27:27 [INFO] [topology.predict] 计算最短路径: sports_basketball_b → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:27 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.59, 路径: sports_basketball_b → sports_basketball_a → sports_fitness → youth_center → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:27 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:27 [INFO] [topology.predict] 最短路径: 1 步, 总权值 1.02, 路径: west_dorm_9_12 → west_dorm_5_8
+2026-08-05 20:27:27 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_3 (kind=0)
+2026-08-05 20:27:27 [INFO] [topology.predict] 最短路径: 6 步, 总权值 7.21, 路径: canteen_1 → supermarket → east_dorm_8_11 → east_dorm_12_14 → underpass → cross_zh_mid → canteen_3
+2026-08-05 20:27:27 [INFO] [topology.predict] 计算最短路径: gate_east → east_dorm_12_14 (kind=1)
+2026-08-05 20:27:27 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.93, 路径: gate_east → rd_guanggong_1 → east_dorm_1_3 → canteen_2 → east_dorm_12_14
+2026-08-05 20:27:28 [INFO] [topology.predict] 计算最短路径: sports_tennis → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:28 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.23, 路径: sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:28 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:28 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:28 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:27:39 ~ 2026-08-05 20:27:59 | Top3: canteen_2=0.05429999902844429, sports_basketball_c=0.039000000804662704, gate_south=0.033399999141693115 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:27:29 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:29 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:27:29 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:29 [INFO] [topology.predict] 计算最短路径: canteen_4 → west_dorm_17_18 (kind=0)
+2026-08-05 20:27:29 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.64, 路径: canteen_4 → west_dorm_17_18
+2026-08-05 20:27:32 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → canteen_3 (kind=0)
+2026-08-05 20:27:32 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.08, 路径: east_dorm_1_3 → canteen_2 → underpass → cross_zh_mid → canteen_3
+2026-08-05 20:27:33 [INFO] [topology.predict] 计算最短路径: underpass → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:33 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.93, 路径: underpass → cross_zh_mid → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:33 [INFO] [topology.predict] 计算最短路径: sports_football → canteen_4 (kind=0)
+2026-08-05 20:27:33 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.52, 路径: sports_football → sports_fitness → sports_swimming → sports_tennis → canteen_4
+2026-08-05 20:27:34 [INFO] [topology.predict] 计算最短路径: west_dorm_5_8 → hospital (kind=0)
+2026-08-05 20:27:34 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.68, 路径: west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital
+2026-08-05 20:27:35 [INFO] [topology.predict] 计算最短路径: west_dorm_17_18 → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:35 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.97, 路径: west_dorm_17_18 → west_dorm_5_8 → canteen_3 → cross_zh_mid → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:36 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_1 (kind=1)
+2026-08-05 20:27:36 [INFO] [topology.predict] 最短路径: 9 步, 总权值 8.23, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:27:37 [INFO] [topology.predict] 计算最短路径: underpass → canteen_3 (kind=0)
+2026-08-05 20:27:37 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.06, 路径: underpass → cross_zh_mid → canteen_3
+2026-08-05 20:27:37 [INFO] [topology.predict] 计算最短路径: sports_gym → canteen_4 (kind=0)
+2026-08-05 20:27:37 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.61, 路径: sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:27:37 [INFO] [topology.predict] 计算最短路径: sports_fitness → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:37 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.19, 路径: sports_fitness → youth_center → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:37 [INFO] [topology.predict] 计算最短路径: canteen_2 → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:37 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.79, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_9_12
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:27:49 ~ 2026-08-05 20:28:09 | Top3: canteen_2=0.05480000004172325, sports_basketball_c=0.03909999877214432, underpass=0.03610000014305115 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0333
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:27:39 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:39 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0333
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:27:39 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:27:39 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:39 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:39 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.02, 路径: west_dorm_13_16 → west_dorm_9_12 → west_dorm_5_8
+2026-08-05 20:27:39 [INFO] [topology.predict] 计算最短路径: west_dorm_17_18 → canteen_3 (kind=0)
+2026-08-05 20:27:39 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.89, 路径: west_dorm_17_18 → west_dorm_5_8 → canteen_3
+2026-08-05 20:27:40 [INFO] [topology.predict] 计算最短路径: hospital → sports_volleyball (kind=0)
+2026-08-05 20:27:40 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.85, 路径: hospital → teacher_apt → cross_zh_north → cross_zh_mid → pedestrian_bridge → sports_gym → sports_swimming → sports_volleyball
+2026-08-05 20:27:42 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:42 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.13, 路径: cross_zh_mid → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:43 [INFO] [topology.predict] 计算最短路径: canteen_3 → west_dorm_1_4 (kind=0)
+2026-08-05 20:27:43 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.60, 路径: canteen_3 → west_express → west_dorm_1_4
+2026-08-05 20:27:43 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → supermarket (kind=0)
+2026-08-05 20:27:43 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.47, 路径: east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket
+2026-08-05 20:27:44 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → sports_football (kind=0)
+2026-08-05 20:27:44 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.12, 路径: west_dorm_9_12 → west_dorm_5_8 → canteen_3 → sports_gym → sports_swimming → sports_fitness → sports_football
+2026-08-05 20:27:44 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:44 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.81, 路径: east_dorm_1_3 → canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_9_12
+2026-08-05 20:27:44 [INFO] [topology.predict] 计算最短路径: teacher_apt → sports_football (kind=0)
+2026-08-05 20:27:44 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.46, 路径: teacher_apt → cross_zh_north → east_dorm_12_14 → underpass → youth_center → sports_fitness → sports_football
+2026-08-05 20:27:45 [INFO] [topology.predict] 计算最短路径: west_dorm_17_18 → west_dorm_1_4 (kind=0)
+2026-08-05 20:27:45 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.21, 路径: west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4
+2026-08-05 20:27:45 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:45 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:45 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:46 [INFO] [topology.predict] 计算最短路径: gate_south → supermarket (kind=0)
+2026-08-05 20:27:46 [INFO] [topology.predict] 最短路径: 7 步, 总权值 10.64, 路径: gate_south → admin_building → library → gongchuanggu → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket
+2026-08-05 20:27:46 [INFO] [topology.predict] 计算最短路径: west_express → canteen_3 (kind=0)
+2026-08-05 20:27:46 [INFO] [topology.predict] 最短路径: 1 步, 总权值 1.00, 路径: west_express → canteen_3
+2026-08-05 20:27:47 [INFO] [topology.predict] 计算最短路径: env_inst → canteen_2 (kind=0)
+2026-08-05 20:27:47 [INFO] [topology.predict] 最短路径: 7 步, 总权值 7.54, 路径: env_inst → exp_2 → exp_1 → eng_1 → library → gongchuanggu → underpass → canteen_2
+2026-08-05 20:27:47 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → west_dorm_13_16 (kind=0)
+2026-08-05 20:27:47 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.63, 路径: sports_basketball_c → sports_volleyball → sports_tennis → canteen_4 → west_dorm_17_18 → west_dorm_13_16
+2026-08-05 20:27:48 [INFO] [topology.predict] 计算最短路径: gate_west → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:48 [INFO] [topology.predict] 最短路径: 8 步, 总权值 8.11, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → canteen_3 → cross_zh_mid → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:48 [INFO] [topology.predict] 计算最短路径: canteen_3 → sports_basketball_a (kind=0)
+2026-08-05 20:27:48 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.62, 路径: canteen_3 → sports_gym → sports_swimming → sports_fitness → sports_basketball_a
+2026-08-05 20:27:48 [INFO] [topology.predict] 计算最短路径: canteen_1 → hospital (kind=0)
+2026-08-05 20:27:48 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.37, 路径: canteen_1 → supermarket → hospital
+2026-08-05 20:27:48 [INFO] [topology.predict] 计算最短路径: gate_east → canteen_4 (kind=1)
+2026-08-05 20:27:48 [INFO] [topology.predict] 最短路径: 9 步, 总权值 12.04, 路径: gate_east → canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:27:48 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:48 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:48 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:27:59 ~ 2026-08-05 20:28:19 | Top3: canteen_2=0.054999999701976776, gate_south=0.039500001817941666, sports_basketball_c=0.03929999843239784 | 预警 61 条 | 已提交后端 61 条
+    [L2] loitering @ admin_building 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ auditorium 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ biomed_inst 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ canteen_1 密度=0.0176 建议=派员疏散滞留人群
+    [L2] loitering @ canteen_2 密度=0.0252 建议=派员疏散滞留人群
+    [L2] loitering @ canteen_3 密度=0.0126 建议=派员疏散滞留人群
+    [L2] loitering @ canteen_4 密度=0.0101 建议=派员疏散滞留人群
+    [L2] loitering @ cross_zh_mid 密度=0.0113 建议=派员疏散滞留人群
+    [L2] loitering @ cross_zh_north 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ cross_zh_south 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ east_dorm_12_14 密度=0.005 建议=派员疏散滞留人群
+    [L2] loitering @ east_dorm_1_3 密度=0.0101 建议=派员疏散滞留人群
+    [L2] loitering @ east_dorm_4_7 密度=0.0025 建议=派员疏散滞留人群
+    [L2] loitering @ east_dorm_8_11 密度=0.0025 建议=派员疏散滞留人群
+    [L2] loitering @ eng_1 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ eng_2 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ eng_3 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ eng_4 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ env_inst 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ exp_1 密度=0.0076 建议=派员疏散滞留人群
+    [L2] loitering @ exp_2 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ exp_3 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ exp_4 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ gate_east 密度=0.0091 建议=派员疏散滞留人群
+    [L2] loitering @ gate_south 密度=0.0181 建议=派员疏散滞留人群
+    [L2] loitering @ gate_west 密度=0.0151 建议=派员疏散滞留人群
+    [L2] loitering @ gongchuanggu 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ hospital 密度=0.006 建议=派员疏散滞留人群
+    [L2] loitering @ large_classroom 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ library 密度=0.0076 建议=派员疏散滞留人群
+    [L2] loitering @ pedestrian_bridge 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ rd_guanggong_1 密度=0.0113 建议=派员疏散滞留人群
+    [L2] loitering @ science_hall 密度=0.0038 建议=派员疏散滞留人群
+    [L2] loitering @ sports_basketball_a 密度=0.006 建议=派员疏散滞留人群
+    [L2] loitering @ sports_basketball_b 密度=0.006 建议=派员疏散滞留人群
+    [L2] loitering @ sports_basketball_c 密度=0.0181 建议=派员疏散滞留人群
+    [L2] loitering @ sports_cricket 密度=0.003 建议=派员疏散滞留人群
+    [L2] loitering @ sports_fitness 密度=0.0121 建议=派员疏散滞留人群
+    [L2] loitering @ sports_football 密度=0.0121 建议=派员疏散滞留人群
+    [L2] loitering @ sports_gym 密度=0.0091 建议=派员疏散滞留人群
+    [L2] loitering @ sports_swimming 密度=0.003 建议=派员疏散滞留人群
+    [L2] loitering @ sports_tennis 密度=0.003 建议=派员疏散滞留人群
+    [L2] loitering @ sports_training 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ sports_volleyball 密度=0.0091 建议=派员疏散滞留人群
+    [L2] loitering @ struct_center 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ supermarket 密度=0.006 建议=派员疏散滞留人群
+    [L2] loitering @ teach_1 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ teach_2 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ teach_3 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ teach_4 密度=0.0076 建议=派员疏散滞留人群
+    [L2] loitering @ teach_5 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ teach_6 密度=0.0 建议=派员疏散滞留人群
+    [L2] loitering @ teacher_apt 密度=0.0151 建议=派员疏散滞留人群
+    [L2] loitering @ underpass 密度=0.017 建议=派员疏散滞留人群
+    [L2] loitering @ west_dorm_13_16 密度=0.0076 建议=派员疏散滞留人群
+    [L2] loitering @ west_dorm_17_18 密度=0.0101 建议=派员疏散滞留人群
+    [L2] loitering @ west_dorm_1_4 密度=0.005 建议=派员疏散滞留人群
+    [L2] loitering @ west_dorm_5_8 密度=0.0076 建议=派员疏散滞留人群
+    [L2] loitering @ west_dorm_9_12 密度=0.0126 建议=派员疏散滞留人群
+    [L2] loitering @ west_express 密度=0.0121 建议=派员疏散滞留人群
+    [L2] loitering @ youth_center 密度=0.0091 建议=派员疏散滞留人群
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] PageRank 完成: top1=rd_guanggong_1 0.0933
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 0.7
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'eng_4']
+2026-08-05 20:27:55 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:55 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] PageRank 完成: top1=rd_guanggong_1 0.0933
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 0.7
+2026-08-05 20:27:55 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'eng_4']
+2026-08-05 20:27:55 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 61 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: sports_training → canteen_4 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.08, 路径: sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_tennis → canteen_4
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → canteen_3 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.87, 路径: west_dorm_13_16 → west_dorm_9_12 → west_dorm_5_8 → canteen_3
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_3 → youth_center (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 3 步, 总权值 4.33, 路径: canteen_3 → cross_zh_mid → underpass → youth_center
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_2 → teacher_apt (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 3 步, 总权值 1.86, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → teacher_apt
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: sports_training → west_dorm_17_18 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.72, 路径: sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_tennis → canteen_4 → west_dorm_17_18
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_4 → east_dorm_1_3 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 7 步, 总权值 7.86, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2 → east_dorm_1_3
+2026-08-05 20:27:56 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:56 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:56 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: sports_swimming → hospital (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.89, 路径: sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → canteen_2 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.70, 路径: east_dorm_12_14 → canteen_2
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: sports_volleyball → canteen_4 (kind=1)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.86, 路径: sports_volleyball → sports_tennis → canteen_4
+2026-08-05 20:27:56 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:56 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:56 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: gate_west → sports_basketball_a (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.58, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: teacher_apt → east_dorm_8_11 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.28, 路径: teacher_apt → cross_zh_north → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_3 → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.87, 路径: canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: gate_east → east_dorm_8_11 (kind=1)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 3 步, 总权值 6.64, 路径: gate_east → canteen_1 → supermarket → east_dorm_8_11
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: cross_zh_north → sports_football (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 11 步, 总权值 10.53, 路径: cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → sports_football
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: sports_basketball_b → west_dorm_9_12 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.19, 路径: sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → canteen_2 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 1 步, 总权值 2.02, 路径: east_dorm_1_3 → canteen_2
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_2 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.15, 路径: canteen_1 → supermarket → east_dorm_8_11 → east_dorm_12_14 → canteen_2
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: gate_east → west_dorm_1_4 (kind=1)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 6 步, 总权值 9.19, 路径: gate_east → canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4
+2026-08-05 20:27:56 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:56 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:56 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: gate_south → west_express (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 10 步, 总权值 9.40, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express
+2026-08-05 20:27:56 [INFO] [topology.predict] 计算最短路径: canteen_4 → canteen_2 (kind=0)
+2026-08-05 20:27:56 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.84, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → canteen_2
+2026-08-05 20:27:57 [INFO] [topology.predict] 计算最短路径: teach_3 → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:57 [INFO] [topology.predict] 最短路径: 15 步, 总权值 13.68, 路径: teach_3 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_dorm_5_8
+2026-08-05 20:27:57 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_3 (kind=0)
+2026-08-05 20:27:57 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.48, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:27:58 [INFO] [topology.predict] 计算最短路径: canteen_4 → teacher_apt (kind=0)
+2026-08-05 20:27:58 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.14, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → teacher_apt
+2026-08-05 20:27:58 [INFO] [topology.predict] 计算最短路径: canteen_4 → east_dorm_8_11 (kind=0)
+2026-08-05 20:27:58 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.26, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:27:58 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:27:58 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:27:58 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:28:09 ~ 2026-08-05 20:28:29 | Top3: canteen_2=0.05999999865889549, canteen_1=0.048500001430511475, gate_south=0.04610000178217888 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1450
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.1
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'sports_volleyball']
+2026-08-05 20:27:59 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:27:59 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1450
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.1
+2026-08-05 20:27:59 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'sports_volleyball']
+2026-08-05 20:27:59 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:27:59 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → canteen_1 (kind=0)
+2026-08-05 20:27:59 [INFO] [topology.predict] 最短路径: 7 步, 总权值 10.10, 路径: west_dorm_13_16 → west_dorm_9_12 → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:27:59 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → sports_cricket (kind=0)
+2026-08-05 20:27:59 [INFO] [topology.predict] 最短路径: 7 步, 总权值 8.35, 路径: east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4 → gate_west → sports_cricket
+2026-08-05 20:27:59 [INFO] [topology.predict] 计算最短路径: canteen_2 → west_dorm_5_8 (kind=0)
+2026-08-05 20:27:59 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.32, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8
+2026-08-05 20:27:59 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_1 (kind=1)
+2026-08-05 20:27:59 [INFO] [topology.predict] 最短路径: 9 步, 总权值 11.65, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4 → cross_zh_north → teacher_apt → hospital → supermarket → canteen_1
+2026-08-05 20:28:00 [INFO] [topology.predict] 计算最短路径: sports_training → east_dorm_12_14 (kind=0)
+2026-08-05 20:28:00 [INFO] [topology.predict] 最短路径: 11 步, 总权值 13.23, 路径: sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4 → cross_zh_north → east_dorm_12_14
+2026-08-05 20:28:00 [INFO] [topology.predict] 计算最短路径: rd_guanggong_1 → sports_training (kind=1)
+2026-08-05 20:28:00 [INFO] [topology.predict] 最短路径: 8 步, 总权值 8.10, 路径: rd_guanggong_1 → teach_2 → teach_1 → eng_1 → eng_2 → eng_3 → eng_4 → admin_building → sports_training
+2026-08-05 20:28:00 [INFO] [topology.predict] 计算最短路径: canteen_4 → sports_basketball_b (kind=1)
+2026-08-05 20:28:00 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.48, 路径: canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b
+2026-08-05 20:28:01 [INFO] [topology.predict] 计算最短路径: sports_basketball_c → canteen_4 (kind=0)
+2026-08-05 20:28:01 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.68, 路径: sports_basketball_c → sports_volleyball → sports_tennis → canteen_4
+2026-08-05 20:28:01 [INFO] [topology.predict] 计算最短路径: canteen_2 → east_dorm_4_7 (kind=0)
+2026-08-05 20:28:01 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.62, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11 → east_dorm_4_7
+2026-08-05 20:28:01 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:28:01 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:28:01 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:28:02 [INFO] [topology.predict] 计算最短路径: admin_building → canteen_2 (kind=0)
+2026-08-05 20:28:02 [INFO] [topology.predict] 最短路径: 9 步, 总权值 1398.74, 路径: admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:28:02 [INFO] [topology.predict] 计算最短路径: sports_gym → canteen_3 (kind=0)
+2026-08-05 20:28:02 [INFO] [topology.predict] 最短路径: 1 步, 总权值 1.08, 路径: sports_gym → canteen_3
+2026-08-05 20:28:02 [INFO] [topology.predict] 计算最短路径: sports_training → cross_zh_mid (kind=0)
+2026-08-05 20:28:02 [INFO] [topology.predict] 最短路径: 8 步, 总权值 7.18, 路径: sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3 → cross_zh_mid
+2026-08-05 20:28:02 [INFO] [topology.predict] 计算最短路径: gate_south → canteen_1 (kind=1)
+2026-08-05 20:28:02 [INFO] [topology.predict] 最短路径: 10 步, 总权值 1401.54, 路径: gate_south → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → gate_east → canteen_1
+2026-08-05 20:28:02 [INFO] [topology.predict] 计算最短路径: gate_west → east_dorm_4_7 (kind=1)
+2026-08-05 20:28:02 [INFO] [topology.predict] 最短路径: 17 步, 总权值 1406.06, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7
+2026-08-05 20:28:03 [INFO] [topology.predict] 计算最短路径: sports_gym → teach_5 (kind=0)
+2026-08-05 20:28:03 [INFO] [topology.predict] 最短路径: 14 步, 总权值 12.47, 路径: sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_3 → teach_5
+2026-08-05 20:28:03 [INFO] [topology.predict] 计算最短路径: sports_volleyball → supermarket (kind=0)
+2026-08-05 20:28:03 [INFO] [topology.predict] 最短路径: 16 步, 总权值 1405.13, 路径: sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket
+2026-08-05 20:28:03 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → canteen_4 (kind=0)
+2026-08-05 20:28:03 [INFO] [topology.predict] 最短路径: 5 步, 总权值 584.56, 路径: east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:03 [INFO] [topology.predict] 计算最短路径: sports_swimming → canteen_2 (kind=1)
+2026-08-05 20:28:03 [INFO] [topology.predict] 最短路径: 15 步, 总权值 1404.60, 路径: sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:28:04 [INFO] [topology.predict] 计算最短路径: east_dorm_8_11 → sports_football (kind=0)
+2026-08-05 20:28:04 [INFO] [topology.predict] 最短路径: 13 步, 总权值 591.65, 路径: east_dorm_8_11 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → sports_football
+2026-08-05 20:28:05 [INFO] [topology.predict] 计算最短路径: sports_training → canteen_3 (kind=1)
+2026-08-05 20:28:05 [INFO] [topology.predict] 最短路径: 7 步, 总权值 5.92, 路径: sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:28:06 [INFO] [topology.predict] 计算最短路径: gate_south → sports_basketball_c (kind=0)
+2026-08-05 20:28:06 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.88, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c
+2026-08-05 20:28:06 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_2 (kind=0)
+2026-08-05 20:28:06 [INFO] [topology.predict] 最短路径: 17 步, 总权值 1407.04, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:28:07 [INFO] [topology.predict] 计算最短路径: hospital → canteen_4 (kind=0)
+2026-08-05 20:28:07 [INFO] [topology.predict] 最短路径: 6 步, 总权值 585.78, 路径: hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:07 [INFO] [topology.predict] 计算最短路径: canteen_2 → west_dorm_5_8 (kind=0)
+2026-08-05 20:28:07 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.58, 路径: canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8
+2026-08-05 20:28:08 [INFO] [topology.predict] 计算最短路径: teacher_apt → west_dorm_17_18 (kind=0)
+2026-08-05 20:28:08 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.92, 路径: teacher_apt → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:28:19 ~ 2026-08-05 20:28:39 | Top3: canteen_2=0.07039999961853027, gate_south=0.05209999904036522, gate_west=0.045899998396635056 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1535
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.0
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'cross_zh_mid']
+2026-08-05 20:28:09 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:28:09 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1535
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] 中介中心性完成: top1=sports_training 1.0
+2026-08-05 20:28:09 [INFO] [macro_topo.fit] 热度排行完成: top3=['admin_building', 'sports_training', 'cross_zh_mid']
+2026-08-05 20:28:09 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: gate_south → supermarket (kind=0)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 12 步, 总权值 1400.95, 路径: gate_south → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11 → supermarket
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → canteen_2 (kind=0)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 2 步, 总权值 801.00, 路径: cross_zh_mid → underpass → canteen_2
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → sports_swimming (kind=0)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.04, 路径: cross_zh_mid → canteen_3 → sports_gym → sports_swimming
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: youth_center → canteen_3 (kind=0)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 4 步, 总权值 502.82, 路径: youth_center → sports_fitness → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: teacher_apt → canteen_3 (kind=0)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 4 步, 总权值 583.31, 路径: teacher_apt → cross_zh_north → west_dorm_1_4 → west_express → canteen_3
+2026-08-05 20:28:09 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_2 (kind=1)
+2026-08-05 20:28:09 [INFO] [topology.predict] 最短路径: 17 步, 总权值 1407.04, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:28:10 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → canteen_4 (kind=0)
+2026-08-05 20:28:10 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.79, 路径: cross_zh_mid → canteen_3 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:10 [INFO] [topology.predict] 计算最短路径: canteen_4 → youth_center (kind=0)
+2026-08-05 20:28:10 [INFO] [topology.predict] 最短路径: 4 步, 总权值 1043.55, 路径: canteen_4 → sports_tennis → sports_swimming → sports_fitness → youth_center
+2026-08-05 20:28:10 [INFO] [topology.predict] 计算最短路径: east_dorm_1_3 → canteen_4 (kind=0)
+2026-08-05 20:28:10 [INFO] [topology.predict] 最短路径: 7 步, 总权值 587.28, 路径: east_dorm_1_3 → canteen_2 → east_dorm_12_14 → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:10 [INFO] [topology.predict] 计算最短路径: canteen_1 → supermarket (kind=0)
+2026-08-05 20:28:10 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.70, 路径: canteen_1 → supermarket
+2026-08-05 20:28:10 [INFO] [topology.predict] 计算最短路径: canteen_1 → canteen_4 (kind=0)
+2026-08-05 20:28:10 [INFO] [topology.predict] 最短路径: 8 步, 总权值 587.15, 路径: canteen_1 → supermarket → hospital → teacher_apt → cross_zh_north → west_dorm_1_4 → west_dorm_5_8 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:12 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → sports_basketball_a (kind=0)
+2026-08-05 20:28:12 [INFO] [topology.predict] 最短路径: 7 步, 总权值 7.03, 路径: west_dorm_13_16 → west_dorm_17_18 → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a
+2026-08-05 20:28:13 [INFO] [topology.predict] 计算最短路径: east_dorm_4_7 → east_dorm_1_3 (kind=0)
+2026-08-05 20:28:13 [INFO] [topology.predict] 最短路径: 1 步, 总权值 1.04, 路径: east_dorm_4_7 → east_dorm_1_3
+2026-08-05 20:28:13 [INFO] [topology.predict] 计算最短路径: canteen_2 → east_dorm_12_14 (kind=0)
+2026-08-05 20:28:13 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.70, 路径: canteen_2 → east_dorm_12_14
+2026-08-05 20:28:13 [INFO] [topology.predict] 计算最短路径: gate_west → sports_basketball_b (kind=1)
+2026-08-05 20:28:13 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.98, 路径: gate_west → canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b
+2026-08-05 20:28:14 [INFO] [topology.predict] 计算最短路径: canteen_3 → sports_cricket (kind=0)
+2026-08-05 20:28:14 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.90, 路径: canteen_3 → sports_gym → sports_swimming → sports_tennis → sports_cricket
+2026-08-05 20:28:15 [INFO] [topology.predict] 计算最短路径: gate_east → east_dorm_8_11 (kind=0)
+2026-08-05 20:28:15 [INFO] [topology.predict] 最短路径: 3 步, 总权值 6.64, 路径: gate_east → canteen_1 → supermarket → east_dorm_8_11
+2026-08-05 20:28:15 [INFO] [topology.predict] 计算最短路径: pedestrian_bridge → canteen_3 (kind=0)
+2026-08-05 20:28:15 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.75, 路径: pedestrian_bridge → sports_gym → canteen_3
+2026-08-05 20:28:15 [INFO] [topology.predict] 计算最短路径: sports_gym → canteen_2 (kind=0)
+2026-08-05 20:28:15 [INFO] [topology.predict] 最短路径: 16 步, 总权值 1405.30, 路径: sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → canteen_2
+2026-08-05 20:28:15 [INFO] [topology.predict] 计算最短路径: teacher_apt → west_dorm_1_4 (kind=0)
+2026-08-05 20:28:15 [INFO] [topology.predict] 最短路径: 2 步, 总权值 581.71, 路径: teacher_apt → cross_zh_north → west_dorm_1_4
+2026-08-05 20:28:15 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:28:15 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:28:15 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:28:16 [INFO] [topology.predict] 计算最短路径: exp_2 → sports_swimming (kind=0)
+2026-08-05 20:28:16 [INFO] [topology.predict] 最短路径: 10 步, 总权值 8.94, 路径: exp_2 → exp_3 → eng_3 → eng_4 → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming
+2026-08-05 20:28:17 [INFO] [topology.predict] 计算最短路径: sports_gym → east_dorm_8_11 (kind=0)
+2026-08-05 20:28:17 [INFO] [topology.predict] 最短路径: 17 步, 总权值 16.51, 路径: sports_gym → sports_swimming → sports_volleyball → sports_basketball_c → sports_basketball_b → sports_basketball_a → sports_training → admin_building → eng_4 → eng_3 → eng_2 → eng_1 → teach_1 → teach_2 → rd_guanggong_1 → east_dorm_1_3 → east_dorm_4_7 → east_dorm_8_11
+2026-08-05 20:28:18 [INFO] [topology.predict] 计算最短路径: sports_football → canteen_3 (kind=0)
+2026-08-05 20:28:18 [INFO] [topology.predict] 最短路径: 8 步, 总权值 7.22, 路径: sports_football → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball → sports_swimming → sports_gym → canteen_3
+2026-08-05 20:28:18 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:28:18 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:28:18 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:28:29 ~ 2026-08-05 20:28:49 | Top3: canteen_2=0.06560000032186508, gate_south=0.058400001376867294, cross_zh_mid=0.05829999968409538 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1620
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:28:19 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:28:19 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_mid 0.1620
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:28:19 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'sports_fitness']
+2026-08-05 20:28:19 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:28:20 [INFO] [topology.predict] 计算最短路径: sports_tennis → canteen_1 (kind=0)
+2026-08-05 20:28:20 [INFO] [topology.predict] 最短路径: 8 步, 总权值 8.36, 路径: sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:28:20 [INFO] [topology.predict] 计算最短路径: west_dorm_1_4 → east_dorm_8_11 (kind=0)
+2026-08-05 20:28:20 [INFO] [topology.predict] 最短路径: 9 步, 总权值 8.41, 路径: west_dorm_1_4 → west_express → canteen_3 → sports_gym → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:28:20 [INFO] [topology.predict] 计算最短路径: canteen_4 → sports_basketball_b (kind=0)
+2026-08-05 20:28:20 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.48, 路径: canteen_4 → sports_tennis → sports_volleyball → sports_basketball_c → sports_basketball_b
+2026-08-05 20:28:20 [INFO] [topology.predict] 计算最短路径: east_dorm_8_11 → hospital (kind=0)
+2026-08-05 20:28:20 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.30, 路径: east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:28:20 [INFO] [topology.predict] 计算最短路径: gate_west → canteen_1 (kind=1)
+2026-08-05 20:28:20 [INFO] [topology.predict] 最短路径: 10 步, 总权值 10.91, 路径: gate_west → canteen_4 → sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:28:21 [INFO] [topology.predict] 计算最短路径: canteen_3 → canteen_1 (kind=0)
+2026-08-05 20:28:21 [INFO] [topology.predict] 最短路径: 9 步, 总权值 9.14, 路径: canteen_3 → sports_gym → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:28:21 [INFO] [topology.predict] 计算最短路径: gate_west → west_dorm_1_4 (kind=1)
+2026-08-05 20:28:21 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.35, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → west_dorm_1_4
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: sports_cricket → canteen_4 (kind=0)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.05, 路径: sports_cricket → gate_west → canteen_4
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: sports_tennis → west_dorm_1_4 (kind=0)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.38, 路径: sports_tennis → sports_swimming → sports_gym → canteen_3 → west_express → west_dorm_1_4
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: sports_tennis → east_dorm_8_11 (kind=0)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.03, 路径: sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: canteen_2 → hospital (kind=0)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.12, 路径: canteen_2 → east_dorm_12_14 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: sports_swimming → canteen_3 (kind=1)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.78, 路径: sports_swimming → sports_gym → canteen_3
+2026-08-05 20:28:22 [INFO] [topology.predict] 计算最短路径: gate_south → sports_volleyball (kind=1)
+2026-08-05 20:28:22 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.70, 路径: gate_south → admin_building → sports_training → sports_basketball_a → sports_basketball_b → sports_basketball_c → sports_volleyball
+2026-08-05 20:28:22 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:28:22 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:28:22 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+2026-08-05 20:28:23 [INFO] [topology.predict] 计算最短路径: east_dorm_12_14 → sports_swimming (kind=0)
+2026-08-05 20:28:23 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.91, 路径: east_dorm_12_14 → underpass → youth_center → sports_fitness → sports_swimming
+2026-08-05 20:28:23 [INFO] [topology.predict] 计算最短路径: gate_west → east_dorm_12_14 (kind=1)
+2026-08-05 20:28:23 [INFO] [topology.predict] 最短路径: 7 步, 总权值 6.79, 路径: gate_west → canteen_4 → west_dorm_17_18 → west_dorm_5_8 → canteen_3 → cross_zh_mid → underpass → east_dorm_12_14
+2026-08-05 20:28:24 [INFO] [topology.predict] 计算最短路径: gate_south → west_dorm_9_12 (kind=0)
+2026-08-05 20:28:24 [INFO] [topology.predict] 最短路径: 5 步, 总权值 9.88, 路径: gate_south → cross_zh_south → cross_zh_mid → canteen_3 → west_dorm_5_8 → west_dorm_9_12
+2026-08-05 20:28:24 [INFO] [topology.predict] 计算最短路径: canteen_3 → east_dorm_1_3 (kind=0)
+2026-08-05 20:28:24 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.08, 路径: canteen_3 → cross_zh_mid → underpass → canteen_2 → east_dorm_1_3
+2026-08-05 20:28:24 [INFO] [topology.predict] 计算最短路径: sports_cricket → hospital (kind=1)
+2026-08-05 20:28:24 [INFO] [topology.predict] 最短路径: 9 步, 总权值 9.45, 路径: sports_cricket → sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → hospital
+2026-08-05 20:28:25 [INFO] [topology.predict] 计算最短路径: sports_swimming → west_dorm_17_18 (kind=0)
+2026-08-05 20:28:25 [INFO] [topology.predict] 最短路径: 4 步, 总权值 3.67, 路径: sports_swimming → sports_gym → canteen_3 → west_dorm_5_8 → west_dorm_17_18
+2026-08-05 20:28:25 [INFO] [topology.predict] 计算最短路径: sports_cricket → canteen_2 (kind=0)
+2026-08-05 20:28:25 [INFO] [topology.predict] 最短路径: 6 步, 总权值 5.33, 路径: sports_cricket → sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → canteen_2
+2026-08-05 20:28:25 [INFO] [topology.predict] 计算最短路径: sports_cricket → canteen_1 (kind=0)
+2026-08-05 20:28:25 [INFO] [topology.predict] 最短路径: 9 步, 总权值 9.48, 路径: sports_cricket → sports_tennis → sports_swimming → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:28:26 [INFO] [topology.predict] 计算最短路径: sports_volleyball → west_dorm_13_16 (kind=0)
+2026-08-05 20:28:26 [INFO] [topology.predict] 最短路径: 4 步, 总权值 4.81, 路径: sports_volleyball → sports_tennis → canteen_4 → west_dorm_17_18 → west_dorm_13_16
+2026-08-05 20:28:26 [INFO] [topology.predict] 计算最短路径: teacher_apt → east_dorm_1_3 (kind=1)
+2026-08-05 20:28:26 [INFO] [topology.predict] 最短路径: 5 步, 总权值 5.36, 路径: teacher_apt → hospital → supermarket → east_dorm_8_11 → east_dorm_4_7 → east_dorm_1_3
+2026-08-05 20:28:27 [INFO] [topology.predict] 计算最短路径: gate_east → east_dorm_12_14 (kind=0)
+2026-08-05 20:28:27 [INFO] [topology.predict] 最短路径: 4 步, 总权值 5.93, 路径: gate_east → rd_guanggong_1 → east_dorm_1_3 → canteen_2 → east_dorm_12_14
+2026-08-05 20:28:27 [INFO] [topology.predict] 计算最短路径: west_dorm_1_4 → canteen_2 (kind=0)
+2026-08-05 20:28:27 [INFO] [topology.predict] 最短路径: 5 步, 总权值 4.66, 路径: west_dorm_1_4 → west_express → canteen_3 → cross_zh_mid → underpass → canteen_2
+2026-08-05 20:28:27 [INFO] [topology.predict] 计算最短路径: canteen_4 → canteen_3 (kind=0)
+2026-08-05 20:28:27 [INFO] [topology.predict] 最短路径: 3 步, 总权值 2.53, 路径: canteen_4 → west_dorm_17_18 → west_dorm_5_8 → canteen_3
+2026-08-05 20:28:27 [INFO] [topology.predict] 计算最短路径: supermarket → east_dorm_4_7 (kind=0)
+2026-08-05 20:28:27 [INFO] [topology.predict] 最短路径: 2 步, 总权值 2.43, 路径: supermarket → east_dorm_8_11 → east_dorm_4_7
+2026-08-05 20:28:28 [INFO] [topology.set_gate_states] 已更新 3 个节点的大门闸状态
+2026-08-05 20:28:28 [INFO] [topology.set_door_states] 已更新 61 个节点的门状态
+2026-08-05 20:28:28 [INFO] [topology.set_signal_states] 已更新 8 个节点的红绿灯状态
+D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\service.py:173: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df["ts"] = pd.to_datetime(df["timestamp"])
+  [预测] 2026-08-05 20:28:39 ~ 2026-08-05 20:28:59 | Top3: canteen_2=0.07069999724626541, gate_south=0.06520000100135803, canteen_4=0.059700001031160355 | 预警 0 条 | 已提交后端 0 条
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:28:29 [INFO] [macro_attractrank._load_config] 从 YAML 读取配置: distance_threshold=15.0 min_nodes=2
+2026-08-05 20:28:29 [INFO] [macro_attractrank.fit] 内部构建 TrafficNetworkAnalyzer (alpha=0.5)
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] fit: 加载拓扑 (61 节点)，门=61 信号=8 密度=有
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] PageRank 完成: top1=cross_zh_south 0.0334
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] 中介中心性完成: top1=underpass 0.8
+2026-08-05 20:28:29 [INFO] [macro_topo.fit] 热度排行完成: top3=['underpass', 'cross_zh_mid', 'library']
+2026-08-05 20:28:29 [INFO] [macro_attractrank.fit] 聚类完成: 3 个区域, 覆盖 61 个节点
+  [宏观预测] 网络 61 节点 | 热点 3 区域 | 预警 0 条 -> union_pack.json
+  [实时上传] 成功 -> http://192.168.1.114:8100/api/v1/sim/batch
+2026-08-05 20:28:30 [INFO] [topology.predict] 计算最短路径: west_dorm_9_12 → eng_2 (kind=0)
+2026-08-05 20:28:30 [INFO] [topology.predict] 最短路径: 8 步, 总权值 8.65, 路径: west_dorm_9_12 → west_dorm_5_8 → canteen_3 → cross_zh_mid → underpass → gongchuanggu → library → eng_1 → eng_2
+2026-08-05 20:28:30 [INFO] [topology.predict] 计算最短路径: canteen_1 → rd_guanggong_1 (kind=0)
+2026-08-05 20:28:30 [INFO] [topology.predict] 最短路径: 2 步, 总权值 5.79, 路径: canteen_1 → gate_east → rd_guanggong_1
+2026-08-05 20:28:30 [INFO] [topology.predict] 计算最短路径: cross_zh_mid → west_dorm_17_18 (kind=0)
+2026-08-05 20:28:30 [INFO] [topology.predict] 最短路径: 3 步, 总权值 3.15, 路径: cross_zh_mid → canteen_3 → west_dorm_5_8 → west_dorm_17_18
+2026-08-05 20:28:30 [INFO] [topology.predict] 计算最短路径: gongchuanggu → canteen_1 (kind=0)
+2026-08-05 20:28:30 [INFO] [topology.predict] 最短路径: 5 步, 总权值 6.87, 路径: gongchuanggu → underpass → east_dorm_12_14 → east_dorm_8_11 → supermarket → canteen_1
+2026-08-05 20:28:30 [INFO] [topology.predict] 计算最短路径: west_dorm_13_16 → canteen_4 (kind=0)
+2026-08-05 20:28:30 [INFO] [topology.predict] 最短路径: 2 步, 总权值 1.95, 路径: west_dorm_13_16 → west_dorm_17_18 → canteen_4
+2026-08-05 20:28:31 [INFO] [topology.predict] 计算最短路径: sports_basketball_b → east_dorm_8_11 (kind=0)
+2026-08-05 20:28:31 [INFO] [topology.predict] 最短路径: 6 步, 总权值 6.39, 路径: sports_basketball_b → sports_basketball_a → sports_fitness → youth_center → underpass → east_dorm_12_14 → east_dorm_8_11
+2026-08-05 20:28:31 [INFO] [topology.predict] 计算最短路径: canteen_4 → west_dorm_17_18 (kind=0)
+2026-08-05 20:28:31 [INFO] [topology.predict] 最短路径: 1 步, 总权值 0.64, 路径: canteen_4 → west_dorm_17_18
+Traceback (most recent call last):
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 652, in <module>
+    sys.exit(main())
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 648, in main
+    return func(args, cfg)
+  File "d:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\main.py", line 321, in cmd_run
+    run_and_record_send(
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\csv_recorder.py", line 204, in run_and_record_send
+    _sleep_until(start + (t + 1) * period)
+  File "D:\资料-study\6-QG暑期考核\1-QG园区\项目目录\simulation\sender.py", line 259, in _sleep_until
+    time.sleep(remain)
+KeyboardInterrupt
+(hand_study_deep_learning) PS D:\资料-study\6-QG暑期考核\1-QG园区> 

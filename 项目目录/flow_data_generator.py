@@ -10,13 +10,9 @@ OD 改造：节点时变到达强度曲线 node_curves + 类型级 OD 概率矩�
 每 tick 某个节点成为"生成点"的概率 = curve_i(t) / sum(curve(t))，
 从而可用概率控制每个数据的生成点，实现"某些节点在某时间段人流量大"。
 
-逐小时投放：行人可传 people_hourly_counts={小时:人数}，按小时固定目标值投放，
-每小时实际数 = max(poisson(target), 3000)，空间分布仍由节点曲线控制。
-
 依赖：numpy（Python 3.10+）
 用法：
     gen = FlowDataGenerator(n_people=4000, n_vehicles=300, random_state=42)
-    gen = FlowDataGenerator(people_hourly_counts=PEOPLE_HOURLY_DEFAULT, n_vehicles=300)
     ds = gen.generate()         # 生成数据（内存）
     gen.to_csv()                # 写 data/
     gen.sample(tick)            # 引擎逐 tick 取流入实体
@@ -111,18 +107,18 @@ SIGNAL_NODE_IDS = (
 TYPE_CAPACITY = {
     "entrance": 150,
     "road": 80,
-    "admin": 120,
-    "academic": 120,
-    "lab": 120,
-    "sports": 400,
-    "living": 1500,
+    "admin": 200,
+    "academic": 400,
+    "lab": 300,
+    "sports": 300,
+    "living": 500,
 }
 CAPACITY_OVERRIDES = {
-    "canteen_1": 1800, "canteen_2": 1800, "canteen_3": 1000, "canteen_4": 1800,
-    "west_dorm_13_16": 1300, "west_dorm_9_12": 1750, "west_dorm_1_4": 1600,
-    "west_dorm_5_8": 1400, "west_dorm_17_18": 1900,
-    "east_dorm_12_14": 800, "east_dorm_8_11": 1250, "east_dorm_4_7": 1430,
-    "east_dorm_1_3": 160,
+    "canteen_1": 300, "canteen_2": 300, "canteen_3": 300, "canteen_4": 300,
+    "west_dorm_13_16": 600, "west_dorm_9_12": 600, "west_dorm_1_4": 600,
+    "west_dorm_5_8": 600, "west_dorm_17_18": 600,
+    "east_dorm_12_14": 600, "east_dorm_8_11": 600, "east_dorm_4_7": 600,
+    "east_dorm_1_3": 600,
 }
 
 # ---------------------------------------------------------------------------
@@ -159,17 +155,6 @@ WAIT_MAX = {
 }
 
 WEEKDAY_NAMES = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
-
-# ---------------------------------------------------------------------------
-# 逐小时投放表：{小时: 该小时投放人数}，用于行人（people）按小时固定投放。
-# 每小时实际生成数 = max(poisson(target), 3000)，在目标值上下浮动且不低于 3000。
-# 小时 6~21 对应 6:00~22:00，共 16 小时，合计 64500 人/天。
-# ---------------------------------------------------------------------------
-PEOPLE_HOURLY_DEFAULT = {
-    6: 2000, 7: 4500, 8: 5000, 9: 4000, 10: 3500, 11: 4500,
-    12: 5000, 13: 3500, 14: 4000, 15: 3500, 16: 4000, 17: 4500,
-    18: 5000, 19: 4000, 20: 3500, 21: 2500,
-}
 
 
 def _set_range(base, s, e, v):
@@ -277,11 +262,6 @@ class FlowDataGenerator:
     ----------
     n_people / n_vehicles : int
         计划总人数 / 总车数（按天计，多天时每天各生成该量）。
-        当 people_hourly_counts 给定且非 None 时，行人不再按 n_people 整天泊松投放，
-        而改按每小时固定目标值投放。
-    people_hourly_counts : dict/list, optional
-        行人逐小时投放表 {小时: 人数}（或长度 24 的列表）；传 None 则回退到
-        n_people 泊松投放。每小时实际数 = max(poisson(target), 3000)。
     density_level : str
         'off_peak' / 'peak' / 'ultra_peak'，对应峰化指数 0.8 / 2.0 / 3.0。
     node_curves : dict, optional
@@ -308,7 +288,6 @@ class FlowDataGenerator:
 
     def __init__(self, n_people=4000, n_vehicles=300, density_level="peak",
                  node_curves=None, od_matrix=None,
-                 people_hourly_counts=None,
                  sample_interval=10, start_hour=6, start_minute=0, n_hours=16,
                  n_days=1, day_profiles=WEEKDAY_NAMES, start_date="2026-08-03",
                  random_state=42, data_dir="data"):
@@ -317,7 +296,6 @@ class FlowDataGenerator:
         self.density_level = density_level
         self.node_curves = node_curves or {}
         self.od_matrix = od_matrix or TYPE_OD
-        self.people_hourly_counts = self._parse_hourly_counts(people_hourly_counts)
         self.sample_interval = int(sample_interval)
         self.start_hour = int(start_hour)
         self.start_minute = int(start_minute)
@@ -355,7 +333,6 @@ class FlowDataGenerator:
             "n_people": self.n_people, "n_vehicles": self.n_vehicles,
             "density_level": self.density_level,
             "node_curves": self.node_curves, "od_matrix": self.od_matrix,
-            "people_hourly_counts": self.people_hourly_counts,
             "sample_interval": self.sample_interval, "start_hour": self.start_hour,
             "start_minute": self.start_minute, "n_hours": self.n_hours,
             "n_days": self.n_days,
@@ -371,23 +348,6 @@ class FlowDataGenerator:
         return self
 
     # ------------------------------------------------------------------ 核心生成
-    def _parse_hourly_counts(self, counts):
-        """把 dict {小时:人数} 或长度 24 的 list 解析为 int64 数组；None 返回 None。"""
-        if counts is None:
-            return None
-        arr = np.zeros(24, dtype=np.int64)
-        if isinstance(counts, dict):
-            for h, v in counts.items():
-                arr[int(h) % 24] = int(v)
-        else:
-            vals = np.asarray(counts, dtype=np.int64)
-            if vals.size != 24:
-                raise ValueError(f"people_hourly_counts 列表需 24 个元素，收到 {vals.size}")
-            arr = vals
-        if (arr < 0).any():
-            raise ValueError("people_hourly_counts 不能有负数")
-        return arr
-
     def _curves(self, weekday="mon"):
         curves = np.zeros((self.n_nodes, 24))
         for i, nid in enumerate(self.node_ids):
@@ -457,74 +417,6 @@ class FlowDataGenerator:
             srcs_out[ext_mask] = self._rng.choice(entrance_idx, size=ext_mask.sum()).astype(np.int32)
         return births, srcs_out, dsts, flags
 
-    def _sample_entities_hourly(self, hourly_counts, internal_prob, curves):
-        """按小时固定投放（行人）。返回 (birth_tick, src, dst, flag)，结构同 _sample_entities。
-
-        每个整点小时的目标人数 target 取自 hourly_counts，实际投放数 =
-        max(poisson(target), 3000) 以保证不低于 3000 且上下浮动；
-        再按该小时的 (节点×分钟) 曲线权重做多项分布，精确分配到各节点与分钟，
-        从而保留"某些节点在某时段人多"的时空特征。
-        """
-        n_min = self._day_min
-        peaking = {"off_peak": 0.8, "peak": 2.0, "ultra_peak": 3.0}[self.density_level]
-        min_floor = 3000
-
-        hour_grid = self.start_hour + self.start_minute / 60.0 + (np.arange(n_min) * 60 / 3600.0)
-        w = np.empty((self.n_nodes, n_min), dtype=np.float64)
-        for i in range(self.n_nodes):
-            w[i] = np.interp(hour_grid % 24, np.arange(24), curves[i])
-        w = np.power(w, peaking)
-
-        births_l, srcs_l, dsts_l, flags_l = [], [], [], []
-        t_start = self.start_hour + self.start_minute / 60.0
-        t_end = t_start + self.n_hours
-        for hh in range(int(np.floor(t_start)), int(np.ceil(t_end))):
-            target = int(hourly_counts[hh % 24])
-            lo = max(0, int(round((hh - t_start) * 60)))
-            hi = min(n_min, int(round((hh + 1 - t_start) * 60)))
-            if hi <= lo or target <= 0:
-                continue
-            actual = max(int(self._rng.poisson(target)), min_floor)
-            p = w[:, lo:hi]
-            total_w = p.sum()
-            if total_w <= 0:
-                continue
-            p = p / total_w
-            counts = self._rng.multinomial(actual, p.ravel()).reshape(self.n_nodes, hi - lo)
-            flat = np.nonzero(counts.ravel())[0]
-            if flat.size == 0:
-                continue
-            srcs_h = flat // (hi - lo)
-            mins_h = flat % (hi - lo) + lo
-            reps = counts.ravel()[flat]
-            n_h = int(reps.sum())
-            srcs = np.repeat(srcs_h, reps).astype(np.int32)
-            mins = np.repeat(mins_h, reps)
-            births = (mins * 60
-                      + self._rng.uniform(0, 60, size=n_h).astype(np.int64))
-            od = self._dst_matrix(srcs, mins, w)
-            dsts = np.array([self._rng.choice(self.n_nodes, p=od[k])
-                             for k in range(n_h)], dtype=np.int32)
-            flags = self._rng.binomial(1, internal_prob, size=n_h).astype(np.int8)
-            births_l.append(births)
-            srcs_l.append(srcs)
-            dsts_l.append(dsts)
-            flags_l.append(flags)
-
-        if not births_l:
-            return (np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int32),
-                    np.empty(0, dtype=np.int32), np.empty(0, dtype=np.int8))
-        births = np.concatenate(births_l)
-        srcs_out = np.concatenate(srcs_l)
-        dsts = np.concatenate(dsts_l)
-        flags = np.concatenate(flags_l)
-
-        entrance_idx = np.array([0, 1, 2], dtype=np.int32)
-        ext_mask = flags == 0
-        if ext_mask.any():
-            srcs_out[ext_mask] = self._rng.choice(entrance_idx, size=ext_mask.sum()).astype(np.int32)
-        return births, srcs_out, dsts, flags
-
     def generate(self):
         rng = np.random.default_rng(self.random_state)
         self._rng = rng
@@ -535,14 +427,9 @@ class FlowDataGenerator:
         for d in range(self.n_days):
             curves = self._curves(self.day_profiles[d % 7])
             offset = d * self._day_sec
-            # 行人：传入了 people_hourly_counts 则按小时固定投放，否则整天泊松；
             # 行人 100% 园内生成（internal_prob=1.0 → src 保留曲线节点）；
             # 车辆 internal_prob=0.4 → 40% 园内按曲线、60% 园外从三大门进入。
-            if self.people_hourly_counts is not None:
-                pb, ps, pd, _ = self._sample_entities_hourly(
-                    self.people_hourly_counts, internal_prob=1.0, curves=curves)
-            else:
-                pb, ps, pd, _ = self._sample_entities(self.n_people, kind=0, internal_prob=1.0, curves=curves)
+            pb, ps, pd, _ = self._sample_entities(self.n_people, kind=0, internal_prob=1.0, curves=curves)
             vb, vs, vd, vf = self._sample_entities(self.n_vehicles, kind=1, internal_prob=0.4, curves=curves)
             people["birth_tick"].append(pb + offset)
             people["src_node"].append(ps)
@@ -810,7 +697,6 @@ if __name__ == "__main__":
     out_root = Path(__file__).resolve().parent / "data"
 
     gen = FlowDataGenerator(n_people=4000, n_vehicles=300, density_level="peak",
-                            people_hourly_counts=PEOPLE_HOURLY_DEFAULT,
                             n_days=7, random_state=42, data_dir=out_root)
     ds = gen.generate()
     gen.to_csv(".")

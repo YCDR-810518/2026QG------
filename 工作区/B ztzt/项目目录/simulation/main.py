@@ -80,7 +80,8 @@ def _timestamp_fn(cfg, args, tick_hz):
     """构造输出时间戳覆写函数 timestamp_fn(tick) -> str。
 
     clock=now : 产出时刻 datetime.now()；
-    clock=base: start_datetime + tick 秒（数据从指定基准时间开始，随实时节拍推进）。
+    clock=base: start_datetime 起按天回卷（每天固定 start_time 起，窗口内递增），
+                与 engine._timestamp 逻辑一致（修复：原实现用连续秒导致每天窗口漂移）。
     """
     clock = getattr(args, "clock", None) or str(cfg["simulation"].get("clock", "now"))
     if clock == "now":
@@ -93,7 +94,18 @@ def _timestamp_fn(cfg, args, tick_hz):
             datetime.date.fromisoformat(str(cfg["simulation"].get("start_date", "2026-08-03"))),
             datetime.time(int(cfg["simulation"].get("start_hour", 6)),
                           int(cfg["simulation"].get("start_minute", 0))))
-    return lambda t: (base_dt + datetime.timedelta(seconds=int(t))).strftime(_TS_FMT)
+
+    # ===== 修复：按天回卷（与 engine._timestamp 的 day_sec 对齐）=====
+    _win = _window_seconds(cfg)
+    day_sec = int(round((_win if _win else int(cfg.get("main", {}).get("n_ticks", 3600))) / 60.0) * 60) or 86400
+
+    def _ts(t):
+        t = int(t)
+        day = t // day_sec
+        rem = t % day_sec
+        return (base_dt + datetime.timedelta(days=day, seconds=rem)).strftime(_TS_FMT)
+
+    return _ts
 
 
 def _parse_start(cfg):

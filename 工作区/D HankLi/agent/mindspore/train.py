@@ -42,7 +42,7 @@ from data_config import (
 # ============================================================
 
 # 训练数据路径（F 的引擎快照，10 秒一个采样点）
-DATA_PATH = r"D:\Documents\大学行政文件\大一下\2026QG暑期中期考核\项目目录\data\engine_snapshot.csv"
+DATA_PATH = r"D:\Documents\大学行政文件\大一下\2026QG暑期中期考核\项目目录\data\density_series.csv"
 
 # 模型存档位置（默认放在本文件所在目录的 checkpoints 文件夹里）
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "checkpoints")

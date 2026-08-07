@@ -2,5 +2,5 @@
 .stfolder/*
 *.csv
 *__pycache__*
-*.idea
-.idea/*
+*.vscode-server/*
+.vscode/*

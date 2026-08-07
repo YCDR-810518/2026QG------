@@ -49,6 +49,8 @@ SNAPSHOT_CSV_FIELDS = [
     "signal_status", "signal_flow_rate",
 ]
 
+_DELAY_SPEED_THRESHOLD = 1.39   # 5 km/h 以下视为滞留（与 cav_pack/agents 口径一致）
+
 
 @dataclass
 class SimulationResult:
@@ -185,6 +187,11 @@ class TickEngine:
         self._tick = -1
         self._people_now = np.zeros(self.topology.n_nodes, dtype=np.int64)
         self._vehicles_now = np.zeros(self.topology.n_nodes, dtype=np.int64)
+        # ---- trip 钩子：per-vehicle 行程记录（C/协作8 需要，纯新增） ----
+        self._birth = np.zeros(self.max_capacity, dtype=np.int32)      # 槽位 → 出生(过闸入园) tick
+        self._spd_sum = np.zeros(self.max_capacity, dtype=np.float64)  # 槽位 → 累计行驶里程 Σ(v·dt) m
+        self._delay_sum = np.zeros(self.max_capacity, dtype=np.float64)  # 槽位 → 累计滞留 s
+        self.trip_logs_ = []                                            # 行程日志（到达时追加）
         self.metrics = EngineMetrics()
         self.last_timings = {}
         return self
@@ -244,6 +251,11 @@ class TickEngine:
         n = len(slots)
         if n < len(kinds):
             kinds, srcs, dsts = kinds[:n], srcs[:n], dsts[:n]
+
+        # ---- trip 钩子：出生(过闸入园)时刻 = 分配槽位的本 tick（纯新增） ----
+        self._birth[slots] = self._tick
+        self._spd_sum[slots] = 0.0
+        self._delay_sum[slots] = 0.0
 
         d = self.pool.data
         d["kind"][slots] = kinds
@@ -373,6 +385,17 @@ class TickEngine:
                 hi = self.dwell_max[int(data["dst_node"][s])]
                 data["wait_ticks"][s] = int(round(self.rng.uniform(lo, hi)))
                 data["edge_pos"][s] = 0.0
+                # ---- trip 钩子：到达终点，落行程日志（纯新增，只记车辆） ----
+                if int(data["kind"][s]) == 1:
+                    self.trip_logs_.append({
+                        "src_node": self.topology.node_ids[int(data["src_node"][s])],
+                        "dst_node": self.topology.node_ids[int(data["dst_node"][s])],
+                        "birth_tick": int(self._birth[s]),
+                        "finish_tick": int(self._tick),
+                        "travel_time": int(self._tick) - int(self._birth[s]),
+                        "avg_speed_kmh": round(self._spd_sum[s] / max(int(self._tick) - int(self._birth[s]), 1) * 3.6, 2),
+                        "delay_time": round(self._delay_sum[s], 1),
+                    })
                 continue
             arr_node = int(path[nxt])
             blocked = (
@@ -511,6 +534,16 @@ class TickEngine:
         timer.start()
         self.movement.update_speed(self.pool)
         timer.stop("movement")
+
+        # ---- trip 钩子：车辆速度/滞留累计（向量化，开销 ≈ 2 次数组运算/tick） ----
+        _d = self.pool.data
+        _veh = _d["active"] & (_d["kind"] == 1)
+        _mov = _veh & (_d["state"] == STATE_TRAVEL)
+        self._spd_sum[_mov] += _d["speed"][_mov] * self.dt
+        _que = _veh & (_d["state"] == STATE_WAIT_SIGNAL)
+        self._delay_sum[_que] += self.dt
+        _slow = _mov & (_d["speed"] < _DELAY_SPEED_THRESHOLD)
+        self._delay_sum[_slow] += self.dt
 
         timer.start()
         self._state_machine(sig_info)

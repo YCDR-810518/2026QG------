@@ -40,7 +40,7 @@ from data_config import (
 
 # 训练数据路径（成员F的合并数据：2 周 = 14 天）
 # 也支持更多周的数据（自动检测天数/周数后按比例切分）
-DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\工作区\D HankLi\data\density_series.csv"
+DATA_PATH = r"D:\QG\QG2026暑假训练营\中期考核\工作区\D HankLi\data\ultra_peak\density_series.csv"
 
 # 模型存档位置（默认放在本文件所在目录的 checkpoints 文件夹里）
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "checkpoints")
@@ -73,6 +73,13 @@ DENSITY_LEVEL_BINS = [0.3, 0.6, 0.9]
 
 # 预测准确率容差
 ACC_TOLERANCE = 0.05
+
+# 增量训练开关（配合 F 的"先正常数据训练、再极端数据续训"流程）
+#   False（默认）：每次训练从零开始，清空参数重建模型
+#   True：若 checkpoints/density_model 已有模型，先加载旧参数，在其基础上继续训练
+#     - 第一步：用正常数据训练（INCREMENTAL=False，生成基础模型）
+#     - 第二步：把 DATA_PATH 换成极端数据，INCREMENTAL=True 再跑一次（续训）
+INCREMENTAL = True
 
 
 # ============================================================
@@ -283,6 +290,26 @@ def main():
         device=DEVICE,
     )
 
+    # 增量训练：若开关开启且存在已训练模型，先加载旧参数再续训
+    if INCREMENTAL:
+        model_dir = os.path.join(OUTPUT_DIR, "density_model")
+        state_path = os.path.join(model_dir, "model_state.pt")
+        if os.path.exists(state_path):
+            print(f"      增量训练模式：加载已有模型 {model_dir}，在其基础上续训 ...")
+            predictor = DensityPredictor.load(model_dir, device=DEVICE)
+            # 校验新数据与已训练模型结构一致
+            if predictor.window_size != WINDOW_SIZE or predictor.pred_horizon != PRED_HORIZON:
+                print("错误：已有模型结构（window/horizon）与新配置不一致，无法增量训练。")
+                print(f"      已有模型 window={predictor.window_size}, pred={predictor.pred_horizon}")
+                print(f"      新配置   window={WINDOW_SIZE}, pred={PRED_HORIZON}")
+                return
+            init_from = True
+        else:
+            print("      增量训练模式开启，但未找到已训练模型，将从头训练。")
+            init_from = False
+    else:
+        init_from = False
+
     if len(X_val) > 0:
         predictor.fit(
             X_train, y_train,
@@ -292,6 +319,7 @@ def main():
             patience=PATIENCE,
             feature_names=ALL_FEATURES,
             validation_data=(X_val, y_val),
+            init_from=init_from,
         )
     else:
         predictor.fit(
@@ -302,6 +330,7 @@ def main():
             val_split=0.15,
             patience=PATIENCE,
             feature_names=ALL_FEATURES,
+            init_from=init_from,
         )
 
     # ---------- 7. 评估 ----------

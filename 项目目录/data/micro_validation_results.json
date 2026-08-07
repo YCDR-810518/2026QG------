@@ -1,0 +1,396 @@
+{
+  "meta": {
+    "models": {
+      "idm": "CavIdmMovement(mode=idm)",
+      "cav": "CavIdmMovement(mode=cav)"
+    },
+    "horizon_ticks": 7200,
+    "n_people": 1000,
+    "n_vehicles": 1000,
+    "n_hours": 1.0,
+    "seed": 42,
+    "scope": "仅统计 src_node ∈ gate_nodes 的大门入园车辆",
+    "per_node_aggregation": "按 dst_node 归集（引擎无节点穿越记录，口径近似）",
+    "delay_definition": "信号排队 + 车速<5km/h 低速行驶（不含计划性出发等待）",
+    "generated_at": "2026-08-06 16:34:55"
+  },
+  "per_node": {
+    "canteen_1": {
+      "avg_speed_idm": 7.07,
+      "avg_speed_cav": 8.49,
+      "efficiency_gain_pct": 0.2008,
+      "avg_delay_time": 6.0,
+      "throughput": 2,
+      "n_trips": 2,
+      "avg_travel_time_idm": 508.5,
+      "avg_travel_time_cav": 427.0
+    },
+    "canteen_2": {
+      "avg_speed_idm": 8.7,
+      "avg_speed_cav": 7.39,
+      "efficiency_gain_pct": -0.1506,
+      "avg_delay_time": 3.0,
+      "throughput": 3,
+      "n_trips": 3,
+      "avg_travel_time_idm": 339.33,
+      "avg_travel_time_cav": 419.33
+    },
+    "canteen_4": {
+      "avg_speed_idm": 6.13,
+      "avg_speed_cav": 6.85,
+      "efficiency_gain_pct": 0.1175,
+      "avg_delay_time": 0.0,
+      "throughput": 1,
+      "n_trips": 1,
+      "avg_travel_time_idm": 513.0,
+      "avg_travel_time_cav": 460.0
+    },
+    "east_dorm_12_14": {
+      "avg_speed_idm": 7.33,
+      "avg_speed_cav": 7.75,
+      "efficiency_gain_pct": 0.0572,
+      "avg_delay_time": 10.01,
+      "throughput": 65,
+      "n_trips": 65,
+      "avg_travel_time_idm": 439.09,
+      "avg_travel_time_cav": 422.11
+    },
+    "east_dorm_1_3": {
+      "avg_speed_idm": 7.27,
+      "avg_speed_cav": 7.52,
+      "efficiency_gain_pct": 0.0355,
+      "avg_delay_time": 8.89,
+      "throughput": 63,
+      "n_trips": 63,
+      "avg_travel_time_idm": 434.7,
+      "avg_travel_time_cav": 411.94
+    },
+    "east_dorm_4_7": {
+      "avg_speed_idm": 7.41,
+      "avg_speed_cav": 7.64,
+      "efficiency_gain_pct": 0.0312,
+      "avg_delay_time": 7.52,
+      "throughput": 55,
+      "n_trips": 55,
+      "avg_travel_time_idm": 442.87,
+      "avg_travel_time_cav": 410.53
+    },
+    "east_dorm_8_11": {
+      "avg_speed_idm": 7.21,
+      "avg_speed_cav": 7.52,
+      "efficiency_gain_pct": 0.0431,
+      "avg_delay_time": 7.88,
+      "throughput": 73,
+      "n_trips": 73,
+      "avg_travel_time_idm": 413.04,
+      "avg_travel_time_cav": 391.77
+    },
+    "teacher_apt": {
+      "avg_speed_idm": 7.23,
+      "avg_speed_cav": 7.82,
+      "efficiency_gain_pct": 0.0815,
+      "avg_delay_time": 7.28,
+      "throughput": 60,
+      "n_trips": 60,
+      "avg_travel_time_idm": 430.12,
+      "avg_travel_time_cav": 405.97
+    },
+    "west_dorm_13_16": {
+      "avg_speed_idm": 6.67,
+      "avg_speed_cav": 7.35,
+      "efficiency_gain_pct": 0.1031,
+      "avg_delay_time": 4.73,
+      "throughput": 46,
+      "n_trips": 46,
+      "avg_travel_time_idm": 433.63,
+      "avg_travel_time_cav": 415.87
+    },
+    "west_dorm_17_18": {
+      "avg_speed_idm": 6.78,
+      "avg_speed_cav": 6.9,
+      "efficiency_gain_pct": 0.017,
+      "avg_delay_time": 4.06,
+      "throughput": 60,
+      "n_trips": 60,
+      "avg_travel_time_idm": 394.22,
+      "avg_travel_time_cav": 400.52
+    },
+    "west_dorm_1_4": {
+      "avg_speed_idm": 6.42,
+      "avg_speed_cav": 6.75,
+      "efficiency_gain_pct": 0.0513,
+      "avg_delay_time": 9.39,
+      "throughput": 70,
+      "n_trips": 70,
+      "avg_travel_time_idm": 395.87,
+      "avg_travel_time_cav": 416.8
+    },
+    "west_dorm_5_8": {
+      "avg_speed_idm": 6.59,
+      "avg_speed_cav": 7.49,
+      "efficiency_gain_pct": 0.1366,
+      "avg_delay_time": 9.19,
+      "throughput": 76,
+      "n_trips": 76,
+      "avg_travel_time_idm": 402.05,
+      "avg_travel_time_cav": 392.64
+    },
+    "west_dorm_9_12": {
+      "avg_speed_idm": 6.69,
+      "avg_speed_cav": 7.56,
+      "efficiency_gain_pct": 0.129,
+      "avg_delay_time": 6.37,
+      "throughput": 59,
+      "n_trips": 59,
+      "avg_travel_time_idm": 413.27,
+      "avg_travel_time_cav": 405.05
+    }
+  },
+  "od_stats": {
+    "gate_east|canteen_2": {
+      "trips": 2,
+      "avg_travel_time_idm": 319.0,
+      "avg_travel_time_cav": 363.0,
+      "avg_speed_idm": 7.81,
+      "avg_speed_cav": 7.34
+    },
+    "gate_east|east_dorm_12_14": {
+      "trips": 16,
+      "avg_travel_time_idm": 399.06,
+      "avg_travel_time_cav": 373.06,
+      "avg_speed_idm": 6.27,
+      "avg_speed_cav": 7.14
+    },
+    "gate_east|east_dorm_1_3": {
+      "trips": 16,
+      "avg_travel_time_idm": 369.5,
+      "avg_travel_time_cav": 370.12,
+      "avg_speed_idm": 5.41,
+      "avg_speed_cav": 5.92
+    },
+    "gate_east|east_dorm_4_7": {
+      "trips": 17,
+      "avg_travel_time_idm": 384.59,
+      "avg_travel_time_cav": 365.82,
+      "avg_speed_idm": 5.52,
+      "avg_speed_cav": 5.62
+    },
+    "gate_east|east_dorm_8_11": {
+      "trips": 30,
+      "avg_travel_time_idm": 357.3,
+      "avg_travel_time_cav": 368.93,
+      "avg_speed_idm": 6.28,
+      "avg_speed_cav": 6.03
+    },
+    "gate_east|teacher_apt": {
+      "trips": 26,
+      "avg_travel_time_idm": 400.65,
+      "avg_travel_time_cav": 365.15,
+      "avg_speed_idm": 6.43,
+      "avg_speed_cav": 7.33
+    },
+    "gate_east|west_dorm_13_16": {
+      "trips": 13,
+      "avg_travel_time_idm": 514.54,
+      "avg_travel_time_cav": 505.15,
+      "avg_speed_idm": 7.99,
+      "avg_speed_cav": 9.66
+    },
+    "gate_east|west_dorm_17_18": {
+      "trips": 17,
+      "avg_travel_time_idm": 491.65,
+      "avg_travel_time_cav": 497.41,
+      "avg_speed_idm": 8.68,
+      "avg_speed_cav": 9.52
+    },
+    "gate_east|west_dorm_1_4": {
+      "trips": 27,
+      "avg_travel_time_idm": 461.41,
+      "avg_travel_time_cav": 488.33,
+      "avg_speed_idm": 7.68,
+      "avg_speed_cav": 8.92
+    },
+    "gate_east|west_dorm_5_8": {
+      "trips": 28,
+      "avg_travel_time_idm": 479.61,
+      "avg_travel_time_cav": 462.71,
+      "avg_speed_idm": 7.97,
+      "avg_speed_cav": 10.38
+    },
+    "gate_east|west_dorm_9_12": {
+      "trips": 17,
+      "avg_travel_time_idm": 476.41,
+      "avg_travel_time_cav": 497.41,
+      "avg_speed_idm": 7.93,
+      "avg_speed_cav": 9.87
+    },
+    "gate_south|canteen_1": {
+      "trips": 1,
+      "avg_travel_time_idm": 499.0,
+      "avg_travel_time_cav": 515.0,
+      "avg_speed_idm": 8.28,
+      "avg_speed_cav": 8.03
+    },
+    "gate_south|canteen_2": {
+      "trips": 1,
+      "avg_travel_time_idm": 380.0,
+      "avg_travel_time_cav": 532.0,
+      "avg_speed_idm": 10.46,
+      "avg_speed_cav": 7.48
+    },
+    "gate_south|canteen_4": {
+      "trips": 1,
+      "avg_travel_time_idm": 513.0,
+      "avg_travel_time_cav": 460.0,
+      "avg_speed_idm": 6.13,
+      "avg_speed_cav": 6.85
+    },
+    "gate_south|east_dorm_12_14": {
+      "trips": 25,
+      "avg_travel_time_idm": 467.2,
+      "avg_travel_time_cav": 459.56,
+      "avg_speed_idm": 8.03,
+      "avg_speed_cav": 8.25
+    },
+    "gate_south|east_dorm_1_3": {
+      "trips": 30,
+      "avg_travel_time_idm": 462.53,
+      "avg_travel_time_cav": 416.2,
+      "avg_speed_idm": 7.87,
+      "avg_speed_cav": 8.13
+    },
+    "gate_south|east_dorm_4_7": {
+      "trips": 24,
+      "avg_travel_time_idm": 455.0,
+      "avg_travel_time_cav": 428.38,
+      "avg_speed_idm": 8.82,
+      "avg_speed_cav": 8.61
+    },
+    "gate_south|east_dorm_8_11": {
+      "trips": 26,
+      "avg_travel_time_idm": 465.04,
+      "avg_travel_time_cav": 413.69,
+      "avg_speed_idm": 8.06,
+      "avg_speed_cav": 8.83
+    },
+    "gate_south|teacher_apt": {
+      "trips": 15,
+      "avg_travel_time_idm": 503.13,
+      "avg_travel_time_cav": 473.73,
+      "avg_speed_idm": 9.1,
+      "avg_speed_cav": 9.61
+    },
+    "gate_south|west_dorm_13_16": {
+      "trips": 19,
+      "avg_travel_time_idm": 471.21,
+      "avg_travel_time_cav": 456.84,
+      "avg_speed_idm": 8.36,
+      "avg_speed_cav": 8.64
+    },
+    "gate_south|west_dorm_17_18": {
+      "trips": 27,
+      "avg_travel_time_idm": 409.48,
+      "avg_travel_time_cav": 416.48,
+      "avg_speed_idm": 8.55,
+      "avg_speed_cav": 8.35
+    },
+    "gate_south|west_dorm_1_4": {
+      "trips": 15,
+      "avg_travel_time_idm": 432.73,
+      "avg_travel_time_cav": 464.53,
+      "avg_speed_idm": 8.44,
+      "avg_speed_cav": 7.9
+    },
+    "gate_south|west_dorm_5_8": {
+      "trips": 26,
+      "avg_travel_time_idm": 416.69,
+      "avg_travel_time_cav": 436.04,
+      "avg_speed_idm": 8.18,
+      "avg_speed_cav": 7.78
+    },
+    "gate_south|west_dorm_9_12": {
+      "trips": 22,
+      "avg_travel_time_idm": 459.5,
+      "avg_travel_time_cav": 438.73,
+      "avg_speed_idm": 8.21,
+      "avg_speed_cav": 8.69
+    },
+    "gate_west|canteen_1": {
+      "trips": 1,
+      "avg_travel_time_idm": 518.0,
+      "avg_travel_time_cav": 339.0,
+      "avg_speed_idm": 5.86,
+      "avg_speed_cav": 8.95
+    },
+    "gate_west|east_dorm_12_14": {
+      "trips": 24,
+      "avg_travel_time_idm": 436.5,
+      "avg_travel_time_cav": 415.79,
+      "avg_speed_idm": 7.32,
+      "avg_speed_cav": 7.63
+    },
+    "gate_west|east_dorm_1_3": {
+      "trips": 17,
+      "avg_travel_time_idm": 446.94,
+      "avg_travel_time_cav": 443.76,
+      "avg_speed_idm": 7.94,
+      "avg_speed_cav": 7.97
+    },
+    "gate_west|east_dorm_4_7": {
+      "trips": 14,
+      "avg_travel_time_idm": 492.86,
+      "avg_travel_time_cav": 434.21,
+      "avg_speed_idm": 7.29,
+      "avg_speed_cav": 8.44
+    },
+    "gate_west|east_dorm_8_11": {
+      "trips": 17,
+      "avg_travel_time_idm": 431.88,
+      "avg_travel_time_cav": 398.53,
+      "avg_speed_idm": 7.56,
+      "avg_speed_cav": 8.16
+    },
+    "gate_west|teacher_apt": {
+      "trips": 19,
+      "avg_travel_time_idm": 412.79,
+      "avg_travel_time_cav": 408.32,
+      "avg_speed_idm": 6.87,
+      "avg_speed_cav": 7.09
+    },
+    "gate_west|west_dorm_13_16": {
+      "trips": 14,
+      "avg_travel_time_idm": 307.5,
+      "avg_travel_time_cav": 277.36,
+      "avg_speed_idm": 3.15,
+      "avg_speed_cav": 3.48
+    },
+    "gate_west|west_dorm_17_18": {
+      "trips": 16,
+      "avg_travel_time_idm": 264.94,
+      "avg_travel_time_cav": 270.62,
+      "avg_speed_idm": 1.78,
+      "avg_speed_cav": 1.66
+    },
+    "gate_west|west_dorm_1_4": {
+      "trips": 28,
+      "avg_travel_time_idm": 312.93,
+      "avg_travel_time_cav": 322.25,
+      "avg_speed_idm": 4.14,
+      "avg_speed_cav": 4.05
+    },
+    "gate_west|west_dorm_5_8": {
+      "trips": 22,
+      "avg_travel_time_idm": 286.05,
+      "avg_travel_time_cav": 252.18,
+      "avg_speed_idm": 2.96,
+      "avg_speed_cav": 3.47
+    },
+    "gate_west|west_dorm_9_12": {
+      "trips": 20,
+      "avg_travel_time_idm": 308.75,
+      "avg_travel_time_cav": 289.5,
+      "avg_speed_idm": 3.98,
+      "avg_speed_cav": 4.34
+    }
+  }
+}

@@ -221,7 +221,7 @@ class DensityPredictor:
     def fit(self, X, y, **fit_params):
         """
         训练密度预测模型
-      
+    
         Parameters
         ----------
         X : np.ndarray, shape (n_samples, n_nodes, window_size, n_features)
@@ -230,7 +230,7 @@ class DensityPredictor:
             目标密度值
         **fit_params : dict
             epochs, batch_size, val_split, verbose
-      
+    
         Returns
         -------
         self : DensityPredictor
@@ -240,11 +240,11 @@ class DensityPredictor:
     def predict(self, X):
         """
         预测未来人流密度
-      
+    
         Parameters
         ----------
         X : np.ndarray, shape (n_samples, n_nodes, window_size, n_features)
-      
+    
         Returns
         -------
         y_pred : np.ndarray, shape (n_samples, n_nodes, pred_horizon)
@@ -342,12 +342,12 @@ class CongestionDetector:
     def fit(self, X, **fit_params):
         """
         拟合异常检测阈值（计算历史统计量）
-      
+    
         Parameters
         ----------
         X : np.ndarray, shape (n_timesteps, n_nodes, n_features)
             历史正常数据用于计算基线
-      
+    
         Returns
         -------
         self : CongestionDetector
@@ -357,7 +357,7 @@ class CongestionDetector:
     def predict(self, X_current, X_pred=None, gate_status=None):
         """
         检测异常事件
-      
+    
         Parameters
         ----------
         X_current : np.ndarray, shape (n_nodes, n_features)
@@ -366,7 +366,7 @@ class CongestionDetector:
             DensityPredictor的预测输出，用于拥堵验证
         gate_status : np.ndarray, shape (n_gates,), optional
             各门闸状态码
-      
+    
         Returns
         -------
         events : list of dict
@@ -447,11 +447,11 @@ class AlertManager:
     def classify(self, events):
         """
         对CongestionDetector产出的异常事件进行分级
-      
+    
         Parameters
         ----------
         events : list of dict
-      
+    
         Returns
         -------
         classified : list of dict（附加level字段）
@@ -461,11 +461,11 @@ class AlertManager:
     def respond(self, classified_events):
         """
         根据分级执行处置逻辑（入库、推送到前端、通知其他模块）
-      
+    
         Parameters
         ----------
         classified_events : list of dict
-      
+    
         Returns
         -------
         response_log : dict
@@ -475,14 +475,14 @@ class AlertManager:
     def suggest_evacuation(self, blocked_nodes, topology):
         """
         拥堵时的疏散路径建议（调用成员A的最短路径，避开拥堵节点）
-      
+    
         Parameters
         ----------
         blocked_nodes : list
             拥堵节点列表
         topology : TrafficNetwork
             成员A的交通拓扑网络
-      
+    
         Returns
         -------
         routes : list of dict

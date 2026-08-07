@@ -320,12 +320,6 @@ class SecurityService:
             node_idx = ev["node_id"]
             node_id = self.node_ids[node_idx]
 
-            # ===== 防误报：绝对密度下限（B 方案做法3）：密度 < 0.2 一律不报 =====
-            # 针对 congestion（拥挤）与 loitering（滞留）两类密度型事件；
-            # gate_anomaly 等硬件类事件不含 current_density，不受影响
-            if ev["type"] in ("congestion", "loitering") and float(ev.get("current_density") or 0.0) < 0.2:
-                continue
-
             if ev["type"] == "congestion":
                 # 拥堵等级：L1 关注 / L2 预警 / L3 严重
                 if ev.get("severity") == "L1":

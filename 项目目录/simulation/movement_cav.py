@@ -15,6 +15,7 @@
 import numpy as np
 
 from movement import BaseMovement
+from topology import Topology
 
 # ---------------------------------------------------------------------------
 # 默认参数（与 C 的 agents.py 中 DEFAULT_IDM_PARAMS / CAV_CTH 一致）
@@ -121,6 +122,12 @@ class CavIdmMovement(BaseMovement):
 
         # 5. 写回 float32
         data["speed"][veh_idx] = new_speed.astype(np.float32)
+
+        # 6. 行人兜底：引擎每 tick 只调用本插件更新速度（engine.step 无其他写速度处），
+        #    若不在此为行人写回巡航速度，行人 speed 将恒为 0 而全局卡死。
+        ped_mask = data["active"] & (data["kind"] == 0) & (data["state"] == 1)
+        if np.any(ped_mask):
+            data["speed"][ped_mask] = Topology.base_speed(0)
 
     # ------------------------------------------------------------------
     # 内部速度计算

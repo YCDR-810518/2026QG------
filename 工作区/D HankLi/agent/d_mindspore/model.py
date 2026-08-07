@@ -354,6 +354,7 @@ class DensityPredictor:
         patience: int = 10,
         feature_names: Optional[List[str]] = None,
         validation_data: Optional[Tuple[np.ndarray, np.ndarray]] = None,
+        init_from: bool = False,
         verbose: bool = True,
         **fit_params,
     ) -> "DensityPredictor":
@@ -382,6 +383,11 @@ class DensityPredictor:
         validation_data : tuple (X_val, y_val), optional
             外部传入的验证集，优先级高于 val_split。提供后
             直接用它做早停，不再从 X 内部切分。
+        init_from : bool, default=False
+            增量训练开关：
+              - False：每次重建模型，从零训练（清空参数）
+              - True：不重建模型，沿用当前 self.model_ 的参数继续训练。
+                调用前需先加载已训练模型（或先 fit 过一次）。
         verbose : bool, default=True
             是否打印训练进度。
 
@@ -392,8 +398,27 @@ class DensityPredictor:
         n_feat, n_nodes = self._validate_input(X, y, fit=True)
         self.feature_names_ = feature_names
 
-        # 构建 / 重建模型
-        self._build_model(n_feat)
+        if init_from:
+            # 增量训练：复用现有模型参数，不重建
+            if self.model_ is None or not self.is_fitted_:
+                raise RuntimeError(
+                    "init_from=True 但当前没有已训练的模型，"
+                    "请先 load 已训练模型或先 fit 一次"
+                )
+            # 校验模型结构匹配
+            if getattr(self.model_, "window_size", None) != self.window_size or \
+               getattr(self.model_, "pred_horizon", None) != self.pred_horizon or \
+               self._n_features != n_feat:
+                raise ValueError(
+                    "增量训练要求模型结构与新数据一致："
+                    f"当前 window={getattr(self.model_, 'window_size', '?')}, "
+                    f"pred={getattr(self.model_, 'pred_horizon', '?')}, "
+                    f"feat={self._n_features}；新数据 window={self.window_size}, "
+                    f"pred={self.pred_horizon}, feat={n_feat}"
+                )
+        else:
+            # 从零训练：重建模型
+            self._build_model(n_feat)
 
         # ---- 划分训练/验证集（按时间顺序，避免未来信息泄露） ----
         if validation_data is not None:

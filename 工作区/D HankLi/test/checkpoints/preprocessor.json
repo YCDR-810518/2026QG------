@@ -6,12 +6,16 @@
     "gate_status",
     "gate_flow_rate",
     "level",
+    "door_status",
+    "door_flow_rate",
+    "signal_status",
+    "signal_flow_rate",
     "hour_sin",
     "hour_cos",
     "dow_sin",
     "dow_cos"
   ],
-  "state_feature_count": 6,
+  "state_feature_count": 10,
   "node_ids": [
     "admin_building",
     "auditorium",
@@ -75,19 +79,23 @@
     "west_express",
     "youth_center"
   ],
-  "window_size": 60,
-  "pred_horizon": 10,
+  "window_size": 6,
+  "pred_horizon": 3,
   "density_col_idx": 0,
   "norm_min": {
     "0": 0.0,
     "1": 0.0,
     "2": 0.0,
-    "4": 0.800000011920929
+    "4": 0.0,
+    "7": 0.0,
+    "9": 0.0
   },
   "norm_max": {
-    "0": 0.983299970626831,
-    "1": 177.0,
-    "2": 16.0,
-    "4": 45.0
+    "0": 0.5666999816894531,
+    "1": 337.0,
+    "2": 23.0,
+    "4": 180.0,
+    "7": 0.0,
+    "9": 90.0
   }
 }
